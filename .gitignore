@@ -1,6 +1,21 @@
+# Editor / temporary files
 *.swp
 *.swo
 *~
-build
 .DS_Store
-.vscode
+.vscode/
+
+# Build output
+build/
+
+# Generated / binary files
+*.in
+*.out
+*.zip
+*.gz
+*.bz2
+*.tbz2
+*.tgz
+*.rar
+*.exe
+*.pdf
