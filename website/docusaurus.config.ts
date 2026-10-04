@@ -15,8 +15,8 @@ const config: Config = {
   url: process.env.URL ?? 'https://cs-pub-ro.github.io',
   baseUrl: process.env.BASE_URL ?? '/uso-labs/',
 
-  organizationName: 'cs-pub-ro', // Usually your GitHub org/user
-  projectName: 'uso-labs', // Usually your repo name.
+  organizationName: 'cs-pub-ro',
+  projectName: 'uso-labs',
   trailingSlash: false,
 
   onBrokenLinks: "warn",
@@ -46,7 +46,9 @@ const config: Config = {
   themeConfig: {
     image: "img/uso_banner.png",
     colorMode: {
-      respectPrefersColorScheme: true,
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: false,
     },
     navbar: {
       logo: {
