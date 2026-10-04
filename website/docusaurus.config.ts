@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
@@ -61,6 +61,12 @@ const config: Config = {
           label: 'Laboratoare',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'resourcesSidebar',
+          position: 'left',
+          label: 'Resurse',
+        },
+        {
           href: 'https://github.com/cs-pub-ro/uso-lab-book',
           label: 'GitHub',
           position: 'right',
@@ -79,7 +85,7 @@ const config: Config = {
             },
             {
               label: 'Courses Moodle',
-              href: 'https://curs.upb.ro/'
+              href: 'https://curs.upb.ro/',
             },
             {
               label: 'OCW',

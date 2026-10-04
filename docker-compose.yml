@@ -6,7 +6,7 @@ services:
       - 127.0.0.1:3000:3000
     volumes:
       - ./website:/app/website:rw,Z
-      - docusaurus:/app/website/.docusaurus:rw,Z
+      - docusaurus:/app/website/.docusaurus:rw
       - build:/app/website/build:rw
       - modules:/app/website/node_modules:rw
     environment:
