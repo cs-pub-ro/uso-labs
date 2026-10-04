@@ -12,11 +12,12 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://cs-pub-ro.github.io',
-  baseUrl: '/uso-labs',
+  url: process.env.URL ?? 'https://cs-pub-ro.github.io',
+  baseUrl: process.env.BASE_URL ?? '/uso-labs/',
 
   organizationName: 'cs-pub-ro', // Usually your GitHub org/user
   projectName: 'uso-labs', // Usually your repo name.
+  trailingSlash: false,
 
   onBrokenLinks: 'warn',
   onBrokenAnchors: 'throw',
