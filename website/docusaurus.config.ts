@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'USO',
   tagline: 'Utilizarea Sistemelor de Operare',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/uso.svg',
 
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
@@ -48,10 +48,9 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'USO',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'USO Logo',
+        src: 'img/uso.svg',
       },
       items: [
         {
