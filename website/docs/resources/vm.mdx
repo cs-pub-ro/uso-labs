@@ -1,0 +1,210 @@
+# Mașina virtuală
+
+Folosim mașini virtuale pentru dezvoltarea și rezolvarea laboratoarelor și pentru realizarea temelor.
+
+Toate mașinile virtuale au distribuții Debian-based. Cele de laborator le puteți folosi și pentru uz personal pentru acomodarea cu mediul Linux.
+
+În cazul în care folosiți **Windows/WSL/Linux**, mașina virtuală se va importa folosind `VirtualBox` sau `VMware Player`. Urmăriți pașii din secțiunea [Procedură import fișier OVA în VirtualBox](#procedură-import-fișier-ova-în-virtualbox) sau din secțiunea [Procedură import fișier OVA în VMware Player](#procedură-import-fișier-ova-în-vmware-player).
+
+În cazul în care folosiți **MacOS cu arhitectura ARM**, mașina virtuală se poate importa atât în `Virtual Box` urmând acest [tutorial](#procedură-import-fișier-ova-în-virtualbox), cât și în `UTM` conform [acestui tutorial](#tutorial-vm-pe-macos).
+
+:::warning
+Contul mașinii virtuale este `student` cu parola `student` și are permisiuni de `sudo`.
+:::
+
+Pachetele instalate sunt cvasi-minimale. Dacă aveți sugestii sau nevoi de pachete instalate, sugerăm să ne scrieți pe forumul de pe [curs.upb.ro](https://curs.upb.ro)
+
+## Linkuri download mașini virtuale
+
+În cazul în care folosiți **Windows/WSL/Linux** descărcați mașinile virtuale în format OVA.
+
+* [Mașina virtuală pentru laborator](https://repository.grid.pub.ro/cs/uso/USO.ova)
+* [Mașina virtuală pentru laborator format Virtual Box - MacOS M1/M2/M…](https://repository.grid.pub.ro/cs/uso/USO-ARM.ova)
+* [Mașina virtuală pentru laborator - MacOS M1/M2/M…](https://repository.grid.pub.ro/cs/uso/USO_ARM.qcow2)
+
+Credențialele de autentificare pe acest site atunci când vi se vor cere sunt cele folosite pe [cs.curs.pub.ro](https://cs.curs.pub.ro/). Dacă nu aveți un cont deja, deschideți un tichet la adresa [support.curs.pub.ro](https://support.curs.pub.ro/).
+
+:::danger
+Credențialele de pe [curs.upb.ro](https://curs.upb.ro/) și de pe [repository.grid.pub.ro](https://repository.grid.pub.ro/cs/uso/) se referă la **username** și **parolă**.
+
+Spre exemplu, Ana Popescu, cu e-mailul **ana.popescu@stud.acs.upb.ro** va scrie la username **ana.popescu** (FĂRĂ **@stud.acs.upb.ro**).
+:::
+
+## Procedură import fișier OVA în VirtualBox
+
+În funcție de sistemul de operare (Windows, Linux, MAC OS etc.) pe care îl aveți pe laptop/calculatorul personal descărcați versiunea de Virtualbox pentru acel host. Exemplu: am un laptop cu Windows 10 instalat, voi descărca versiunea de VirtualBox pentru Windows hosts.
+
+Link pentru descărcare: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+
+:::warning
+Descărcați cea mai nouă versiune stabilă de VirtualBox. Dacă aveți host de Linux asigurați-vă că din BIOS ați dezactivat Secure boot, acesta s-ar putea să interfereze cu driverele pe care VirtualBox are nevoie să le instaleze.
+:::
+
+Pentru rularea mașinii virtuale, trebuie să importați fișierul OVA în VirtualBox accesând *File* apoi *Import Appliance*, ca în imaginea de mai jos:
+
+**TODO**
+
+Va apărea opțiunea de a selecta calea către fișierul OVA pe care l-ați descărcat, ca mai jos:
+
+**TODO**
+
+Această mașină conține o serie de configurații implicite cum ar fi: 1 core CPU, 2048 MB memorie RAM. Le vom vedea listate mai jos. Asigurați-vă că:
+
+* ați bifat opțiunea "Reinitialize the MAC addresses of all network cards"
+
+**TODO**
+
+Apoi va începe importul şi va arăta ca mai jos, aveţi răbdare să termine:
+
+**TODO**
+
+După finalizarea importului, asigurați-vă că creați un host network: File → Host Network Manager → Create:
+
+**TODO**
+
+Porniți mașina virtuală și autentificați-vă folosind numele de utilizator `student` și parola `student`. O veţi vedea în meniu ca mai jos. Click dreapta pe ea, START → Normal Start:
+
+**TODO**
+
+Recomandări:
+
+* Setările mașinii virtuale nu ar trebui modificate. Dacă totuși considerați că este necesară o modificare întrebați întâi pe forum-ul temei dacă este acceptată.
+* Mașina virtuală să pornească iar sistemul de operare să se încarce complet fără interacțiune din exterior.
+* Nu schimbaţi parola utilizatorilor `root` și `student`.
+
+## Procedură import fişier OVA în VMWare Player
+
+VMware Player este versiunea gratuită a soluției de virtualizare. În funcție de sistemul de operare pe care îl folosiți (Windows/Linux), descărcați versiunea corespunzătoare de VMware Player (pentru Windows sau pentru Linux) de la linkul https://softwareupdate.vmware.com/cds/vmw-desktop/player/.
+
+Pentru rularea mașinii virtuale, trebuie să importați fișierul OVA în VMWare accesând *File* apoi *Open*, ca în imaginea de mai jos:
+
+**TODO**
+
+Va apărea opțiunea de a selecta calea către fișierul OVA pe care l-ați descărcat, ca mai jos:
+
+**TODO**
+
+După va aparea o fereastră în care trebuie să selectați numele și locul unde se va salva mașina virtuală. Completați aceste date dacă este nevoie și apăsați *Import*.
+
+**TODO**
+
+Apoi va începe importul şi va arăta ca mai jos, aveţi răbdare să termine:
+
+**TODO**
+
+Veţi vedea mașina virtuală în meniu ca mai jos. Selectați-o și apăsați pe triunghiul verde *Power on*. După ce pornește mașina virtuală autentificați-vă folosind numele de utilizator `student` și parola `student`.
+
+**TODO**
+
+Recomandări:
+
+* Setările mașinii virtuale nu ar trebui modificate. Dacă totuși considerați că este necesară o modificare întrebați întâi pe forum-ul temei dacă este acceptată.
+* Mașina virtuală să pornească iar sistemul de operare să se încarce complet fără interacțiune din exterior.
+* Nu schimbaţi parola utilizatorilor `root` și `student`.
+
+## Tutorial VM pe macOS
+
+Descărcați discul mașinii virtuale de aici: [http://elf.cs.pub.ro/uso/res/USO_ARM.qcow2](http://elf.cs.pub.ro/uso/res/USO_ARM.qcow2)
+
+**Pasul 1: Crearea mașinii în UTM**
+
+**1.** Deschide **UTM** și apasă pe butonul mare + din stânga sus.
+
+**2.** La ecranul de start:
+
+* Alege **Virtualize** (!!NU Emulate!! — imaginea are deja ARM în nume, deci rulează nativ la viteză maximă).
+
+**3.** Selectează **Linux**.
+
+**4.** La ecranul de boot:
+
+* Bifează opțiunea **Import existing drive**.
+* Dă click pe **Browse**…, caută fișierul USO_ARM.qcow2 descărcat și dă-i Open.
+
+**5.** La **Hardware**:
+
+* **RAM**: Pune măcar 4096 MiB (4 GB).
+* **CPU** Cores: Poți lăsa pe default sau selecta 4.
+
+**6.** La ecranul cu **Shared Directory**:
+
+* Treci mai departe fără să selectezi nimic (Continue).
+
+**7.** La ecranul final de **Summary**:
+
+* **STOP! Nu apăsa direct Save.**
+* **Bifează neapărat căsuța** Open VM Settings, apoi apasă pe **Save**.
+
+**Pasul 2: Setarea critică (Dacă nu faci asta, ai ecran negru)**
+
+Se va deschide fereastra cu setările mașinii virtuale.
+
+1. În meniul din stânga, dă click pe **QEMU**.
+
+2. **BIFEAZĂ** UEFI Boot.
+
+3. În meniul din stânga, dă click pe secțiunea **Drives → VirtIO Drive**:
+
+* Verifică să scrie numele imaginii (USO_ARM.qcow2) și interfața să fie **VirtIO**.
+
+4. Apasă pe **Save** în colțul din dreapta-jos.
+
+**Pasul 3: Pornire & Verificare**
+
+1. În lista de mașini din stânga, apasă pe triunghiul gri de Play de lângă VM-ul tău.
+
+2. Îți va apărea o fereastră nouă cu logo-ul UTM, meniul GRUB și apoi direct desktop-ul sau consola de Linux.
+
+**Cum știi că merge cum trebuie:**
+
+* Deschide un terminal în mașină și scrie:
+
+```
+uname -m
+```
+
+Dacă răspunde aarch64, ești pe arhitectură nativă ARM și merge brici.
+
+**Cheat-codes utile ca să nu te blochezi:**
+
+* **Cum deschizi terminalul din scurtătură:** Pe Mac tastezi Control + Option + T (nu folosi tasta Command). Nu uita să dai un click în fereastra VM-ului mai întâi ca să preia tastele.
+* **Ai capturat cursorul și nu mai iese din VM?** Apasă combinația Control + Option de pe tastatură și mouse-ul revine pe macOS.
+
+1. Nu vă speriați că aici vedeți mai multe mașini virtuale. Apăsați + pentru a crea o nouă mașină virtuală. Posibil să vă apară direct fereastra de la pasul următor.
+
+2. **TODO**
+
+3. **TODO**
+
+4. **TODO**
+
+5. **TODO**
+
+6. **TODO**
+
+7. **TODO**
+
+8. **TODO**
+
+9. **TODO**
+
+10. **TODO**
+
+11. Aveți mai multe butoane pentru a porni mașina.
+
+**TODO**
+
+12. Nu vă speriați de ecranul negru. Așa ar trebui să arate. Have fun!
+
+**TODO**
+
+## BIOS settings
+
+* Dezactivați secure boot din BIOS (mai ales dacă aveți Linux pe mașina fizică).
+* Activați suportul pentru virtualizare din BIOS (indiferent dacă aveți Windows sau Linux).
+
+Fiecare BIOS e diferit ca opțiuni și navigare. Aici va trebui să cautați pe net cum se intră în el și să faci modificările (de obicei se apasă o tastă la bootare (. DEL sau F2) înainte să pornească sistemul de operare).
+
+:::tip
+BIOS - basic input output system, un mini sistem de operare (cunoscut ca firmware, instalat în ROM) care are câteva setări de bază pentru PC-ul tău și face o mică interfațare între hardware și sistemul de operare efectiv
+:::
