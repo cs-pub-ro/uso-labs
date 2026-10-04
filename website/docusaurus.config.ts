@@ -31,6 +31,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+            routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/cs-pub-ro/uso-lab-book',
         },
@@ -61,9 +62,15 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
+<<<<<<< HEAD
           sidebarId: 'resourcesSidebar',
           position: 'left',
           label: 'Resurse',
+=======
+          sidebarId: 'homeworkSidebar',
+          position: 'left',
+          label: 'Teme',
+>>>>>>> 5e8149b (feat: added schaffold for labs and homework)
         },
         {
           href: 'https://github.com/cs-pub-ro/uso-lab-book',
@@ -80,7 +87,7 @@ const config: Config = {
           items: [
             {
               label: 'Labs',
-              to: '/docs/labs',
+              to: '/labs/intro',
             },
             {
               label: 'Courses Moodle',
