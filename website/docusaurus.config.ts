@@ -32,6 +32,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+            routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/cs-pub-ro/uso-lab-book',
         },
@@ -62,6 +63,12 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
+          sidebarId: 'homeworkSidebar',
+          position: 'left',
+          label: 'Teme',
+        },
+        {
+          type: 'docSidebar',
           sidebarId: 'resourcesSidebar',
           position: 'left',
           label: 'Resurse',
@@ -81,7 +88,7 @@ const config: Config = {
           items: [
             {
               label: 'Labs',
-              to: '/docs/labs',
+              to: '/labs/intro',
             },
             {
               label: 'Courses Moodle',
