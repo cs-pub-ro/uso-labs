@@ -5,60 +5,68 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'USO',
   tagline: 'Utilizarea Sistemelor de Operare',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/uso.svg',
 
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
   // Set the production url of your site here
-  url: 'https://cs-pub-ro.github.io',
-  baseUrl: '/uso-labs',
+  url: process.env.URL ?? 'https://cs-pub-ro.github.io',
+  baseUrl: process.env.BASE_URL ?? '/uso-labs/',
 
-  organizationName: 'cs-pub-ro', // Usually your GitHub org/user
-  projectName: 'uso-labs', // Usually your repo name.
+  organizationName: 'cs-pub-ro',
+  projectName: 'uso-labs',
+  trailingSlash: false,
 
-  onBrokenLinks: 'warn',
-  onBrokenAnchors: 'throw',
+  onBrokenLinks: "warn",
+  onBrokenAnchors: "warn",
 
   i18n: {
-    defaultLocale: 'ro',
-    locales: ['ro'],
+    defaultLocale: "ro",
+    locales: ["ro"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/cs-pub-ro/uso-lab-book',
+          editUrl: 'https://github.com/cs-pub-ro/uso-labs/edit/master/website/',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: "img/uso_banner.png",
     colorMode: {
-      respectPrefersColorScheme: true,
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'USO',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'USO Logo',
+        src: 'img/uso.svg',
       },
       items: [
         {
+          type: "docSidebar",
+          sidebarId: "labsSidebar",
+          position: "left",
+          label: "Laboratoare",
+        },
+        {
           type: 'docSidebar',
-          sidebarId: 'labsSidebar',
+          sidebarId: 'homeworkSidebar',
           position: 'left',
-          label: 'Laboratoare',
+          label: 'Teme',
         },
         {
           type: 'docSidebar',
@@ -67,38 +75,44 @@ const config: Config = {
           label: 'Resurse',
         },
         {
-          href: 'https://github.com/cs-pub-ro/uso-lab-book',
+          type: 'docSidebar',
+          sidebarId: 'labBookSidebar',
+          position: 'left',
+          label: 'Carte',
+        },
+        {
+          href: 'https://github.com/cs-pub-ro/uso-labs',
           label: 'GitHub',
           position: 'right',
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
               label: 'Labs',
-              to: '/docs/labs',
+              to: '/labs/intro',
             },
             {
               label: 'Courses Moodle',
               href: 'https://curs.upb.ro/',
             },
             {
-              label: 'OCW',
-              href: 'https://ocw.cs.pub.ro/courses/uso/',
+              label: "OCW",
+              href: "https://ocw.cs.pub.ro/courses/uso/",
             },
           ],
         },
         {
-          title: 'More',
+          title: "More",
           items: [
             {
               label: 'Repository',
-              href: 'https://github.com/cs-pub-ro/uso-lab-book',
+              href: 'https://github.com/cs-pub-ro/uso-labs',
             },
           ],
         },
