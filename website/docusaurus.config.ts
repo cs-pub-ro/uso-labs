@@ -62,15 +62,15 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
-<<<<<<< HEAD
-          sidebarId: 'resourcesSidebar',
-          position: 'left',
-          label: 'Resurse',
-=======
           sidebarId: 'homeworkSidebar',
           position: 'left',
           label: 'Teme',
->>>>>>> 5e8149b (feat: added schaffold for labs and homework)
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'resourcesSidebar',
+          position: 'left',
+          label: 'Resurse',
         },
         {
           href: 'https://github.com/cs-pub-ro/uso-lab-book',
