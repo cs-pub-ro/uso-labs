@@ -32,9 +32,9 @@ const config: Config = {
       "classic",
       {
         docs: {
-            routeBasePath: '/',
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/cs-pub-ro/uso-labs',
+          editUrl: 'https://github.com/cs-pub-ro/uso-labs/edit/master/website/',
         },
         theme: {
           customCss: "./src/css/custom.css",
