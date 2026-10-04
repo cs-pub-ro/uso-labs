@@ -34,7 +34,7 @@ const config: Config = {
         docs: {
             routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/cs-pub-ro/uso-lab-book',
+          editUrl: 'https://github.com/cs-pub-ro/uso-labs',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -74,7 +74,7 @@ const config: Config = {
           label: 'Resurse',
         },
         {
-          href: 'https://github.com/cs-pub-ro/uso-lab-book',
+          href: 'https://github.com/cs-pub-ro/uso-labs',
           label: 'GitHub',
           position: 'right',
         },
@@ -105,7 +105,7 @@ const config: Config = {
           items: [
             {
               label: 'Repository',
-              href: 'https://github.com/cs-pub-ro/uso-lab-book',
+              href: 'https://github.com/cs-pub-ro/uso-labs',
             },
           ],
         },
