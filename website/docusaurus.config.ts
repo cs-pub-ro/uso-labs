@@ -19,17 +19,17 @@ const config: Config = {
   projectName: 'uso-labs', // Usually your repo name.
   trailingSlash: false,
 
-  onBrokenLinks: 'warn',
-  onBrokenAnchors: 'throw',
+  onBrokenLinks: "warn",
+  onBrokenAnchors: "throw",
 
   i18n: {
-    defaultLocale: 'ro',
-    locales: ['ro'],
+    defaultLocale: "ro",
+    locales: ["ro"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
             routeBasePath: '/',
@@ -37,7 +37,7 @@ const config: Config = {
           editUrl: 'https://github.com/cs-pub-ro/uso-labs',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
@@ -45,7 +45,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: "img/docusaurus-social-card.jpg",
     colorMode: {
       respectPrefersColorScheme: true,
     },
@@ -56,10 +56,10 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'labsSidebar',
-          position: 'left',
-          label: 'Laboratoare',
+          type: "docSidebar",
+          sidebarId: "labsSidebar",
+          position: "left",
+          label: "Laboratoare",
         },
         {
           type: 'docSidebar',
@@ -74,6 +74,12 @@ const config: Config = {
           label: 'Resurse',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'labBookSidebar',
+          position: 'left',
+          label: 'Carte',
+        },
+        {
           href: 'https://github.com/cs-pub-ro/uso-labs',
           label: 'GitHub',
           position: 'right',
@@ -81,10 +87,10 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
               label: 'Labs',
@@ -95,13 +101,13 @@ const config: Config = {
               href: 'https://curs.upb.ro/',
             },
             {
-              label: 'OCW',
-              href: 'https://ocw.cs.pub.ro/courses/uso/',
+              label: "OCW",
+              href: "https://ocw.cs.pub.ro/courses/uso/",
             },
           ],
         },
         {
-          title: 'More',
+          title: "More",
           items: [
             {
               label: 'Repository',
