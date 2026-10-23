@@ -143,6 +143,14 @@ Folosim sintaxa `&> cale/către/nume-fișier` pentru a redirecta atât STDERR, c
 
 - Fișierul `/dev/null` este un fișier care ignoră orice este scris în el.
 - Fișierul `/dev/zero` este un generator de octeți.
-  Acesta generează atâția octeți cu valoarea zero (**0**)[\#dev-zero](##NOTE###dev-zero) cât îi sunt ceruți.
+  Acesta generează atâția octeți cu valoarea zero (**0**)[^1] cât îi sunt ceruți.
 - Fișierul `/dev/urandom` este un alt generator de octeți.
   Acesta generează atâția octeți cu valoare random cât îi sunt ceruți.
+
+------------------------------------------------------------------------
+
+*Note de subsol*
+
+[^1]: Valoarea **0** nu înseamnă cifra **0**.
+    Valoarea **0** înseamnă caracterul **(null)** din tabelul [ASCII](http://www.asciitable.com/).
+    Caracterul **0** are valoarea **48** în tabelul ASCII.
