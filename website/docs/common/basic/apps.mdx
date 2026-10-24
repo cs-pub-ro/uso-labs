@@ -1,4 +1,4 @@
-# Pornirea și oprirea aplicațiilor
+## Pornirea și oprirea aplicațiilor
 
 Aplicațiile sunt pornite de utilizator sau de sistemul de operare.
 Utilizatorul pornește aplicațiile pentru că are o nevoie pe care aplicația o rezolvă.
@@ -14,7 +14,7 @@ Vorbim despre pornirea aplicațiilor din terminal în capitolul `Instalarea și 
 În această secțiune vorbim despre pornirea și oprirea aplicațiilor.
 Instalarea aplicațiilor este acoperită în capitolul `Instalarea și utilizarea aplicațiilor`.
 
-## Pornirea unei aplicații grafice folosind iconuri
+### Pornirea unei aplicații grafice folosind iconuri
 
 Cel mai simplu mod de a porni o aplicație grafică este folosind iconuri.
 Folosim mouse-ul și facem click pe icon pentru a porni aplicația.
@@ -32,7 +32,7 @@ Rularea înseamnă că aplicația folosește resursele sistemului pentru a înde
 În mod similar putem porni alte aplicații care au iconuri.
 Aceste iconuri pot fi prezente pe bare de iconuri sau în diferite meniuri, depinzând de mediul grafic și distribuția folosită.
 
-## Oprirea unei aplicații grafice
+### Oprirea unei aplicații grafice
 
 Odată pornită, o aplicație grafică rulează, de obicei, până la o oprire explicită din partea utilizatorului.
 Utilizatorul poate opri o aplicație grafică în mai multe moduri:
@@ -59,19 +59,24 @@ Utilizatorul poate opri o aplicație grafică în mai multe moduri:
   După ce pornim utilitarul `xkill`, cursorul mouse-ului capătă o formă de `x`.
   Un click pe o aplicație grafică duce la oprirea acesteia.
 
-**Exerciții**
-
-1.  Porniți aplicația *Thunderbird Mail* și opriți-o în toate modurile de mai sus.
-
-## Pornirea unei aplicații grafice folosind Alt+F2
+### Pornirea unei aplicații grafice folosind Alt+F2
 
 Pentru a porni o aplicație grafică folosind iconuri trebuie să existe acele iconuri.
 Dacă iconul nu este prezent, sau dacă este greu accesibil (trebuie să căutăm prin meniuri), preferăm o altă soluție.
 Soluția este folosirea unui mod generic de a lansa o aplicație în interfața grafică, adică folosirea unui prompt de tip *application launcher*.
 
-În mediile grafice Linux pornim un prompt de tip *application launcher* folosind combinația de taste `Alt+F2`[^1].
+În mediile grafice Linux pornim un prompt de tip *application launcher* folosind combinația de taste `Alt+F2`.
 Când apăsăm `Alt+F2`, mediul grafic prezintă un prompt în care introducem șirul care identifică aplicația.
 De exemplu, pentru a porni aplicația Rhythmbox, introducem șirul `rhythmbox` în prompt, ca în figura de mai jos:
+
+<details>
+<summary>Application launcher în alte sisteme de operare</summary>
+
+Funcționalitatea de tip *application launcher*, pornită folosind `Alt+F2`, se găsește și în alte sisteme de operare, nu doar în Linux.
+În Windows, pornim un prompt de tip *application launcher* folosind combinația de taste `Windows+r`.
+În macOS folosim `Command+Space`.
+
+</details>
 
 <figure>
 ![Pornirea aplicației Rhythmbox folosind ``Alt+F2``](_assets/gifs/open-rhythmbox-alt-f2.gif)
@@ -79,52 +84,39 @@ De exemplu, pentru a porni aplicația Rhythmbox, introducem șirul `rhythmbox` �
 
 În urma introducerii șirului `rhythmbox` în prompt, urmat de apăsarea tastei `Enter`, aplicația Rhythmbox va porni.
 
-În mod similar, dacă dorim să pornim o aplicație de tip terminal (**GNOME Terminal**), folosim `Alt+F2` și introducem șirul `gnome-terminal`[^2].
+În mod similar, dacă dorim să pornim o aplicație de tip terminal (**GNOME Terminal**), folosim `Alt+F2` și introducem șirul `gnome-terminal`.
 
-Șirurile `rhythmbox` și `gnome-terminal` sunt șiruri identifică aplicațiile Rhythmbox, respectiv GNOME Terminal.
+<details>
+<summary>Despre GNOME Terminal</summary>
+
+Aplicația GNOME Terminal, pornită folosind comanda `gnome-terminal`, este aplicația de tip terminal specifică mediului GNOME.
+Alte medii pot folosi alte aplicații de tip terminal.
+De exemplu, aplicația de tip terminal pe mediul KDE este Konsole.
+Sau utilizatorul poate decide instalarea unei alte aplicații de tip terminal, precum Terminator.
+
+</details>
+
+Șirurile `rhythmbox` și `gnome-terminal` sunt șiruri care identifică aplicațiile Rhythmbox, respectiv GNOME Terminal.
 Numim un astfel de șir o **comandă**; comenzile sunt șiruri introduse de utilizator pentru a porni o anumită aplicație.
 
-**Exerciții**
+### Exerciții
 
-1.  Porniți aplicația **LibreOffice**, identificată de șirul (comanda) `libreoffice`, folosind `Alt+F2`.
+1. Porniți aplicația *Thunderbird Mail* și opriți-o în toate modurile de mai sus.
 
-## Exerciții
+2. Porniți aplicația **LibreOffice**, identificată de șirul (comanda) `libreoffice`, folosind `Alt+F2`.
 
-Porniți fiecare dintre aplicațiile de mai jos in două moduri:
+3. Porniți fiecare dintre aplicațiile de mai jos in două moduri:
 
 - Shutter (identificată de șirul `shutter`), aplicație de creare de screenshoturi
 - Gedit (identificată de șirul `gedit`), editor
 - Mines (identificată de șirul `gnome-mines`), joc de tip Minesweeper
 - ToDo (identificată de șirul `gnome-todo`), aplicație de gestiune de taskuri / todo-uri
 
-Porniți fiecare aplicație în cele două moduri:
+4. Porniți fiecare aplicație în cele două moduri:
 
-- Folosind iconuri în interfața grafică.
-  Localizați iconul în meniurile interfeței grafice.
-
-  <div className="hint">
-
-  <div className="title">
-
-  Hint
-
-  </div>
-
-  Aplicațiile cu icon de pornire pot fi localizate cu iconul cu 9 puncte în formă de pătrat din stânga jos a ecranului.
-
-  </div>
-
+- Folosind iconuri în interfața grafică. Localizați iconul în meniurile interfeței grafice.
 - Folosind combinația de taste `Alt+F2`.
 
-------------------------------------------------------------------------
-
-*Note de subsol*
-
-[^1]: Funcționalitatea de tip *application launcher*, pornită folosind `Alt+F2`, se găsește și în alte sisteme de operare, nu doar în Linux.
-    În Windows, pornim un prompt de tip *application launcher* folosind combinația de taste `Windows+r`.
-    În macOS folosim `Command+Space`.
-
-[^2]: Aplicația GNOME Terminal, pornită folosind comanda `gnome-terminal`, este aplicația de tip terminal specifică mediului GNOME.
-    Alte medii pot folosi alte aplicații de tip terminal.
-    De exemplu, aplicația de tip terminal pe mediul KDE este Konsole.
-    Sau utilizatorul poate decide instalarea unei alte aplicații de tip terminal, precum Terminator.
+:::tip
+Aplicațiile cu icon de pornire pot fi localizate cu iconul cu 9 puncte în formă de pătrat din stânga jos a ecranului.
+:::
