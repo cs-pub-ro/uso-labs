@@ -3,3 +3,81 @@ title: Recapitulare Midterm
 sidebar_position: 99
 sidebar_label: Recapitulare Midterm
 ---
+
+:::warning
+
+Citiți cu maximă atenție [regulamentul de notare și permisiuni](../resources/marking.mdx) publicat pe wiki
+
+:::
+
+## Subiecte din anii anteriori
+
+Examenul practic midterm va evalua conoștințele din primele 9 laboratoare.
+
+Documentul atașat nu este un șablon pentru subiectul ce o sa fie dat la examen.
+Acesta are rolul să vă dea o idee despre numărul de subiecte, cum se vor verifica cunoștințele din laboratoarele ce intră in materia de midterm și despre nivelul de dificultate al subiectelor.
+
+[Model](https://drive.google.com/file/d/1U2fPCggS4oMku1wPi9GcTfA56uVUoVYs/view?usp=sharing)
+
+## Good practices
+
+:::warning
+
+Când primiți foaia de examen, citiți toate exercițiile și rezolvați tot ce considerați ca este ușor.
+Vă recomandăm să citiți **cu atenție** enunțurile exercițiilor și să vă alcătuiți o ordine în care sa rezolvați exercițiile.
+Dacă nu rezolvați un exercițiu in 5-10 minute, este recomandat sa treceți la următorul exercițiu.
+
+:::
+
+Nu uitați de [cheatsheet](https://ocw.cs.pub.ro/courses/_media/uso/resurse/uso01-refcard.pdf), paginile de manual, demo-urile din laboratoare, slide-urile de curs și de suportul de curs.
+
+Folosiți cat mai des comenzi pe care le cunoașteți și stapâniți.
+Nu folosiți comenzi găsite pe Google fără să știți ce fac.
+
+Rezolvați fiecare exercițiu într-o fereastră separată, astfel încât să nu îl așteptați pe asistent să vină sa vă verifice.
+Acesta este timp pierdut.
+
+Pentru fiecare comandă dată, este recomandat să verificați rezultatul acesteia.
+
+:::warning
+
+Asistentul verifică doar faptul că lucrurile funcționează conform cerinței date.
+Nu arătați asistentului ce comenzi ați dat sau istoricul că veți lua 0.
+Arătați rezultatul, arătați că funcționează.
+Exemplu: vi se cere să creați în `/home/student` folderul `uso`.
+Nu arătați că ați dat `mkdir uso` ci arătați output-ul `ls -ld /home/student/uso`
+
+:::
+
+Exemple:
+
+- După ce creați sau ștergeți un fișier sau un director (folodind `touch`, `mkdir`, `rm` sau `rmdir`), rulați comanda `ls -l` pentru a verifica faptul că a fost creat (si a investiga permisiunile).
+- După ce ați schimbat directorul curent (folosind `cd`), rulați comanda `ls` sau `pwd` pentru a verifica faptul că ați ajuns unde doreați.
+- După ce schimbați permisiunile sau posesia unei intrări în sistemul de fișiere (folosind `chmod`, `chown` sau `chgrp`), rulați comanda `ls -l` pentru a verifica noile permisiuni sau noua posesie.
+- După ce creați un link simbolic (folosind `ln -s`), rulați comanda `ls -l` pentru a verifica faptul că noul link pointează unde trebuie.
+- După ce formatați o partiție (folosind o comandă din familia `mkfs…`), rulați comanda `file -s`, cu argument partiția, pentru a verifica sistemul de fișiere de pe aceasta.
+- După ce montați sau demontați o partiție (folosind `mount` sau `umount`), rulați comanda `mount` fără parametri pentru a lista partițiile montate.
+- După ce porniți un proces, rulați comanda `ps` pentru a verifica existența procesului.
+- După ce creați un utilizator, folosind comanda `adduser`, rulați comanda `id user_name`, cu argument numele utilizatorului, pentru a verifica existența utilizatorului sau `getent passwd user_name` pentru a vedea setările lui.
+
+:::warning
+
+La orice moment de timp, așa cum te uiți în oglinda retrovizoare a unei mașini și știi mereu ce ai în spate, trebuie să știi trei lucruri, mai ales în contextul folosirii mașinilor virtuale:
+
+- care este hostname-ul (pe ce sistem te afli). Comenzi utile: `cat /etc/hostname`, `hostname`
+- care este username-ul (cu ce utilizator ești autentificat): `whoami`, `id` (fără parametrii),
+- care este working directory-ul (în ce director lucrezi): `pwd`
+
+Toate informațiile de mai sus se găsesc în prompt-ul terminalului: **`username@hostname:working-directory`**.
+
+:::
+
+## Tips & Tricks
+
+Dormiți bine înainte de examen.
+Somnul este foarte important când vine vorba de un examen.
+
+Dacă stați mai mult de 5 minute pe un exercițiu treceți mai departe la următorul subpunct sau următorul exercițiu.
+Timpul nu este de partea voastră.
+
+Folosiți comanda `man` când nu vă amintiți sau nu sunteți siguri ce efect are comanda, care este ordinea argumentelor sau care este opțiunea dorită, e mai rapid decât search-ul pe google.
