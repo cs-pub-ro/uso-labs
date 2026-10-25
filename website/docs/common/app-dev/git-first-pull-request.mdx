@@ -14,11 +14,13 @@ De obicei acel branch este **master**.
 În secțiunea `app_dev_branches` am adus modificările de pe branch-ul **add-gitignore** pe branch-ul **master** prin operația **merge**.
 În această secțiune vom integra schimbările prin intermediul unui **Pull Request**[^1] urmând pașii din subsecțiunea `app_dev_pr_steps`.
 
-> [!NOTE]
-> Folosirea unui **Pull Request** în loc de a efectua o operație **merge** vine cu mai multe beneficii:
->
-> 1.  În general, schimbările nu pot fi integrate fără ca PR-ul să fie aprobat. Aprobarea vine în mod normal de la un alt coleg de echipă.
-> 2.  Recenzia codului sursă se face ușor pe un Pull Request. Vom vedea în secțiunea `app_dev_pr_reviewers` cum adăugăm recenzenți.
+:::note
+Folosirea unui **Pull Request** în loc de a efectua o operație **merge** vine cu mai multe beneficii:
+
+1.  În general, schimbările nu pot fi integrate fără ca PR-ul să fie aprobat. Aprobarea vine în mod normal de la un alt coleg de echipă.
+2.  Recenzia codului sursă se face ușor pe un Pull Request. Vom vedea în secțiunea `app_dev_pr_reviewers` cum adăugăm recenzenți.
+
+:::
 
 ## Pași Pull Request
 
@@ -286,8 +288,10 @@ Recenzenții fac parte din colaboratorii proiectului.
 
 După mai multe runde de feedback și aplicarea acestuia, PR-ul va fi gata de integrat în branch-ul **master**.
 
-> [!NOTE]
-> Acest scenariu *ping-pong* se va repeta până când voi, împreună cu recenzenții, ajungeți la concluzia că schimbările pot fi integrate.
+:::note
+Acest scenariu *ping-pong* se va repeta până când voi, împreună cu recenzenții, ajungeți la concluzia că schimbările pot fi integrate.
+
+:::
 
 Acum vom face operația **merge** a PR-ului.
 Apăsăm mai întâi butonul `Merge pull request` după care butonul `Confirm merge` ca în imaginea de mai jos.

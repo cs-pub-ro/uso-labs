@@ -28,24 +28,26 @@ Afișarea pachetelor o facem folosind comanda `dpkg -l '*'`.
 Această comandă afișează toate pachetele.
 Ca să afișăm doar pachetele instalate, filtrăm rezultatul cu ajutorul comenzii `grep ^ii`.
 
-> [!IMPORTANT]
-> Același lucru îl putem obține folosind comanda `apt list` ca mai jos.
-> Doar că e o comandă mai nouă, marcată în manual ca `work-in-progress`; motiv pentru care, pe moment, preferăm folosirea comenzii `dpkg -l` ca mai sus.
->
-> ``` bash
-> student@uso:~$ apt list --installed
-> Listing...
-> accountsservice/bionic,now 0.6.45-1ubuntu1 amd64 [installed]
-> acl/bionic,now 2.2.52-3build1 amd64 [installed]
-> acpi-support/bionic,now 0.142 amd64 [installed]
-> acpid/bionic,now 1:2.0.28-1ubuntu1 amd64 [installed]
-> adduser/bionic,bionic,now 3.116ubuntu1 all [installed]
-> adium-theme-ubuntu/bionic,bionic,now 0.3.4-0ubuntu4 all [installed]
-> adwaita-icon-theme/bionic,bionic,now 3.28.0-1ubuntu1 all [installed]
-> aisleriot/bionic,now 1:3.22.5-1 amd64 [installed]
-> alacarte/bionic,bionic,now 3.11.91-3 all [installed,automatic]
-> [...]
-> ```
+:::info
+Același lucru îl putem obține folosind comanda `apt list` ca mai jos.
+Doar că e o comandă mai nouă, marcată în manual ca `work-in-progress`; motiv pentru care, pe moment, preferăm folosirea comenzii `dpkg -l` ca mai sus.
+
+``` bash
+student@uso:~$ apt list --installed
+Listing...
+accountsservice/bionic,now 0.6.45-1ubuntu1 amd64 [installed]
+acl/bionic,now 2.2.52-3build1 amd64 [installed]
+acpi-support/bionic,now 0.142 amd64 [installed]
+acpid/bionic,now 1:2.0.28-1ubuntu1 amd64 [installed]
+adduser/bionic,bionic,now 3.116ubuntu1 all [installed]
+adium-theme-ubuntu/bionic,bionic,now 0.3.4-0ubuntu4 all [installed]
+adwaita-icon-theme/bionic,bionic,now 3.28.0-1ubuntu1 all [installed]
+aisleriot/bionic,now 1:3.22.5-1 amd64 [installed]
+alacarte/bionic,bionic,now 3.11.91-3 all [installed,automatic]
+[...]
+```
+
+:::
 
 Pentru afișarea pachetelor Snap instalate, folosim comanda:
 

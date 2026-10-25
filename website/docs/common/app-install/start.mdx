@@ -92,8 +92,10 @@ Adică urmăm pașii:
 
 **Exercițiu**: Folosiți pașii de mai sus pentru a porni și aplicația **LibreOffice** din linie de comandă și să mențineți accesul la terminal.
 
-> [!NOTE]
-> Vom afla mai multe despre background și suspendarea proceselor în `app_install_run_signal`.
+:::note
+Vom afla mai multe despre background și suspendarea proceselor în `app_install_run_signal`.
+
+:::
 
 ### Exerciții de aprofundare
 
@@ -263,16 +265,18 @@ Pentru a opri procesul Firefox pornit în modul headless, folosim, în primul te
 Aplicația Inkscape este folosită pentru crearea și editarea de imagini format SVG (*Scalable Vector Graphics*).
 Inkscape nu are propriu zis un mod headless, dar poate fi folosită în mod neinteractiv pentru exportarea fișierelor într-un anumit format și chiar editarea acestora[^4].
 
-> [!NOTE]
-> Aplicația trebuie instalată dacă nu există deja.
-> Pe sistemele Debian/Ubuntu folosim comenzi precum cele de mai jos:
->
-> ``` bash
-> student@uso:~$ sudo apt update
-> student@uso:~$ sudo apt -y install inkscape
-> ```
->
-> Vom detalia instalarea aplicațiilor în `app_install_install_uninstall`.
+:::note
+Aplicația trebuie instalată dacă nu există deja.
+Pe sistemele Debian/Ubuntu folosim comenzi precum cele de mai jos:
+
+``` bash
+student@uso:~$ sudo apt update
+student@uso:~$ sudo apt -y install inkscape
+```
+
+Vom detalia instalarea aplicațiilor în `app_install_install_uninstall`.
+
+:::
 
 De exemplu, pentru a converti o imagine SVG în format PDF, folosim o comandă precum cea de mai jos:
 
@@ -298,8 +302,10 @@ Folosiți Inkscape fără interfață grafică pentru a converti imaginea în fo
 
 #### Exercițiu: Folosirea Emacs Daemon
 
-> [!WARNING]
-> Acest exercițiu are dificultate sporită.
+:::warning
+Acest exercițiu are dificultate sporită.
+
+:::
 
 Emacs este o aplicație consumatoare de resurse.
 Pentru a reduce timpul de pornire, este ideal să fie pornită o singură dată și apoi să fie folosită acea instanță.

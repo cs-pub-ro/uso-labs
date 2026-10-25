@@ -105,11 +105,13 @@ folosi clienți web pentru a descărca fișiere indiferent de tipul acestora.
 
 ## Accesul la distanţă în linie de comandă
 
-> [!NOTE]
-> Pentru rularea acestui demo rulați în directorul
-> `~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install ssh`.
-> Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
-> comanda `./lab_prepare.sh connect ssh`
+:::note
+Pentru rularea acestui demo rulați în directorul
+`~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install ssh`.
+Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
+comanda `./lab_prepare.sh connect ssh`
+
+:::
 
 În multe situații atunci când lucrăm cu sisteme, este necesar să rulăm aplicații
 pe alte stații în afara calculatorului nostru fără să avem acces fizic la
@@ -485,14 +487,16 @@ stația `10.10.10.3`.
 
 ## Securizarea conexiunii la Internet folosind un VPN
 
-> [!NOTE]
-> Pentru rularea acestui demo rulați în directorul
-> `~/uso.git/labs/03-user/lab-containers/` comenzile `./lab_prepare.sh install openvpn`,
-> `./lab_prepare.sh install openvpn-client1` și `./lab_prepare.sh install openvpn-client2`.
-> Pentru a ne conecta la infrastructura necesară acestei secțiuni, vom folosi
-> comanda `./lab_prepare.sh connect openvpn-client1` pentru stația
-> `openvpn-client1` și `./lab_prepare.sh connect openvpn-client2` pentru a vă
-> conecta la stația `openvpn-client2`.
+:::note
+Pentru rularea acestui demo rulați în directorul
+`~/uso.git/labs/03-user/lab-containers/` comenzile `./lab_prepare.sh install openvpn`,
+`./lab_prepare.sh install openvpn-client1` și `./lab_prepare.sh install openvpn-client2`.
+Pentru a ne conecta la infrastructura necesară acestei secțiuni, vom folosi
+comanda `./lab_prepare.sh connect openvpn-client1` pentru stația
+`openvpn-client1` și `./lab_prepare.sh connect openvpn-client2` pentru a vă
+conecta la stația `openvpn-client2`.
+
+:::
 
 O aplicație de tip VPN (*Virtual Private Network*) este o aplicație care permite
 crearea rețelelor de calculatoare în Internet fără ca acestea să fie neapărat în

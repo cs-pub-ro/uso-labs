@@ -62,11 +62,13 @@ student@uso:/home$ tree -F -L 1 /home
 
 Există două directoare `student` și `test`.
 
-> [!NOTE]
-> Observăm cum se schimbă promptul de terminal:
->
-> - în primul exemplu `student@uso:/$ tree -F -L 1 /` eram în directorul `/`.
-> - în al doilea exemplu `student@uso:/home$ tree -F -L 1` eram în directorul `/home`.
+:::note
+Observăm cum se schimbă promptul de terminal:
+
+- în primul exemplu `student@uso:/$ tree -F -L 1 /` eram în directorul `/`.
+- în al doilea exemplu `student@uso:/home$ tree -F -L 1` eram în directorul `/home`.
+
+:::
 
 Avansăm în ierarhia de directoare către `student`, folosind comanda `cd`:
 
@@ -122,9 +124,11 @@ student@uso:~$ tree -F
 ``-- usr_bin.zip
 ```
 
-> [!NOTE]
-> Rezultatul comenzii `tree` de mai sus este specific fișierelor și directoarelor de pe sistemul meu.
-> Voi veți avea alt rezultat, conform fișierelor și directoarelor de pe sistemul vostru.
+:::note
+Rezultatul comenzii `tree` de mai sus este specific fișierelor și directoarelor de pe sistemul meu.
+Voi veți avea alt rezultat, conform fișierelor și directoarelor de pe sistemul vostru.
+
+:::
 
 Directorul acesta este directorul *home* al utilizatorului *student*.
 În rezultatul comenzii `tree`, vedem întreaga ierarhie a directorului `/home/student`.
@@ -254,8 +258,10 @@ Observăm că ne aflăm la calea `/home/student` și urcăm spre vârful ierarhi
 
 Odată ajunși la *directorul rădăcină* `/`, coborâm spre fișierul `touch`, trecând prin directoarele `usr` și `bin`.
 
-> [!NOTE]
-> Este bine să ne referim la `..` ca *punct punct*, nu *două* puncte `:` pentru a elimina confuziile.
+:::note
+Este bine să ne referim la `..` ca *punct punct*, nu *două* puncte `:` pentru a elimina confuziile.
+
+:::
 
 ### Exerciții
 
@@ -281,14 +287,18 @@ Observăm că promptul s-a schimbat de la `student@uso:/etc` la `student@uso:/us
 Astfel, putem să vedem în ce director ne aflăm uitându-ne la prompt.
 Această comandă poate fi folosită oriunde ne-am afla deoarece este o *cale absolută*.
 
-> [!IMPORTANT]
-> În general, comanda `cd` schimbă promptul terminalului; aceasta este o indicație a directorului curent în care ne aflăm:
->
-> - în cazul `student@uso:/etc$ pwd` ne aflăm în `etc`
-> - în cazul `student@uso:/usr$ pwd` ne aflăm în `usr`
+:::info
+În general, comanda `cd` schimbă promptul terminalului; aceasta este o indicație a directorului curent în care ne aflăm:
 
-> [!NOTE]
-> La fel ca toate comenzile de lucru cu sistemul de fișiere, comanda `cd` primește ca parametru o cale. Aceasta poate fi atât *relativă*, cât și *absolută*.
+- în cazul `student@uso:/etc$ pwd` ne aflăm în `etc`
+- în cazul `student@uso:/usr$ pwd` ne aflăm în `usr`
+
+:::
+
+:::note
+La fel ca toate comenzile de lucru cu sistemul de fișiere, comanda `cd` primește ca parametru o cale. Aceasta poate fi atât *relativă*, cât și *absolută*.
+
+:::
 
 Schimbăm calea curentă în `/home/student`, folosind `cd`:
 
@@ -323,10 +333,12 @@ student@uso:/usr/bin$ pwd
 /usr/bin
 ```
 
-> [!IMPORTANT]
-> Una dintre cele mai importate informații când lucrăm în sistemul de operare (în special în linia de comandă) este unde ne aflăm.
-> Dacă știm unde ne aflăm, ne putem orienta către destinație.
-> Știm unde ne aflăm folosind comanda `pwd`; ne deplasăm în altă parte folosind comanda `cd`.
+:::info
+Una dintre cele mai importate informații când lucrăm în sistemul de operare (în special în linia de comandă) este unde ne aflăm.
+Dacă știm unde ne aflăm, ne putem orienta către destinație.
+Știm unde ne aflăm folosind comanda `pwd`; ne deplasăm în altă parte folosind comanda `cd`.
+
+:::
 
 Observăm cum am urcat în ierarhie folosind `..` până la `/` (*directorul rădăcină*), apoi am coborât spre `usr` și apoi `bin`.
 
@@ -403,5 +415,7 @@ Observăm că, dacă folosim repetat comanda `cd -` ,vom face un joc *du-te-vino
   /home/student
   ```
 
-> [!NOTE]
-> Atunci când suntem în directorul home, promptul conține caracterul `~` pentru a indica acest lucru.
+:::note
+Atunci când suntem în directorul home, promptul conține caracterul `~` pentru a indica acest lucru.
+
+:::

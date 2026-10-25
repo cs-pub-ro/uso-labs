@@ -61,9 +61,11 @@ Mai simplu, putem folosi tasta `Enter` pentru a naviga cu câte o linie în jos 
 Navigăm la începutul paginii folosind tasta `g`.
 Navigăm la sfârșit paginii folosind tasta `G`.
 
-> [!NOTE]
-> Putem folosi tastele `j` și `k` ca alternative pentru `Arrow Down` și `Arrow Up`.
-> Astfel suntem mai rapizi pentru că nu ne mai mutăm mâna de pe tastele caractere.
+:::note
+Putem folosi tastele `j` și `k` ca alternative pentru `Arrow Down` și `Arrow Up`.
+Astfel suntem mai rapizi pentru că nu ne mai mutăm mâna de pe tastele caractere.
+
+:::
 
 Folosim `man` ca să vedem dacă un utilitar oferă o anumită funcționaltiate.
 Citim întreaga pagină de manual ca să vedem toate funcționalitățile sau căutăm o funcționalitate folosind cuvinte cheie.
@@ -290,12 +292,14 @@ List directory contents.
    ls -ltr
 ```
 
-> [!NOTE]
-> Acesta trebuie tratat ca un cheatsheet accesibil din linie de comandă.
-> `tldr` nu elimină utilizarea paginilor `man`, dar ne ajută să găsim rapid opțiunile uzuale.
-> Acestea fiind spuse, vă recomandăm ca întotdeaună să citiți și să înțelegeți din paginile `man` ce efect au opțiunile unei comenzi înainte de a le folosi.
-> Feriți-vă să rulați comenzi orbește, pentru că așa ați găsit pe StackOverflow, tldr, etc.
-> Întotdeauna asigurați-vă că ați înțeles cum și de ce rulați comanda și abia apoi treceți la fapte.
+:::note
+Acesta trebuie tratat ca un cheatsheet accesibil din linie de comandă.
+`tldr` nu elimină utilizarea paginilor `man`, dar ne ajută să găsim rapid opțiunile uzuale.
+Acestea fiind spuse, vă recomandăm ca întotdeaună să citiți și să înțelegeți din paginile `man` ce efect au opțiunile unei comenzi înainte de a le folosi.
+Feriți-vă să rulați comenzi orbește, pentru că așa ați găsit pe StackOverflow, tldr, etc.
+Întotdeauna asigurați-vă că ați înțeles cum și de ce rulați comanda și abia apoi treceți la fapte.
+
+:::
 
 #### Exerciții: Utilizarea pachetului `tldr`
 
@@ -389,9 +393,11 @@ drwxr-xr-x  2 student student 4096 aug  6  2018 Desktop
     3.  Grupul care îl deține are drepturi de citire (`r`), **NU** are drepturi de scriere (`-`) și are drepturi de execuție (`x`)
     4.  Iar orice alt utilizator are drepturi de citire (`r`), **NU** are drepturi de scriere (`-`) și are drepturi de execuție (`x`).
 
-    > [!NOTE]
-    > Pentru a putea deschide un director este necesar să avem drepturi de execuție (`x`) asupra acestuia.
-    > Trebuie să avem drepturi de execuție indiferent că vrem să navigăm în interiorul său, să afișăm conținutul directorului sau să creăm noi fișiere și directoare în cadrul acestuia.
+    :::note
+    Pentru a putea deschide un director este necesar să avem drepturi de execuție (`x`) asupra acestuia.
+    Trebuie să avem drepturi de execuție indiferent că vrem să navigăm în interiorul său, să afișăm conținutul directorului sau să creăm noi fișiere și directoare în cadrul acestuia.
+
+    :::
 
 2.  Cea de-a treia coloană ne spune care este utilizatorul care deține fișierul.
     Astfel observăm că directorul **Desktop** este deținut de către utilizatorul `student`.
@@ -521,14 +527,16 @@ Music
 
 Citim expresia `[A-Za-z0-9]` în următorul mod: această expresie înlocuiește un caracter din intervalul `A-Z` sau din intervalul `a-z` sau din intervalul `0-9`; cu alte cuvinte înlocuiește un caracter *alfa-numeric*[^3].
 
-> [!TIP]
-> Folosind sintaxa `[]` putem rescrie mutarea pozelor a.î. să o facem mai precisă:
->
-> ``` bash
-> student@uso:~/Pictures$ mv DCIM[0-9][0-9][0-9][0-9] excursie-Sinaia-2020/
-> ```
->
-> Cu expresia de mai sus vom muta toate pozele din intervalul **DCIM0000** - **DCIM9999**.
+:::tip
+Folosind sintaxa `[]` putem rescrie mutarea pozelor a.î. să o facem mai precisă:
+
+``` bash
+student@uso:~/Pictures$ mv DCIM[0-9][0-9][0-9][0-9] excursie-Sinaia-2020/
+```
+
+Cu expresia de mai sus vom muta toate pozele din intervalul **DCIM0000** - **DCIM9999**.
+
+:::
 
 ### Extra: Sintaxa specială `{}`
 
@@ -725,9 +733,11 @@ Utilitarul `find` folosește o expresie compusă pentru căutare.
 În exemplul anterior am folosit opțiunea `-name PATTERN`.
 Exact ca în cazul utilitarului `locate`, **PATTERN** poate folosi sintaxa globbing, așa cum am făcut în exemplul de mai sus `"*search*"`.
 
-> [!NOTE]
-> Atunci când folosim sintaxa globbing, trebuie să fim atenți să încadrăm **PATTERN** între `"` (ghilimele), așa cum am făcut în exemplul de mai sus.
-> Trebuie să facem asta pentru ca sintaxa globbing să fie interpretată de către utilitarul `find` și nu de către terminalul (`bash`) din care lansăm utilitarul.
+:::note
+Atunci când folosim sintaxa globbing, trebuie să fim atenți să încadrăm **PATTERN** între `"` (ghilimele), așa cum am făcut în exemplul de mai sus.
+Trebuie să facem asta pentru ca sintaxa globbing să fie interpretată de către utilitarul `find` și nu de către terminalul (`bash`) din care lansăm utilitarul.
+
+:::
 
 #### Extra: Scenarii complexe de căutare
 
@@ -747,8 +757,10 @@ workspace/C/leetcode/src/278.c
 **Exercițiu:** Accesați pagina de manual a utilitarului find (`man find`) și căutați opțiunea `-type`.
 Căutați în directorul `workspace/C` după fiecare tip de fișier pentru care oferă suport opțiunea `-type`.
 
-> [!NOTE]
-> Reminder: pentru a căuta în man folosim `/` pentru a intra în search mode și apoi introducem textul pe care îl căutam `-type` urmat de tasta `Enter`; pentru a ne duce la următorul rezultat al căutării folosim tasta `n` (next).
+:::note
+Reminder: pentru a căuta în man folosim `/` pentru a intra în search mode și apoi introducem textul pe care îl căutam `-type` urmat de tasta `Enter`; pentru a ne duce la următorul rezultat al căutării folosim tasta `n` (next).
+
+:::
 
 În cadrul unei căutări putem să combinăm opțiunile de căutare:
 

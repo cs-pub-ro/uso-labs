@@ -81,9 +81,11 @@ root           1       0  0 12:01 ?        00:00:00 ps -ef
 - replicarea unui serviciu din producție local
 - configurarea unui mediu replicabil pentru testare
 
-> [!NOTE]
-> Comanda `ps -ef` afișează toate procesele active din sistem.
-> Observăm că în rezultatul de mai sus apare o singură comandă, deoarece rulăm într-un mediu izolat.
+:::note
+Comanda `ps -ef` afișează toate procesele active din sistem.
+Observăm că în rezultatul de mai sus apare o singură comandă, deoarece rulăm într-un mediu izolat.
+
+:::
 
 Cu toate acestea, nu dorim să rulăm întotdeauna containere în prim plan.
 Dacă vrem să rulăm un script care nu poate fi rulat în mediul gazdă, iar acest script va rula mult timp, preferăm să rulăm comanda în fundal.

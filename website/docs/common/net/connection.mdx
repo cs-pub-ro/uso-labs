@@ -1,19 +1,21 @@
 # Conectarea la rețea și la Internet
 
-> [!NOTE]
-> Pentru a parcurge această secțiune este recomandat să descărcați ultima
-> versiune a respository-ului laboratorului. Pentru a descărca ultima versiune
-> a repository-ului rulați comanda `git pull` în directorul
-> `~/uso-lab/labs/03-user/lab-containers/`.
->
-> Infrastructura laboratorului este bazată pe containere docker ale căror
-> imagini vor fi generate pe propriul calculator. Dacă nu aveți deja instalat
-> Docker Engine pe sistem, scriptul
-> `~/uso-lab/labs/03-user/lab-containers/lab_prepare.sh` vă va instala aplicația.
->
-> După ce ați terminat de lucrat vă recomandăm să opriți containerele rulând
-> comanda `./lab-prepare.sh delete` în directorul
-> `~/uso-lab/labs/03-user/lab-containers/`.
+:::note
+Pentru a parcurge această secțiune este recomandat să descărcați ultima
+versiune a respository-ului laboratorului. Pentru a descărca ultima versiune
+a repository-ului rulați comanda `git pull` în directorul
+`~/uso-lab/labs/03-user/lab-containers/`.
+
+Infrastructura laboratorului este bazată pe containere docker ale căror
+imagini vor fi generate pe propriul calculator. Dacă nu aveți deja instalat
+Docker Engine pe sistem, scriptul
+`~/uso-lab/labs/03-user/lab-containers/lab_prepare.sh` vă va instala aplicația.
+
+După ce ați terminat de lucrat vă recomandăm să opriți containerele rulând
+comanda `./lab-prepare.sh delete` în directorul
+`~/uso-lab/labs/03-user/lab-containers/`.
+
+:::
 
 În cadrul acestei secțiuni vom învăța cum să reparăm problemele de
 conectivitate la rețea sau în alte cuvinte, problema "nu-mi merge
@@ -53,19 +55,23 @@ Dacă acestea nu sunt aprinse, atunci nu vom avea conectivitate la rețea.
 
 ### Investigarea nivelului fizic al rețelei
 
-> [!NOTE]
-> Pentru rularea acestui demo rulați în directorul
-> `~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install fizic`.
-> Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
-> comanda `./lab_prepare.sh connect fizic`
+:::note
+Pentru rularea acestui demo rulați în directorul
+`~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install fizic`.
+Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
+comanda `./lab_prepare.sh connect fizic`
+
+:::
 
 O interfață de rețea este un mijloc de realizare a configurărilor de rețea
 asociată de obicei unei plăci de rețea și identificată printr-un nume.
 
-> [!NOTE]
-> Există interfețe care nu corespund niciunei plăci de rețea fizice. De
-> exemplu `loopback` este o interfață virtuală, de auto-adresare, care se
-> adresează sistemului însuși. Este numită `lo` in Linux.
+:::note
+Există interfețe care nu corespund niciunei plăci de rețea fizice. De
+exemplu `loopback` este o interfață virtuală, de auto-adresare, care se
+adresează sistemului însuși. Este numită `lo` in Linux.
+
+:::
 
 La nivelul sistemului de operare putem verifica dacă o placă de rețea este
 activă folosind comanda următoare:
@@ -88,12 +94,14 @@ afișate de comanda de mai sus nu sunt relevante pentru noi. O opțiune relevant
 este valoarea `state`, urmată de starea interfeței de rețea, care poate să
 fie `UP`, `DOWN` sau `UNKNOWN`.
 
-> [!NOTE]
-> Formatul pentru numele interfețelor diferă de la o distribuție la alta. În
-> cadrul infrastructurii de laborator folosim containere de tip Docker în
-> cadrul cărora numele interfețelor este de forma `ethX`, unde X este un
-> număr. În funcție de distribuția pe care rulăm numele interfețelor poate să
-> se fie într-un format diferit.
+:::note
+Formatul pentru numele interfețelor diferă de la o distribuție la alta. În
+cadrul infrastructurii de laborator folosim containere de tip Docker în
+cadrul cărora numele interfețelor este de forma `ethX`, unde X este un
+număr. În funcție de distribuția pe care rulăm numele interfețelor poate să
+se fie într-un format diferit.
+
+:::
 
 Observăm că interfața de rețea cu numele `eth0` este pornită, deoarece linia
 asociată interfeței conține șirul de caractere `state UP`. În același timp
@@ -129,11 +137,13 @@ Porniți interfața de rețea `eth2`.
 
 ### Identificarea adresei de Internet
 
-> [!NOTE]
-> Pentru rularea acestui demo rulați în directorul
-> `~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install internet`.
-> Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
-> comanda `./lab_prepare.sh connect internet`
+:::note
+Pentru rularea acestui demo rulați în directorul
+`~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install internet`.
+Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
+comanda `./lab_prepare.sh connect internet`
+
+:::
 
 Internetul este o interconectare de dispozitive, numite stații și organizate în
 rețele, care se extinde pe toată Planeta. Datele trimise în Internet trebuie
@@ -145,10 +155,12 @@ stație la altă stație.
 Deci, pentru ca o stație să comunice cu o altă stație din Internet, trebuie
 ca cele doua stații să fie conectate la Internet.
 
-> [!NOTE]
-> Mai exact, stațiile trebuie sa aiba un punct de ieșire din rețeaua locală, conectat la
-> restul rețelelor din Internet, care se numește *default gateway* și de care vom menționa
-> mai târziu.
+:::note
+Mai exact, stațiile trebuie sa aiba un punct de ieșire din rețeaua locală, conectat la
+restul rețelelor din Internet, care se numește *default gateway* și de care vom menționa
+mai târziu.
+
+:::
 
 Mai apoi, cele două stații trebuie să se poată adresa una alteia. Adică fiecare stație
 are nevoie de un identificator, o adresă. Cum fiecare casă din lume are o adresă cu
@@ -269,11 +281,13 @@ folosind numele interfeței ca parametru pentru comanda `ip address show`
 
 ### Verificarea conectivității la o altă stație
 
-> [!NOTE]
-> Pentru rularea acestui demo, comenzile vor fi rulate în cadrul mașinii
-> virtuale USO. Pentru a verifica conexiunea dintre două stații folosim
-> comanda ping. Această comandă trimite mesaje către o stație și așteaptă un
-> răspuns de la ea.
+:::note
+Pentru rularea acestui demo, comenzile vor fi rulate în cadrul mașinii
+virtuale USO. Pentru a verifica conexiunea dintre două stații folosim
+comanda ping. Această comandă trimite mesaje către o stație și așteaptă un
+răspuns de la ea.
+
+:::
 
 Atunci când testăm conexiunea la internet, vrem să verificăm câteva aspecte,
 odată ce am obținut o adresă IP de la serverul DHCP:

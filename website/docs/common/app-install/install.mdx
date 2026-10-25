@@ -52,9 +52,11 @@ Acțiunile de instalare, dezinstalare și configurare a pachetelor într-un sist
 În distribuțiile Linux bazate pe Debian / Ubuntu, managerul de pachete oferă utilitarele `apt` și `dpkg` (și altele) și aplicații precum Synaptic.
 În distribuțiile Linux bazate pe RedHat / Fedora, managerul de pachete oferă utilitarele `yum` sau `dnf` sau `rpm` (și altele) precum PackageKit.
 
-> [!NOTE]
-> Mașina virtuală de suport folosește o distribuție Ubuntu.
-> De aceea ne vom concentra doar pe distribuțiile bazate pe Debian / Ubuntu și deci, pe utilitarele `apt` și `dpkg`.
+:::note
+Mașina virtuală de suport folosește o distribuție Ubuntu.
+De aceea ne vom concentra doar pe distribuțiile bazate pe Debian / Ubuntu și deci, pe utilitarele `apt` și `dpkg`.
+
+:::
 
 ## Gestiunea pachetelor din interfața grafică
 
@@ -133,8 +135,10 @@ Acum aplicația VLC este disponibilă în sistem.
 
 **Exercițiu**: Porniți aplicația VLC în modurile descrise în `app_install_start_stop_gui`.
 
-> [!NOTE]
-> Mai sus nu am mai rulat comanda `sudo apt update` pentru că sistemul este deja actualizat de la instalarea pachetului `inkscape`.
+:::note
+Mai sus nu am mai rulat comanda `sudo apt update` pentru că sistemul este deja actualizat de la instalarea pachetului `inkscape`.
+
+:::
 
 #### Instalarea Glances
 
@@ -179,11 +183,13 @@ Adică vom avea nevoi precum:
 
 Pentru aceste nevoi vrem să căutăm o aplicație potrivită, să o instalăm și să o folosim.
 
-> [!IMPORTANT]
-> Este important să ne gândim la nevoie (la obiectiv, la finalitate) nu la aplicație (la mijloc).
-> O nevoie poate fi rezolvată în mai multe moduri și cu mai multe aplicații și trebuie să alegem ce ni se pare mai potrivit.
-> Poate nu este nevoie de o aplicație instalată, poate există un site / aplicație web sau un plugin de browser suficient.
-> Sau poate există o aplicație pe telefonul mobil care poate fi folosită rapid și ușor.
+:::info
+Este important să ne gândim la nevoie (la obiectiv, la finalitate) nu la aplicație (la mijloc).
+O nevoie poate fi rezolvată în mai multe moduri și cu mai multe aplicații și trebuie să alegem ce ni se pare mai potrivit.
+Poate nu este nevoie de o aplicație instalată, poate există un site / aplicație web sau un plugin de browser suficient.
+Sau poate există o aplicație pe telefonul mobil care poate fi folosită rapid și ușor.
+
+:::
 
 ### Căutarea unei aplicații în Internet
 
@@ -290,10 +296,12 @@ Instalați, porniți și folosiți aplicațiile găsite.
 Gândiți-vă la nevoi pe care le aveți și căutați aplicații corespunzătoare pentru acele nevoi.
 Instalați, porniți și folosiți aplicațiile găsite.
 
-> [!NOTE]
-> Găsiți pe Internet liste de aplicații recomandate să fie instalate și folosite.
-> De exemplu [https://itsfoss.com/essential-linux-applications/](https://itsfoss.com/essential-linux-applications/) conține o listă de aplicații considerate esențiale în Linux.
-> Iar [https://github.com/agarrharr/awesome-cli-apps](https://github.com/agarrharr/awesome-cli-apps) conține o listă extinsă de aplicații utile în linia de comandă.
+:::note
+Găsiți pe Internet liste de aplicații recomandate să fie instalate și folosite.
+De exemplu [https://itsfoss.com/essential-linux-applications/](https://itsfoss.com/essential-linux-applications/) conține o listă de aplicații considerate esențiale în Linux.
+Iar [https://github.com/agarrharr/awesome-cli-apps](https://github.com/agarrharr/awesome-cli-apps) conține o listă extinsă de aplicații utile în linia de comandă.
+
+:::
 
 ## Dezinstalarea aplicațiilor
 
@@ -450,9 +458,11 @@ Pentru aceasta, se poate folosi opțiunea `-y` la comandă ca mai jos:
 
 Folosirea opțiunii `-y` la oricare dintre comenzile de instalare, dezinstalare sau actualizare de pachete va duce la executarea acelei acțiuni în mod neinteractiv, fără nevoia de confirmare din partea utilizatorului.
 
-> [!IMPORTANT]
-> Acțiunile de instalare, dezinstalare și actualizare de pachete pot duce la efecte nedorite precum dezinstalarea unei aplicații existente sau instalarea unui număr prea mare de aplicații dependente.
-> De aceea, opțiunea `-y` trebuie folosită cu grijă și evitată în momentul în care efectuăm operații critice.
+:::info
+Acțiunile de instalare, dezinstalare și actualizare de pachete pot duce la efecte nedorite precum dezinstalarea unei aplicații existente sau instalarea unui număr prea mare de aplicații dependente.
+De aceea, opțiunea `-y` trebuie folosită cu grijă și evitată în momentul în care efectuăm operații critice.
+
+:::
 
 ------------------------------------------------------------------------
 
