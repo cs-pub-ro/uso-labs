@@ -72,20 +72,19 @@ Ca să evităm recompilarea fișierelor cod sursă care nu au fost modifcate, pu
 
 Diagrama de mai jos descrie aceste două etape:
 
-```
-+--------+           +--------+
-| cBLU   |     1     | cYEL   |
-| main.c |---------->+ main.o +---------+ 
-|        |           |        |         |     +------------+
-|     {d}|           |     {d}|         |  2  |            |
-+--------+           +--------+         +---->| algorithms |
-                                        |     |            |
-+--------------+     +--------------+   |     | cGRE       |
-| cBLU         |  1  | cYEL         |   |     +------------+
-| algorithms.c |---->+ algorithms.o +---+
-|              |     |              |
-|           {d}|     |           {d}|
-+--------------+     +--------------+
+```mermaid
+flowchart LR
+    mc["main.c"] -->|1| mo["main.o"]
+    ac["algorithms.c"] -->|1| ao["algorithms.o"]
+    mo -->|2| exe["algorithms"]
+    ao -->|2| exe
+
+    classDef src fill:#a8c8f0,stroke:#3a5f9a,color:#000
+    classDef obj fill:#f5e68c,stroke:#a08a1e,color:#000
+    classDef bin fill:#b9e8b9,stroke:#3a7a3a,color:#000
+    class mc,ac src
+    class mo,ao obj
+    class exe bin
 ```
 
 :::note

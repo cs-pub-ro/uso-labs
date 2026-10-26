@@ -45,26 +45,22 @@ Atunci când am legat fișierele obiect `main.o` și `algorithms.o` în executab
 Compilatorul GCC leagă implicit această bibliotecă la executabilul final.
 Diagrama de mai jos arată cum se întâmplă acest lucru:
 
-```
-+--------+           +--------+
-| cBLU   |     1     | cYEL   |
-| main.c +---------->+ main.o +---------+ 
-|        |           |        |         |
-|     {d}|           |     {d}|         |
-+--------+           +--------+         +
-                                        |
-+--------------+     +--------------+   |     +------------+
-| cBLU         |  1  | cYEL         |   |  2  |            |
-| algorithms.c +---->+ algorithms.o +---+---->+ algorithms |
-|              |     |              |   |     |            |
-|           {d}|     |           {d}|   |     | cGRE       |
-+--------------+     +--------------+   |     +------------+
-                                        |
-            +-----------------------+   |
-            | {d}                   |   |
-            |  C standard library   +---+
-            | cPNK                  |
-            +-----------------------+
+```mermaid
+flowchart LR
+    mc["main.c"] -->|1| mo["main.o"]
+    ac["algorithms.c"] -->|1| ao["algorithms.o"]
+    mo -->|2| exe["algorithms"]
+    ao -->|2| exe
+    libc["C standard library"] -->|2| exe
+
+    classDef src fill:#a8c8f0,stroke:#3a5f9a,color:#000
+    classDef obj fill:#f5e68c,stroke:#a08a1e,color:#000
+    classDef bin fill:#b9e8b9,stroke:#3a7a3a,color:#000
+    classDef stdlib fill:#f8c8d8,stroke:#a8506a,color:#000
+    class mc,ac src
+    class mo,ao obj
+    class exe bin
+    class libc stdlib
 ```
 
 Există alte biblioteci (precum `math`, `ncurses`) pe care compilatorul nu le leagă implicit la programele noastre.
@@ -150,19 +146,20 @@ here you go: 3.872983
 
 Vedem acești pași și în diagrama de mai jos:
 
-```
-+----------------+     +----------------+       +--------------+
-| cBLU           |  1  | cYEL           |   2   |              |
-| squared_root.c +---->+ squared_root.o +---+-->+ squared_root |
-|                |     |                |   |   |              |
-|           {d}  |     |           {d}  |   |   | cGRE         |
-+----------------+     +----------------+   |   +--------------+
-                                            |
-                       +---+----+           |
-                       | {d}    |           |
-                       |  math  +-----------+
-                       | cPNK   |
-                       +--------+
+```mermaid
+flowchart LR
+    sc["squared_root.c"] -->|1| so["squared_root.o"]
+    so -->|2| exe["squared_root"]
+    math["math"] -->|2| exe
+
+    classDef src fill:#a8c8f0,stroke:#3a5f9a,color:#000
+    classDef obj fill:#f5e68c,stroke:#a08a1e,color:#000
+    classDef bin fill:#b9e8b9,stroke:#3a7a3a,color:#000
+    classDef lib fill:#f8c8d8,stroke:#a8506a,color:#000
+    class sc src
+    class so obj
+    class exe bin
+    class math lib
 ```
 
 ## Exerciții
