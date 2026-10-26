@@ -86,13 +86,15 @@ Căutarea este incrementală.
 Adică se rafinează pe măsură ce tastăm un caracter.
 Orice caracter apăsat rafinează căutarea.
 
-> [!NOTE]
-> Textul căutat se poate afla oriunde în interiorul comenzii; nu trebuie să fie primele litere din comandă.
-> Pentru exemplul de mai sus, căutarea folosind textul `work` ar fi produs același rezultat
->
-> ``` bash
-> (reverse-i-search)`work': cd workspace/hello
-> ```
+:::note
+Textul căutat se poate afla oriunde în interiorul comenzii; nu trebuie să fie primele litere din comandă.
+Pentru exemplul de mai sus, căutarea folosind textul `work` ar fi produs același rezultat
+
+``` bash
+(reverse-i-search)`work': cd workspace/hello
+```
+
+:::
 
 #### Expandarea comenzilor anterioare
 
@@ -206,9 +208,11 @@ Pentru a efectua ștergeri în corpul textului putem folosi combinațiile de tas
 - `Ctrl+u` - șterge tot textul de la cursor până la începutul liniei
 - `Alt+d` - șterge tot textul de la cursor până la sfârșitul cuvântului
 
-> [!TIP]
-> Textul șters este salvat într-un registru și poate fi folosit folosind combinația de taste `Ctrl+y`.
-> Funcționalitatea este similară cu procesul de **Cut** (`Ctrl+k`, `Ctrl+u` sau `Alt+d`) și **Paste** (`Ctrl+y`).
+:::tip
+Textul șters este salvat într-un registru și poate fi folosit folosind combinația de taste `Ctrl+y`.
+Funcționalitatea este similară cu procesul de **Cut** (`Ctrl+k`, `Ctrl+u` sau `Alt+d`) și **Paste** (`Ctrl+y`).
+
+:::
 
 #### Exerciții
 

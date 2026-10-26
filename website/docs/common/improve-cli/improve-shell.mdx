@@ -36,12 +36,16 @@ Dacă vrem să avem un istoric nelimitat putem seta valoarea variabilelor la un 
 **Exercițiu**: Deschideți fișierul `~/.bashrc` în editorul preferat și atribuiți valoarea `-1` pentru `HISTSIZE` și `HISTFILESIZE`.
 Salvați modificările făcute.
 
-> [!WARNING]
-> Atenție!
-> **Nu** trebuie să existe spațiu între numele variabilei, `=` și valoarea atribuită.
+:::warning
+Atenție!
+**Nu** trebuie să existe spațiu între numele variabilei, `=` și valoarea atribuită.
 
-> [!TIP]
-> Pentru a afla mai multe despre valorile `HISTSIZE` și `HISTFILESIZE` accesați pagina de manual a shellului Bash (`man bash`) și căutați după numele variabilelor.
+:::
+
+:::tip
+Pentru a afla mai multe despre valorile `HISTSIZE` și `HISTFILESIZE` accesați pagina de manual a shellului Bash (`man bash`) și căutați după numele variabilelor.
+
+:::
 
 ### Vizualizarea aliasurilor predefinite
 
@@ -324,10 +328,12 @@ Pentru fiecare flux de date avem un număr, numit descriptor de fișier, asociat
 Pentru a redirecta ieșirea standard folosim sintaxa `cmd 1> nume-fișier`.
 Pentru a redirecta ieșirea standard a erorilor folosim sintaxa `cmd 2> nume-fișier`.
 
-> [!WARNING]
-> **Atenție!**
-> În cazul în care fișierul destinație nu există, operatorul `>` îl va crea.
-> Dacă fișierul destinație există, operatorul `>` va suprascrie conținutul acestuia.
+:::warning
+**Atenție!**
+În cazul în care fișierul destinație nu există, operatorul `>` îl va crea.
+Dacă fișierul destinație există, operatorul `>` va suprascrie conținutul acestuia.
+
+:::
 
 Urmăm exemplul de mai jos:
 
@@ -383,9 +389,11 @@ De cele mai multe ori suntem în rumătorul scenariu:
 3.  În timpul cât rulează noi putem să facem altceva: ne ocupăm de altă sarcină, ne facem o cafea, etc.
 4.  La finalul execuției inspectăm fișierele `out` și `err` pentru a vedea dacă au existat erori și le rezolvăm.
 
-> [!NOTE]
-> Acum înțelegem cum funcționează operatorul `|` (pipe).
-> Acesta conectează fluxul de ieșire (STDOUT) al comenzii din stânga sa cu fluxul de intrare (STDIN) al comenzii din dreapta.
+:::note
+Acum înțelegem cum funcționează operatorul `|` (pipe).
+Acesta conectează fluxul de ieșire (STDOUT) al comenzii din stânga sa cu fluxul de intrare (STDIN) al comenzii din dreapta.
+
+:::
 
 #### Redirectarea în mod *append*
 
@@ -494,11 +502,13 @@ Am folosit următoarele opțiuni ale utilitarului `dd`:
 Creați câte o arhivă pentru fiecare din următoarele opțiuni de compresie: **Z** (compress), **z** (gzip) și **j** (bzip2).
 Comparați dimensiunile arhivelor obținute.
 
-> [!NOTE]
-> Un caz uzual de utilizare a `dd` este suprascrierea unui disc cu informații aleatoare.
-> Această metodă este utilizată ca o formă de securitate atunci când vrem să ștergem informații de pe un disc.
-> Astfel suprascriem datele șterse pentru a preveni posibilitatea recuperării datelor de pe disc.
-> Mai multe informații găsiți [aici](https://uwnthesis.wordpress.com/2014/07/26/kali-how-to-use-dd-to-wipe-your-usb-pen-the-visual-guide/).
+:::note
+Un caz uzual de utilizare a `dd` este suprascrierea unui disc cu informații aleatoare.
+Această metodă este utilizată ca o formă de securitate atunci când vrem să ștergem informații de pe un disc.
+Astfel suprascriem datele șterse pentru a preveni posibilitatea recuperării datelor de pe disc.
+Mai multe informații găsiți [aici](https://uwnthesis.wordpress.com/2014/07/26/kali-how-to-use-dd-to-wipe-your-usb-pen-the-visual-guide/).
+
+:::
 
 #### Exerciții
 

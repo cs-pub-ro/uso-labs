@@ -1,13 +1,15 @@
 # Conectarea la workstation
 
-> [!NOTE]
-> Pentru a parcurge această secțiune este recomandat să descărcați ultima versiune a respository-ului laboratorului.
-> Pentru a descărca ultima versiune a repository-ului, rulați comanda `git pull` în directorul `~/uso-lab/labs/10-tasks-admin/lab-containers/`.
->
-> Infrastructura laboratorului este bazată pe containere Docker ale căror imagini vor fi generate pe propriul calculator.
-> Dacă nu aveți deja instalat Docker Engine pe sistem, scriptul `~/uso-lab/labs/10-tasks-admin/lab-containers/lab_prepare.sh` va instala aplicația.
->
-> După ce ați terminat de lucrat, vă recomandăm să opriți containerele rulând comanda `./lab-prepare.sh delete` în directorul `~/uso-lab/labs/10-tasks-admin/lab-containers/`.
+:::note
+Pentru a parcurge această secțiune este recomandat să descărcați ultima versiune a respository-ului laboratorului.
+Pentru a descărca ultima versiune a repository-ului, rulați comanda `git pull` în directorul `~/uso-lab/labs/10-tasks-admin/lab-containers/`.
+
+Infrastructura laboratorului este bazată pe containere Docker ale căror imagini vor fi generate pe propriul calculator.
+Dacă nu aveți deja instalat Docker Engine pe sistem, scriptul `~/uso-lab/labs/10-tasks-admin/lab-containers/lab_prepare.sh` va instala aplicația.
+
+După ce ați terminat de lucrat, vă recomandăm să opriți containerele rulând comanda `./lab-prepare.sh delete` în directorul `~/uso-lab/labs/10-tasks-admin/lab-containers/`.
+
+:::
 
 Prima problemă cu care ne vom confrunta este conectarea la stație, deoarece, în majoritatea cazurilor, nu vom lucra în aceeași rețea cu sistemul la distanță și stația nu va avea o adresă IP publică.
 Așadar, nu ne vom putea conecta direct la sistem folosind un protocol de comunicare la distanță, cum ar fi SSH fără să facem pași suplimentari.
@@ -22,9 +24,11 @@ Nu vom aborda soluția bazată pe DDNS, deoarece aceasta presupune că avem o ad
 
 ## Problema adreselor IP private
 
-> [!NOTE]
-> Pentru rularea acestui demo, rulați în directorul `~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install remote` și comanda `./lab_prepare.sh install local`
-> Pentru a ne conecta la infrastructura pentru această secțiune, vom folosi comanda `./lab_prepare.sh connect` având ca parametru numele mașinii la care vrem să ne conectăm, `local` sau `remote`.
+:::note
+Pentru rularea acestui demo, rulați în directorul `~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install remote` și comanda `./lab_prepare.sh install local`
+Pentru a ne conecta la infrastructura pentru această secțiune, vom folosi comanda `./lab_prepare.sh connect` având ca parametru numele mașinii la care vrem să ne conectăm, `local` sau `remote`.
+
+:::
 
 Adresele IPv4 au fost proiectate pentru a fi identificatori unici în Internet pentru stații, așa cum este prezentat în capitolul `network_connection_internet`.
 Acestea pot să identifice maxim $`2^{32}`$ stații în Internet.
@@ -271,9 +275,11 @@ Pentru aceasta putem folosi infrastructura pe care am prezentat-o în secțiunea
 
 ## Conectarea folosind un tunel SSH
 
-> [!NOTE]
-> Pentru rularea acestui demo, rulați în directorul `~/uso.git/labs/10-task-admin/lab-containers/` comanda `./lab_prepare.sh install ssh-server`.
-> Pentru a ne conecta la infrastructura pentru această secțiune, vom folosi comanda `./lab_prepare.sh connect` având ca parametrul numele mașinii la care vrem să ne conectăm, `local`, `remote` sau `ssh-server`.
+:::note
+Pentru rularea acestui demo, rulați în directorul `~/uso.git/labs/10-task-admin/lab-containers/` comanda `./lab_prepare.sh install ssh-server`.
+Pentru a ne conecta la infrastructura pentru această secțiune, vom folosi comanda `./lab_prepare.sh connect` având ca parametrul numele mașinii la care vrem să ne conectăm, `local`, `remote` sau `ssh-server`.
+
+:::
 
 Abordările pe care le-am discutat mai sus presupun accesul la un server central și drepturi de administrator din partea utilizatorului pentru instalarea aplicațiilor (cum ar fi Hamachi sau OpenVPN).
 Dacă nu avem acces la un cont de administrator, nu putem să ne conectăm la stația de la distanță.

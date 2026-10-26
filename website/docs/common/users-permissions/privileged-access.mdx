@@ -38,17 +38,19 @@ nmap is already the newest version (7.60-1ubuntu5).
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 ```
 
-> [!IMPORTANT]
-> Contul privilegiat (**root**) accesat prin intermediul comenzii `sudo` are putere deplină asupra sistemului.
-> Poate realiza toate acțiunile posibile (critice sau necritice).
-> De aceea, este riscantă accesarea acestui cont: o comandă rulată greșit poate duce la probleme grave la nivelul sistemului.
->
-> O comandă celebră, destinată începătorilor, este `sudo rm -rf /`.
-> În mod amuzant, se spune că această comandă citește e-mailuri foarte rapid (*read mail really fast*).
-> În realitate comanda șterge întregul sistem de fișiere, de la rădăcină (`/`), făcând sistemul nefuncțional și ducând la pierderea datelor.
->
-> De aceea, contul privilegiat trebuie accesat cât mai rar, **doar atunci când este nevoie**.
-> În mod implicit, un utilizator se autentifică în sistem cu un cont neprivilegiat (de exemplu `student`), urmând să acceseze contul privilegiat (**root**) doar la nevoie.
+:::info
+Contul privilegiat (**root**) accesat prin intermediul comenzii `sudo` are putere deplină asupra sistemului.
+Poate realiza toate acțiunile posibile (critice sau necritice).
+De aceea, este riscantă accesarea acestui cont: o comandă rulată greșit poate duce la probleme grave la nivelul sistemului.
+
+O comandă celebră, destinată începătorilor, este `sudo rm -rf /`.
+În mod amuzant, se spune că această comandă citește e-mailuri foarte rapid (*read mail really fast*).
+În realitate comanda șterge întregul sistem de fișiere, de la rădăcină (`/`), făcând sistemul nefuncțional și ducând la pierderea datelor.
+
+De aceea, contul privilegiat trebuie accesat cât mai rar, **doar atunci când este nevoie**.
+În mod implicit, un utilizator se autentifică în sistem cu un cont neprivilegiat (de exemplu `student`), urmând să acceseze contul privilegiat (**root**) doar la nevoie.
+
+:::
 
 ### Exercițiu: Acțiuni privilegiate
 
@@ -169,15 +171,17 @@ All for the empire
 Comanda `tee` are ca efect scrierea informației în fișierul primit ca argument **și** la ieșirea standard.
 Din acest motiv mesajul `All for the empire` apare **și** în fișierul `/etc/zealot.txt` **și** la ieșirea standard.
 
-> [!NOTE]
-> Comanda `tee` în modul append
->
-> În forma implicită de mai sus, comanda `tee` suprascrie conținutul fișierului primit ca argument.
-> Dacă dorim să adăugăm conținut în fișier (*append*), folosim opțiunea `-a` a comenzii `tee`:
->
-> ``` bash
-> student@uso:~$ echo "All for the empire" | sudo tee -a /etc/zealot.txt
-> ```
+:::note
+Comanda `tee` în modul append
+
+În forma implicită de mai sus, comanda `tee` suprascrie conținutul fișierului primit ca argument.
+Dacă dorim să adăugăm conținut în fișier (*append*), folosim opțiunea `-a` a comenzii `tee`:
+
+``` bash
+student@uso:~$ echo "All for the empire" | sudo tee -a /etc/zealot.txt
+```
+
+:::
 
 ### Shell privilegiat
 
@@ -219,10 +223,12 @@ Efectul este crearea unui proces shell Bash care rulează privilegiat;
 Pentru a închide procesul shell care rulează în mod privilegiat folosim comenzile uzuale de închidere a shellului: `exit`, `logout` sau combinația de taste `Ctrl+d`.
 După încheierea procesului shell privilegiat, vom reveni în procesul shell inițial.
 
-> [!NOTE]
-> Vom prezenta mai multe despre procese și utilizatori în secțiunea `users_perms_processes`.
->
-> Vom prezenta detalii despre comanda `su` în secțiunea `users_perms_privileged_su`.
+:::note
+Vom prezenta mai multe despre procese și utilizatori în secțiunea `users_perms_processes`.
+
+Vom prezenta detalii despre comanda `su` în secțiunea `users_perms_privileged_su`.
+
+:::
 
 ### Exerciții: Shell privilegiat
 

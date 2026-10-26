@@ -1,13 +1,15 @@
 # Gestionarea spațiului de stocare partajat
 
-> [!NOTE]
-> Pentru a parcurge această secțiune este recomandat să descărcați ultima versiune a respository-ului laboratorului.
-> Pentru a descărca ultima versiune a repository-ului, rulați comanda `git pull` în directorul `~/uso-lab/labs/10-tasks-admin/lab-containers/`.
->
-> Infrastructura laboratorului este bazată pe containere Docker ale căror imagini vor fi generate pe propriul calculator.
-> Dacă nu aveți deja instalat Docker Engine pe sistem, scriptul `~/uso-lab/labs/10-tasks-admin/lab-containers/lab_prepare.sh` vă va instala aplicația.
->
-> După ce ați terminat de lucrat, vă recomandăm să opriți containerele rulând comanda `./lab-prepare.sh delete` în directorul `~/uso-lab/labs/10-tasks-admin/lab-containers/`.
+:::note
+Pentru a parcurge această secțiune este recomandat să descărcați ultima versiune a respository-ului laboratorului.
+Pentru a descărca ultima versiune a repository-ului, rulați comanda `git pull` în directorul `~/uso-lab/labs/10-tasks-admin/lab-containers/`.
+
+Infrastructura laboratorului este bazată pe containere Docker ale căror imagini vor fi generate pe propriul calculator.
+Dacă nu aveți deja instalat Docker Engine pe sistem, scriptul `~/uso-lab/labs/10-tasks-admin/lab-containers/lab_prepare.sh` vă va instala aplicația.
+
+După ce ați terminat de lucrat, vă recomandăm să opriți containerele rulând comanda `./lab-prepare.sh delete` în directorul `~/uso-lab/labs/10-tasks-admin/lab-containers/`.
+
+:::
 
 O componentă importantă a mediului de lucru este spațiul de stocare.
 Cu toate că vom rula aplicații pe serverul de la distanță, avem nevoie de acces la spațiul de stocare al acestuia, deoarece vrem ca, într-un final, să urmărim rezultatul procesării și, eventual, să îl analizăm folosind utilitare grafice dedicate.
@@ -16,9 +18,11 @@ Soluția la aceste nevoi este să partajăm spațiul de stocare între serverul 
 
 ## Stocare partajată folosind SSHFS
 
-> [!NOTE]
-> Pentru rularea acestui demo, rulați în directorul `~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install remote` și comanda `./lab_prepare.sh install ssh-server`.
-> Pentru a ne conecta la infrastructura pentru această secțiune, vom folosi comanda `./lab_prepare.sh connect local`.
+:::note
+Pentru rularea acestui demo, rulați în directorul `~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install remote` și comanda `./lab_prepare.sh install ssh-server`.
+Pentru a ne conecta la infrastructura pentru această secțiune, vom folosi comanda `./lab_prepare.sh connect local`.
+
+:::
 
 SSHFS este o soluție de stocare partajată care permite montarea unui sistem de fișiere care nu este legat fizic la stația `local`, ci se folosește de protocolul SSH pentru a transmite operațiile asupra fișierelor prin rețea către un sistem de fișiere conectat prin rețea.
 
@@ -135,8 +139,10 @@ Cu dezavantajul că trebuie configurate și cu riscul apariției conflictelor la
 
 ### Stocarea partajată folosind Dropbox
 
-> [!NOTE]
-> Pentru rularea acestui demo vom folosi direct mașina virtuală `uso`,
+:::note
+Pentru rularea acestui demo vom folosi direct mașina virtuală `uso`,
+
+:::
 
 Dropbox este o soluție care se folosește de un server în Internet care stochează fișierele, ca apoi acestea să fie replicate pe fiecare calculator client.
 Este necesară crearea și activarea unui cont pentru a folosi serviciul Dropbox.
@@ -172,10 +178,12 @@ Vom face acest lucru accesând linkul afișat de aplicație.
 
 ### Exercițiu: Stocarea partajată folosind Dropbox
 
-> [!NOTE]
-> Pentru rezolvarea acestui exercițiu, rulați în directorul `~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install dropbox`.
-> Pentru a ne conecta la infrastructura pentru această secțiune, vom folosi comanda `./lab_prepare.sh connect dropbox`.
-> Aplicația dropbox este deja descărcată, trebuie doar să o porniți.
+:::note
+Pentru rezolvarea acestui exercițiu, rulați în directorul `~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install dropbox`.
+Pentru a ne conecta la infrastructura pentru această secțiune, vom folosi comanda `./lab_prepare.sh connect dropbox`.
+Aplicația dropbox este deja descărcată, trebuie doar să o porniți.
+
+:::
 
 1.  Conectați-vă la stația `dropbox` și porniți aplicația Dropbox pe aceasta.
 2.  Creați un fișier numit `hello.txt` în directorul `~/Dropbox`, partajat de cele două mașini.

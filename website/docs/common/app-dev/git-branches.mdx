@@ -70,10 +70,12 @@ Crearea unui commit nou pe un *alt* branch va modifica istoricul ca în imaginea
 
 În următoarea secțiune vom adăuga un fișier `.gitignore` proiectului și vom adăuga implementarea pentru agloritmul Merge Sort.
 
-> [!NOTE]
-> În general adăugăm fișierul `.gitignore` la un proiect de pe branch-ul master.
->
-> În secțiunea `app_dev_add_gitignore` îl vom adăuga de pe un alt branch pe care îl numim `add-gitignore` ca să ne obișnuim să folosim branch-uri.
+:::note
+În general adăugăm fișierul `.gitignore` la un proiect de pe branch-ul master.
+
+În secțiunea `app_dev_add_gitignore` îl vom adăuga de pe un alt branch pe care îl numim `add-gitignore` ca să ne obișnuim să folosim branch-uri.
+
+:::
 
 ## Adăugarea unui fișier .gitignore repository-ului
 
@@ -82,12 +84,14 @@ De acum încolo, vom face toate modificările de pe un nou branch, diferit de br
 În această subsecțiune vom crea un nou branch numit `add-gitignore`.
 Vom adăuga un fișier `.gitignore` proiectului de pe acest branch.
 
-> [!NOTE]
-> Într-un proiect Git, scriem în fișierul `.gitignore` nume de fișiere și directoare.
-> Acestea sunt fișiere și directoare din directorul proiectului pe care nu vrem să le adăugăm în repository.
->
-> Spre exemplu, nu punem fișiere obiect și fișiere executabile în repository pentru că sunt fișiere generate pentru un anumit tip de sistem.
-> Având codul sursă, putem genera fișierele obiect și executabile pe sistemul nostru.
+:::note
+Într-un proiect Git, scriem în fișierul `.gitignore` nume de fișiere și directoare.
+Acestea sunt fișiere și directoare din directorul proiectului pe care nu vrem să le adăugăm în repository.
+
+Spre exemplu, nu punem fișiere obiect și fișiere executabile în repository pentru că sunt fișiere generate pentru un anumit tip de sistem.
+Având codul sursă, putem genera fișierele obiect și executabile pe sistemul nostru.
+
+:::
 
 Verificăm branch-ul pe care ne aflăm folosind comanda `git branch`:
 
@@ -174,17 +178,21 @@ To https://github.com/lizababu/array-sorting-algorithmss.git
 Am publicat commitul în repository-ul remote pe branch-ul `add-gitignore`.
 Odată cu publicarea commitului pe GitHub, a fost creat și branch-ul `add-gitignore` în repository-ul remote.
 
-> [!NOTE]
-> Orice operație trebuie să fie urmată de o operație de verficare.
-> Din grabă sau neatenție, putem face operații incorecte și este mai ușor să le remediem pe loc decât mai târziu.
-> Spre exemplu, după crearea unui commit, verificăm **statusul repository-ului** și **istoricul de commituri**.
+:::note
+Orice operație trebuie să fie urmată de o operație de verficare.
+Din grabă sau neatenție, putem face operații incorecte și este mai ușor să le remediem pe loc decât mai târziu.
+Spre exemplu, după crearea unui commit, verificăm **statusul repository-ului** și **istoricul de commituri**.
+
+:::
 
 ## Operația **merge** dintre un branch secundar și master
 
 În secțiunea `app_dev_add_gitignore` de mai sus am creat un commit pe branch-ul **add-gitignore**.
 
-> [!NOTE]
-> Ne amintim că este **BAD PRACTICE** să facem modificări direct pe branch-ul **master**.
+:::note
+Ne amintim că este **BAD PRACTICE** să facem modificări direct pe branch-ul **master**.
+
+:::
 
 Vrem ca modificarea făcută de noi, în acest caz crearea unui fișier **gitignore**, să se regăsească și pe branch-ul master.
 Facem acest lucru prin intermediul operației `merge`, operație care unește două branch-uri: adică aduce conținutul unui branch pe un alt branch, în cazul nostru de pe **add-gitignore** pe **master**.
@@ -321,12 +329,14 @@ Switched to branch 'update-gitignore'
 
 Suntem pe branch-ul **update-gitignore** și adăugăm linia `build/` în fișierul `.gitignore`.
 
-> [!NOTE]
-> De obicei, într-un proiect vom avea un director în care punem fișierele generate (spre exemplu, fișierele excutabile).
-> Astfel, punem doar numele directorului în `.gitginore` și toate fișierele din el vor fi ignorate de Git.
->
-> Alternativa ar fi să adăugăm numele tuturor fișierelor executabile pe care le generăm în `.gitignore`.
-> Dezavantajul aici este că nu putem refolosi un fișier `.gitignore` de la un proiect la altul pentru că numele executabilelor vor fi, cel mai probabil, diferite.
+:::note
+De obicei, într-un proiect vom avea un director în care punem fișierele generate (spre exemplu, fișierele excutabile).
+Astfel, punem doar numele directorului în `.gitginore` și toate fișierele din el vor fi ignorate de Git.
+
+Alternativa ar fi să adăugăm numele tuturor fișierelor executabile pe care le generăm în `.gitignore`.
+Dezavantajul aici este că nu putem refolosi un fișier `.gitignore` de la un proiect la altul pentru că numele executabilelor vor fi, cel mai probabil, diferite.
+
+:::
 
 Putem face acest lucru folosind un editor text sau folosind următoarea comandă:
 

@@ -75,12 +75,14 @@ razvan@uso:~$ ls -l /etc/shadow
 Observăm că acest fișier poate fi accesat doar de utilizatorul `root` și de grupul `shadow`.
 Vom discuta despre permisiuni de acces și grupuri în secțiunile următoare.
 
-> [!NOTE]
-> Conturi de utilizator fără parolă
->
-> Anumite conturi de utilizator pot să nu aibă parolă.
-> Ceea ce înseamnă că acele conturi nu pot fi accesate în acest mod: autentificare cu parolă.
-> Pot fi însă autentificate în alte moduri, cum ar fi schimbarea utilizatorului.
+:::note
+Conturi de utilizator fără parolă
+
+Anumite conturi de utilizator pot să nu aibă parolă.
+Ceea ce înseamnă că acele conturi nu pot fi accesate în acest mod: autentificare cu parolă.
+Pot fi însă autentificate în alte moduri, cum ar fi schimbarea utilizatorului.
+
+:::
 
 ### Crearea unui proces
 
@@ -100,11 +102,13 @@ Acest fișier conține informații despre un utilizator: numele de utilizator, U
 După autentificare există un proces în sistem care aparține unui cont de utilizator.
 Dacă acest proces este shellul, spunem adesea că, un utilizator are acces în sistem.
 
-> [!NOTE]
-> Anumite conturi de utilizator (`daemon`, `bin` etc.) au configurat în fișierul `/etc/passwd` ca executabil pentru pornirea primului proces `/bin/false` sau `/usr/sbin/nologin`.
-> Acest lucru înseamnă că aceste conturi de utilizator nu pot fi accesate prin autentificare.
-> Ci doar prin crearea, în moduri specifice, a unor procese cu UID-ul acelor utilizatori.
-> Nu intrăm în detalii aici despre aceste moduri.
+:::note
+Anumite conturi de utilizator (`daemon`, `bin` etc.) au configurat în fișierul `/etc/passwd` ca executabil pentru pornirea primului proces `/bin/false` sau `/usr/sbin/nologin`.
+Acest lucru înseamnă că aceste conturi de utilizator nu pot fi accesate prin autentificare.
+Ci doar prin crearea, în moduri specifice, a unor procese cu UID-ul acelor utilizatori.
+Nu intrăm în detalii aici despre aceste moduri.
+
+:::
 
 ## Vizualizarea șî gestiunea informațiilor despre utilizatori
 
