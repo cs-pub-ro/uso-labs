@@ -9,38 +9,29 @@ După instalarea aplicației / pachetului, aceasta poate fi pornită și rulată
 
 Instalarea unei aplicații dintr-un pachet software este prezentată schematic mai jos:
 
-```
-+---------------------------+                    +---------------------------+
-|cGRE                       |                    |cPNK                       |
-|                           |                    |                           |
-|/-----------------------\  |                    |/-----------------------\  |
-||                       |  |                    ||                       |  |
-||  fișiere executabile  |  +------------------->||  fișiere executabile  |  |
-||{d}                    |  |                    ||{d}                    |  |
-|\-----------------------/  |                    |\-----------------------/  |
-|                           |                    |                           |
-|/-----------------------\  |                    |/-----------------------\  |
-||                       |  |                    ||                       |  |
-||fișiere de configurare |  +------------------->||fișiere de configurare |  |
-||{d}                    |  |                    ||{d}                    |  |
-|\-----------------------/  |                    |\-----------------------/  |
-|                           |                    |                           |
-|/-----------------------\  |                    |/-----------------------\  |
-||                       |  |                    ||                       |  |
-||      documentație     |  +------------------->||      documentație     |  |
-||{d}                    |  |                    ||{d}                    |  |
-|\-----------------------/  |                    |\-----------------------/  |
-|                           |                    |                           |
-|/-----------------------\  |                    |/-----------------------\  |
-||                       |  |                    ||                       |  |
-||         date          |  +------------------->||         date          |  |
-||{d}                    |  |                    ||{d}                    |  |
-|\-----------------------/  |                    |\-----------------------/  |
-|                           |                    |                           |
-|      pachet software      |                    |   sistemul de fișiere     |
-|                           |                    |                           |
-|                        {d}|                    |                        {s}|
-+---------------------------+                    +---------------------------+
+```mermaid
+flowchart LR
+    subgraph pkg["pachet software"]
+        p1["fișiere executabile"]
+        p2["fișiere de configurare"]
+        p3["documentație"]
+        p4["date"]
+    end
+
+    subgraph fs["sistemul de fișiere"]
+        f1["fișiere executabile"]
+        f2["fișiere de configurare"]
+        f3["documentație"]
+        f4["date"]
+    end
+
+    p1 --> f1
+    p2 --> f2
+    p3 --> f3
+    p4 --> f4
+
+    style pkg fill:#b9e8b9,stroke:#3a7a3a,color:#000
+    style fs fill:#f8c8d8,stroke:#a8506a,color:#000
 ```
 
 De partea cealaltă, dezinstalarea unei aplicații / unui pachet înseamnă ștergerea din sistem a fișierelor specifice.

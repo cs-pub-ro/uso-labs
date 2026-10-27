@@ -27,6 +27,12 @@ const config: Config = {
     locales: ["ro"],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: ['@docusaurus/theme-mermaid'],
+
   presets: [
     [
       "classic",
@@ -45,6 +51,12 @@ const config: Config = {
 
   themeConfig: {
     image: "img/uso_banner.png",
+    mermaid: {
+      theme: {
+        light: 'neutral',
+        dark: 'dark',
+      },
+    },
     colorMode: {
       defaultMode: 'light',
       disableSwitch: false,
