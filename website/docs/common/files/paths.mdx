@@ -57,10 +57,9 @@ Observăm conținutul directorul `home`:
 student@uso:/home$ tree -F -L 1 /home
 .
 |-- student/
-``-- test/
 ```
 
-Există două directoare `student` și `test`.
+Există un singur director, numit `student`.
 
 :::note
 Observăm cum se schimbă promptul de terminal:
@@ -70,68 +69,31 @@ Observăm cum se schimbă promptul de terminal:
 
 :::
 
-Avansăm în ierarhia de directoare către `student`, folosind comanda `cd`:
+Avansăm în ierarhia de directoare către `student`:
 
 ``` bash
-student@uso:/home$ cd student
-student@uso:~$ pwd
-/home/student
-student@uso:~$ tree -F
+student@uso:~$ tree -F -L 2
 .
-|-- comenzi/
-|   |-- executie/
-|   |-- ls/
-|   |   ``-- mkdir -> /home/student/comenzi/mkdir/
-|   |-- mkdir/
-|   |   |-- Avengers/
-|   |   |   |-- Captain\ America
-|   |   |   |-- Iron\ Man
-|   |   |   ``-- Thor
-|   |   ``-- GameOfThrones/
-|   |       |-- Arya\ Stark
-|   |       |-- Daenerys\ Targaryen
-|   |       |-- Jon\ Snow
-|   |       ``-- Tyrion\ Lannister
-|   |-- my_ls
-|   ``-- touch/
-|       |-- orase
-|       |-- orase\ romania
-|       ``-- romania
-|-- comenzi_redirectare
-|-- continut_materii
-|-- dezarhivare/
-|   |-- tar/
-|   ``-- zip/
-|       |-- fisier1
-|       |-- fisier2
-|       ``-- fisier3
-|-- ELTH/
-|-- erori_comenzi
-|-- fisier
-|-- fisier1
-|-- fisier2
-|-- fisier3
-|-- fisier4
-|-- fisiere.zip
-|-- inregistrari.tar
-|-- inregistrari.zip
-|-- materii
-|-- orase
-|-- scurtaturi.save
-|-- test.zip
-|-- USO/
-|-- usr_bin.tar
-``-- usr_bin.zip
+|-- Desktop/
+|-- Documents/
+|-- Downloads/
+|-- Music/
+|-- Pictures/
+|-- Public/
+|-- Templates/
+|-- Videos/
+|-- examples.desktop
+|-- uso-lab/
+|   |-- assignments/
+|   |-- labs/
+|   |-- lectures/
+|   |-- README.md
+`-- vm-actions-log.txt
 ```
 
-:::note
-Rezultatul comenzii `tree` de mai sus este specific fișierelor și directoarelor de pe sistemul meu.
-Voi veți avea alt rezultat, conform fișierelor și directoarelor de pe sistemul vostru.
-
-:::
-
 Directorul acesta este directorul *home* al utilizatorului *student*.
-În rezultatul comenzii `tree`, vedem întreaga ierarhie a directorului `/home/student`.
+În rezultatul comenzii `tree -F -L 2`, vedem primele două niveluri
+din ierarhia directorului `/home/student`.
 
 În continuare detaliem conceptul de cale.
 
@@ -168,6 +130,7 @@ student@uso:/usr/bin$ pwd
 
 Acum ne aflăm la poziția `/usr/bin` în sistemul de fișiere.
 Observăm cum calea curentă se schimbă atunci când schimbăm directorul în care ne aflăm.
+Vom vorbi despre comanda `cd` în laboratorul *Îmbunătățirea lucrului în linia de comandă*.
 
 ## Separator de cale
 
@@ -176,7 +139,7 @@ Atunci când compunem calea, după fiecare nod/director (nivel de arbore) prin c
 Astfel, îi transmitem sistemului de operare că am înaintat în ierarhia de fișiere.
 
 Faptul că și directorul rădăcină (`/`) are același simbol, este doar o coincidență.
-În Windows, nodul rădăcină este `C:`, iar separatorul de cale este `\\`.
+În Windows, nodul rădăcină este `C:`, iar separatorul de cale este `\`.
 
 ## Cale relativă și cale absolută
 
@@ -219,24 +182,46 @@ Observăm că o cale absolută începe întotdeauna cu caracterul `/` (directoru
 Prin calea relativă ne referim la un fișier în funcție de calea curentă.
 
 ``` bash
-student@uso:~$ ls -l comenzi/mkdir/
-total 8
-drwxr-xr-x 2 student student 4096 Sep 29 18:20 Avengers
-drwxr-xr-x 2 student student 4096 Sep 29 19:21 GameOfThrones
+student@uso:~$ ls -l uso-lab.git/labs/
+total 52
+drwxrwxr-x 4 student student 4096 nov  9  2021 00-intro
+drwxrwxr-x 4 student student 4096 nov  9  2021 01-filesystem
+drwxrwxr-x 4 student student 4096 nov  9  2021 02-process
+drwxrwxr-x 5 student student 4096 nov  9  2021 03-user
+drwxrwxr-x 4 student student 4096 nov  9  2021 04-appdev
+drwxrwxr-x 4 student student 4096 nov  9  2021 05-cli
+drwxrwxr-x 4 student student 4096 nov  9  2021 06-scripting
+drwxrwxr-x 4 student student 4096 nov  9  2021 07-hardware-obsolete
+drwxrwxr-x 5 student student 4096 nov  9  2021 07-networking
+drwxrwxr-x 4 student student 4096 nov  9  2021 08-security
+drwxrwxr-x 4 student student 4096 nov  9  2021 08-storage-obsolete
+drwxrwxr-x 3 student student 4096 nov  9  2021 09-task-admin
+drwxrwxr-x 4 student student 4096 nov  9  2021 11-ctf
 ```
 
-În exemplul de mai sus, ne aflăm la calea `/home/student` și am coborât în ierarhia de fișiere către directorul `comenzi`, apoi directorul `mkdir`.
+În exemplul de mai sus, ne aflăm la calea `/home/student` și am coborât în ierarhia de fișiere către directorul `uso-lab.git`, apoi către directorul `labs`.
 
 Același rezultat îl obținem folosind calea absolută:
 
 ``` bash
-student@uso:~$ ls -l /home/student/comenzi/mkdir/
-total 8
-drwxr-xr-x 2 student student 4096 Sep 29 18:20 Avengers
-drwxr-xr-x 2 student student 4096 Sep 29 19:21 GameOfThrones
+student@uso:~$ ls -l /home/student/uso-lab.git/labs/
+total 52
+drwxrwxr-x 4 student student 4096 nov  9  2021 00-intro
+drwxrwxr-x 4 student student 4096 nov  9  2021 01-filesystem
+drwxrwxr-x 4 student student 4096 nov  9  2021 02-process
+drwxrwxr-x 5 student student 4096 nov  9  2021 03-user
+drwxrwxr-x 4 student student 4096 nov  9  2021 04-appdev
+drwxrwxr-x 4 student student 4096 nov  9  2021 05-cli
+drwxrwxr-x 4 student student 4096 nov  9  2021 06-scripting
+drwxrwxr-x 4 student student 4096 nov  9  2021 07-hardware-obsolete
+drwxrwxr-x 5 student student 4096 nov  9  2021 07-networking
+drwxrwxr-x 4 student student 4096 nov  9  2021 08-security
+drwxrwxr-x 4 student student 4096 nov  9  2021 08-storage-obsolete
+drwxrwxr-x 3 student student 4096 nov  9  2021 09-task-admin
+drwxrwxr-x 4 student student 4096 nov  9  2021 11-ctf
 ```
 
-Calea `/home/student/comenzi/mkdir/` este validă oricare ar fi calea curentă (oriunde ne-am afla în ierarhia de fișiere).
+Calea `/home/student/uso-lab.git/labs/` este validă oricare ar fi calea curentă (oriunde ne-am afla în ierarhia de fișiere).
 
 În acest caz, este mai eficient să folosim *calea relativă*.
 În cazul în care putem ajunge mai repede de la directorul rădăcina `/` la directorul țintă, este mai utilă *calea absolută*.
@@ -283,8 +268,6 @@ student@uso:/usr$ pwd
 ```
 
 Am schimbat calea curentă de la `/etc` la `/usr`.
-Observăm că promptul s-a schimbat de la `student@uso:/etc` la `student@uso:/usr`.
-Astfel, putem să vedem în ce director ne aflăm uitându-ne la prompt.
 Această comandă poate fi folosită oriunde ne-am afla deoarece este o *cale absolută*.
 
 :::info
@@ -345,13 +328,13 @@ Observăm cum am urcat în ierarhie folosind `..` până la `/` (*directorul ră
 În exemplul de mai jos, comanda de mai sus nu este valabilă:
 
 ``` bash
-student@uso:~/comenzi$ pwd
-/home/student/comenzi
-student@uso:~/comenzi$ cd ../../usr/bin
--bash: cd: ../../usr/bin: No such file or directory
+student@uso:~/Desktop$ pwd
+/home/student/Desktop
+student@uso:~/Desktop$ cd ../../usr/bin
+bash: cd: ../../usr/bin: No such file or directory
 ```
 
-Observăm că suntem la calea `/home/student/comenzi`.
+Observăm că suntem la calea `/home/student/Desktop`.
 Executând comanda `cd ../../usr/bin` de mai sus, am ajunge la calea `/home/usr/bin` care nu există.
 
 ### Exerciții - schimbarea directorului curent
