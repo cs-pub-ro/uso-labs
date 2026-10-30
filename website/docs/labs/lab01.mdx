@@ -3,3 +3,158 @@ sidebar_position: 1
 sidebar_label: "Laboratorul 1: Acomodarea în Linux"
 title: "Laboratorul 1: Acomodarea în Linux"
 ---
+
+import Apps from '../common/basic/apps.mdx'
+import Browser from '../common/basic/browser.mdx'
+import Terminal from '../common/basic/terminal.mdx'
+import Workspace from '../common/basic/workspace.mdx'
+import Cheatsheet from '../common/basic/cheatsheet.mdx'
+
+# Introducere și resurse
+
+Bine ați venit la Facultatea de Automatică și Calculatoare și la cursul de Utilizarea sistemelor de operare (USO)! Cursul de Utilizarea sistemelor de operare vă ajută să faceți primi pași în lumea calculatoarelor, lumea sistemelor de operare și lumea Linux. Să începem!
+
+Acesta este un laborator de USO. Într-un laborator vom lucra practic cu sistemul de operare, cu interfața cu utilizatorul, procese, utilizatori, servicii, rețea. Pe scurt cu toate componentele expuse unui utilizator de sistemul de operare.
+
+În acest laborator vom prezenta resursele pe care le veți folosi la USO și veți face primii pași în folosirea Linux.
+
+## Obiective
+
+Fiind un laborator introductiv, obiectivele sunt:
+
+- Cunoașterea colegilor de laborator și a asistentului; atmosfera să fie informală
+- Obținerea de informații despre resursele cursului de USO
+- Acomodarea cu interfața grafică în Linux
+- Dobândirea de abilități de bază în folosirea interfeței în linia de comandă în Linux
+- Înțelegerea mindset-ului necesar pentru laboratorul de USO
+
+## Să ne cunoaștem
+
+Pentru început, haideți să ne cunoaștem mai bine. Împreună cu asistentul spuneți:
+
+- nume: cum vă strigă, nu cum sunteți trecuți în cartea de identitate
+- din ce oraș/liceu veniți
+- de ce ați ajuns la această facultate
+- care este prima impresie despre facultate
+
+Asistentul vă mai pune întrebări. Puneți și voi întrebări asistentului de laborator și ce curiozități aveți.
+
+Nu vrem să fim formali. **Evitați** expresii precum dumneavoastră sau persoana a doua plural. Suntem prieteni și învățăm împreună, ne ajutăm și discutăm cu plăcere.
+
+## Resursele cursului de USO
+
+### Echipa
+
+Echipa cursului este principala voastră resursă. Puneți întrebări live și pe forumuri, cereți-le opinii, rugați-i să vă ajute. Îl puteți cunoaște pe profesorul de la curs, pe asistentul vostru și pe colegii lor accesând [pagina echipei](https://ocw.cs.pub.ro/courses/uso/echipa).
+
+### Wiki
+
+Link: [https://ocw.cs.pub.ro/courses/uso/](https://ocw.cs.pub.ro/courses/uso/)
+
+Platforma wiki Open Courseware e locul în care veți găsi materialele persistente necesare pentru studiu: slide-urile cursurilor, exercițiile de laborator, link-uri către calendar, catalog, mașini virtuale și alte resurse auxiliare necesare.
+
+### Microsoft Teams
+
+Cursurile și laboratoarele se desfășoară pe platforma Microsoft Teams pe [această echipă](https://teams.microsoft.com/l/team/19%3a72f295859dc14f199fd49ac45b01c726%40thread.tacv2/conversations?groupId=31d0d65b-e855-4931-8f1a-3a66a3957103&tenantId=2d8cc8ba-8dda-4334-9e5c-fac2092e9bac).
+
+Laboratoarele au loc pe canalele cu numele **Laborator - 31XYZt - Ziua săptămânii - Interval orar**. Spre exemplu, dacă semigrupa a doua de la grupa 316CC are laborator sâmbătă dimineață de la ora 8, atunci canalul se numește **Laborator - 316CCb - Sâmbătă - 8-10**.
+
+### curs.upb.ro
+
+Link: [https://curs.upb.ro/](https://curs.upb.ro/)
+
+Este platforma de cursuri online a facultății de Automatică și Calculatoare. La USO este forma dinamică a materiei, unde are loc comunicarea cu echipa. Atât pentru cursul de USO, cât și pentru alte cursuri care folosesc platforma Moodle veți găsi:
+
+- Link-uri către cursuri și laboratoare
+- Anunțuri utile pentru voi
+- Forum de discuții, unde puteți pune întrebări legate de curs sau de facultate
+- Puteți oferi feedback echipei de asistenți
+- Link-uri către temele de casă și termenele limită pentru acestea
+
+Informații despre conturi găsiți pe prima pagină a site-ului.
+
+:::warning
+
+Orice nelămurire cu privire la cursul sau laboratorul de USO, sau la materie în general, orice întrebare care are legătură cu USO sau cu facultatea, adresați-o pe forumul dedicat în cadrul materiei USO pe Moodle.
+
+Pe forumul de discuții de pe platforma Moodle veți primi răspunsuri rapide, prompte și avizate la probleme legate de cursul de USO și activitățile acestuia. Folosiți cu încredere forumurile aferente atunci când nu sunteți la curs sau laborator și nu puteți discuta direct cu titularul de curs sau asistentul de laborator.
+
+Înainte de a pune o întrebare, asigurați-vă că nu a mai fost pusă de altcineva înainte.
+
+Contactați asistenții sau titularii de curs pe adresa de e-mail personală doar în cazuri de probleme private sau care nu interesează pe toți colegii voștri prezenți pe forum.
+
+:::
+
+:::warning
+
+Nu folosiți Facebook pentru a discuta cu echipa de USO. Folosiți forumurile de pe curs.upb.ro sau folosiți adresele de e-mail din [pagina echipei](https://ocw.cs.pub.ro/courses/uso/echipa) pentru discuții private.
+
+:::
+
+### Guacamole
+
+Pentru parcurgerea laboratorului avem 2 variante:
+
+- Ne facem o mașină virtuală de Linux urmând tutorialul de [aici](https://ocw.cs.pub.ro/courses/uso/resurse/mv).
+- Folosim [https://guacamole.grid.pub.ro](https://guacamole.grid.pub.ro) pentru parcurgerea laboratorului. Ne autentificăm folosind același cont de pe [https://curs.upb.ro](https://curs.upb.ro). Vom avea nevoie doar de un browser pentru a folosi această platformă. Urmați pașii:
+  - Ne autentificăm folosind credențialele **tmp_stud10** și parola **usopasswd**.
+  - Dăm click pe butonul în formă de **+** lângă care scrie *student-groups*. Găsim acolo mai multe instanțe de mașină virtuală de USO pe care le putem accesa.
+  - Fiecare student va intra la laborator pe una dintre mașinile virtuale disponibile de acolo. O mașină este disponibilă dacă **nu** apare textul *Currently in use by 1 user* în dreptul ei.
+  - Se va deschide un nou tab în browser în care avem acces la mașina virtuală. Dacă vrem să deschidem mai multe taburi cu aceeași mașină virtuală, repetăm acești pași.
+
+### Pagina de Facebook
+
+Link: [https://www.facebook.com/uso.acs](https://www.facebook.com/uso.acs)
+
+Pagina de Facebook este locul în care facem anunțuri despre USO și pentru activități de comunitate și pentru aflarea de informații (de multe ori amuzante) din lumea calculatoarelor.
+
+### Cartea de USO
+
+Cartea de USO este în lucru. Va fi disponibilă în următoarele săptămâni. Cartea va conține informații detaliate; parcurgerea cărții este obligatorie pentru asimilarea noțiunilor predate la curs și laborator.
+
+### Clusterul NCIT al facultății
+
+Link: [https://cloud.curs.pub.ro/](https://cloud.curs.pub.ro/)
+
+Clusterul NCIT al facultății, accesibil prin front-end processor la adresa `fep.grid.pub.ro` folosind protocolul SSH (despre servicii de rețea vom învăța în laboratorul 7), este o resursă care va fi folosită pentru temele de casă și pentru testul practic. Autentificarea în sistem se face folosind aceleași credențiale cu care vă autentificați pe platforma Moodle ([https://curs.upb.ro/](https://curs.upb.ro/)).
+
+Infrastructura de cloud din cadrul clusterului NCIT este bazată pe soluția opensource [Openstack](https://www.openstack.org/). Aceasta este o soluție de IaaS (Infrastructure as a Service). Va fi folosită pentru a vă crea mașini virtuale în cloud pentru testele practice.
+
+### Support (issues)
+
+Link: [https://support.upb.ro/](https://support.upb.ro/)
+
+Platforma unde puteți ridica un tichet în cazul în care aveți probleme cu contul de email `@stud.acs.upb.ro` sau cu contul cu care accesați resursa Moodle (adică site-ul [https://curs.upb.ro](https://curs.upb.ro)).
+
+### Repository Git USO
+
+Link: [https://github.com/systems-cs-pub-ro/uso](https://github.com/systems-cs-pub-ro/uso)
+
+Repository-ul de Git al cursului de USO este locul unde veți găsi materialele auxiliare necesare unui laborator și eventual fișiere cu cod sursă ale rezolvărilor.
+
+## Încă ceva!
+
+Laboratoarele de USO sunt provocatoare, practice și interesante. Oricând vă împotmoliți sau nu vă descurcați, întrebați asistentul. Rolul asistentului este să vă ajute când aveți probleme.
+
+De multe ori asistentul nu vă va da mura-n gură răspunsul, ci vă va pune întrebări ca să vă ajute să înțelegeți. Obiectivul vostru nu este să treceți prin exerciții ca să ajungeți la final, ci să înțelegeți ce faceți, de ce se întâmplă lucrurile cum se întâmplă și să puteți face exerciții similare.
+
+Laboratoarele conțin activități deja rezolvate (tutoriale) pe care să le parcurgeți pas cu pas, urmate de exerciții similare pentru aprofundare.
+
+E important să fiți atenți, concentrați și răbdători când rezolvați laboratoarele. Citiți cu atenție laboratorul, nu ratați precizări, informațiile sunt în laborator.
+
+Dacă e ceva neclar sau greșit, raportați asistentului pentru corectare. Orice alte observații, sugestii sau feedback, adresați-le asistentului.
+
+Nu folosiți Facebook pentru comunicare cu asistentul sau echipa. Folosiți forumul cursului pe [https://curs.upb.ro](https://curs.upb.ro) pentru discuții cu echipa și adresa de e-mail a asistentului pentru mesaje private.
+
+Ajutați-vă colegii în mod constructiv. Nu le dați mura-n gură, ajutați-i să înțeleagă. Laboratorul este o activitate de comunitate, vă încurajăm să vorbiți, să discutați, să vă ajutați; nu așteptați doar suport de la asistent: cereți și oferiți suport în timpul laboratorului.
+
+
+<Apps/>
+
+<Browser/>
+
+<Terminal/>
+
+<Workspace/>
+
+<Cheatsheet/>
