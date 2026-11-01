@@ -12,96 +12,6 @@ Există un editor potrivit sau nepotrivit.
 
 :::
 
-## Editor grafic
-
-Folosit în mod uzual de utilizatori non-tehnici, aceste tipuri de editoare au o interfață grafică ce permit modificarea fișierelor într-un mod cât mai ușor, facil.
-
-Poate cel mai folosit editor din această categorie este [Microsoft Word](https://www.microsoft.com/en-us/microsoft-365/word%3E).
-Scopul acestuia este ușurința în folosință: există multe capabilități (culori, marime font, stil, aranjare în pagină) pentru crearea de conținut, iar opțiunile sunt ușor de găsit și folosit.
-Acesta este salvat într-un fișier cu format specific.
-Utilizarea acestuia se rezumă doar la documente.
-Un alt editor de text este [Notepad++](https://notepad-plus-plus.org/).
-Acesta este mai simplu, cu mai puține opțiuni, ceea ce îl face mai adecvat pentru programare.
-
-Un editor foarte folosit pentru programare este [Sublime](https://www.sublimetext.com/3).
-Acesta este și editorul grafic pe care îl vom folosi în această carte.
-Are opțiuni specifice pentru a ajuta un programator să scrie cod mai ușor, mai facil, ceea ce îl face mai bun decât <span className="title-ref">Notepad</span>++\`.
-Ele pot oferi următoarele:
-
-- Buton pentru compilare și execuție
-- Auto-indentare (alinierea liniilor de cod)
-- Auto-completare a numelor de funcții și variabile
-- Suport pentru debugging
-- Integrarea cu alte componente: de exemplu editorul [Xcode](https://developer.apple.com/xcode/) (de la Apple) este integrat cu simulator (iPhone). Printr-o singură apăsare de buton, se pornește simulatorul de iPhone și se execută aplicația.
-
-Alte editoare grafice: [Sublime](https://www.sublimetext.com/3), [gedit](https://wiki.gnome.org/Apps/Gedit), [Visual Studio](https://visualstudio.microsoft.com/), [Xcode](https://developer.apple.com/xcode/).
-
-### Interacțiunea cu fișiere cu ajutorul editoarelor grafice
-
-Mai jos este un exemplu de interacțiune cu editorul [Pages](https://www.apple.com/pages/), un editor de text de la Apple.
-Editarea documentelor este simplă, intuitivă și cu multe opțiuni.
-
-<figure>
-![](_assets/res/pages.gif)
-</figure>
-
-Putem adăuga text foarte intuitiv.
-Am modificat dimensiunea, culoarea, fontul textului foarte ușor.
-Aceasta este puterea unui editor grafic.
-
-Însă, acest tip de editor grafic nu are opțiuni utile pentru programare.
-În continuare vom folosi `sublime`.
-
-Deschiderea unui fișier se poate face folosind utilitarul `subl`:
-
-> `<student@uso>`:~\$ subl fișier
-
-O listă de comenzi utile pentru editorul Sublime găsim [aici](https://www.shortcutfoo.com/app/dojos/sublime-text-3-win/cheatsheet).
-În continuare prezentăm cele mai populare dintre ele.
-
-Folosim combinația de taste `Ctrl+x` pentru _cut_:
-
-<figure>
-![](_assets/res/sublime1.gif)
-</figure>
-
-Folosim combinația de taste `Ctrl+u` pentru _undo_, iar pentru a șterge de la cursor până la începutul liniei `Ctrl+k Ctrl+backspace`:
-
-<figure>
-![](_assets/res/sublime2.gif)
-</figure>
-
-Indentarea se face cu `Ctrl+[` și `Ctrl+]`:
-
-<figure>
-![](_assets/res/sublime3.gif)
-</figure>
-
-Duplicăm o linie folosind `Shift+Ctrl+d`:
-
-<figure>
-![](_assets/res/sublime4.gif)
-</figure>
-
-Pentru a compila cod folosim combinația de taste `Ctrl+b`:
-
-<figure>
-![](_assets/res/sublime5.gif)
-</figure>
-
-#### Exerciții - editor grafic
-
-1.  - Folosind editorul de text <span className="title-ref">Sublime</span>, disponibil de VM, deschideți fișierul `Romanian Presidents` și completați fișierul cu cel puțin 3 președinți ai României.
-    - Salvați fișierul în directorul vostru `home` (`~`).
-    - Duplicați textul scris anterior (copiat/lipit) de 5 ori;
-    - Indentați fiecare linie o dată;
-2.  - Folosind editorul de text <span className="title-ref">Sublime</span>, deschideți fișierul `program.c`.
-    - Salvați fișierul în directorul vostru `home` (`~`).
-    - Scrieti cod C (similar exemplului de mai sus) pentru a afișa textul `Make USO Great Again!`;
-    - Folosiți scurtăturile pentru indentare;
-    - Compilați folosind scurtătura `Ctrl+b`.
-    - Comentați liniile 2-8.
-
 ## Editor în linie de comandă
 
 Editoarele în linia de comandă sunt făcute pentru interacțiunea cu terminalul.
@@ -142,14 +52,115 @@ O listă de comenzi utile găsim la [cheatsheet nano](https://www.nano-editor.or
 
 #### Exerciții - editor în linie de comandă
 
-1.  - Folosind editorul în linie de comandă disponibil pe VM (<span className="title-ref">nano</span>), deschideți fișierul `US Presidents` și completați fișierul cu cel puțin 3 președinți ai Statelor Unite are Americii.
-    - Salvati fișierul în directorul vostru `home` (`~`).
+1.  - Deschideți fișierul `US Presidents` și completați fișierul cu cel puțin 3 președinți ai Statelor Unite are Americii.
+    - Salvati fișierul în directorul de la calea `/home/student/uso_lab02`.
     - Duplicați textul scris anterior (copiat/lipit) de 5 ori;
     - Indentați fiecare linie de două ori;
-    - Comentați liniile 2-8.
-    - Salvați fișierul în directorul vostru `home` (`~`).
+    - Salvati fișierul în directorul de la calea `/home/student/uso_lab02`.
     - Duplicați textul scris anterior (copiat/lipit) de 5 ori;
     - Adăugați 4 spații la început de fiecare rând;
     - Adăugați caracterul **\#** la început de rând pentru liniile 2-8.
 2.  - Scrieți cod C (similar exemplului de la editor grafic) pentru a afișa textul `Make USO Great Again!`;
     - Folosiți scurtăturile pentru indentare.
+    - Comentați liniile 2-8.
+
+
+## Editor grafic
+
+Folosit în mod uzual de utilizatori non-tehnici, aceste tipuri de editoare au o interfață grafică ce permit modificarea fișierelor într-un mod cât mai ușor, facil.
+
+Poate cel mai folosit editor din această categorie este [Microsoft Word](https://www.microsoft.com/en-us/microsoft-365/word%3E).
+Scopul acestuia este ușurința în folosință: există multe capabilități (culori, marime font, stil, aranjare în pagină) pentru crearea de conținut, iar opțiunile sunt ușor de găsit și folosit.
+Acesta este salvat într-un fișier cu format specific.
+Utilizarea acestuia se rezumă doar la documente.
+Un alt editor de text este [Notepad++](https://notepad-plus-plus.org/).
+Acesta este mai simplu, cu mai puține opțiuni.
+
+Un editor foarte folosit pentru programare este [Sublime](https://www.sublimetext.com/3).
+Acesta este și editorul grafic recomandat de noi.
+
+Editoarele grafice sunt populare și pentru programare. Acestea oferă capabilități diverse pentru a ajuta un programator să scrie cod mai ușor, facil. De exemplu: 
+
+- Buton pentru compilare și execuție
+- Auto-indentare (alinierea liniilor de cod)
+- Auto-completare a numelor de funcții și variabile
+- Suport pentru debugging
+- Integrarea cu alte componente: de exemplu editorul [Xcode](https://developer.apple.com/xcode/) (de la Apple) este integrat cu simulator (iPhone).
+
+Alte editoare grafice: [Sublime](https://www.sublimetext.com/3), [gedit](https://wiki.gnome.org/Apps/Gedit), [Visual Studio](https://visualstudio.microsoft.com/), [Xcode](https://developer.apple.com/xcode/).
+
+### Interacțiunea cu fișiere cu ajutorul editoarelor grafice
+
+Mai jos este un exemplu de interacțiune cu editorul [Pages](https://www.apple.com/pages/), un editor de text de la Apple.
+Editarea documentelor este simplă, intuitivă și cu multe opțiuni.
+
+<figure>
+![](_assets/res/pages.gif)
+</figure>
+
+Putem adăuga text foarte intuitiv.
+Am modificat dimensiunea, culoarea, fontul textului foarte ușor.
+Aceasta este puterea unui editor grafic.
+
+Însă, acest tip de editor grafic nu are opțiuni utile pentru programare.
+În continuare vom folosi `sublime`.
+
+Deschiderea unui fișier se poate atat din linia de comanda:
+
+```bash
+student@uso:~$ subl fișier
+```
+
+:::note
+Dacă nu aveți Sublime instalat, executați următoarele comenzi:
+```bash
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/apt/keyrings/sublimehq-pub.asc > /dev/null
+echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
+sudo apt update
+sudo apt install -y sublime-text
+```
+:::
+
+O listă de comenzi utile găsim [aici](https://www.shortcutfoo.com/app/dojos/sublime-text-3-win/cheatsheet);
+le executăm în continuare:
+
+Folosim combinația de taste `Ctrl+x` pentru _cut_:
+
+<figure>
+![](_assets/res/sublime1.gif)
+</figure>
+
+Folosim combinația de taste `Ctrl+u` pentru _undo_, iar pentru a șterge de la cursor până la începutul liniei `Ctrl+k Ctrl+backspace`:
+
+<figure>
+![](_assets/res/sublime2.gif)
+</figure>
+
+Indentarea se face cu `Ctrl+[` și `Ctrl+]`:
+
+<figure>
+![](_assets/res/sublime3.gif)
+</figure>
+
+Duplicăm o linie folosind `Shift+Ctrl+d`:
+
+<figure>
+![](_assets/res/sublime4.gif)
+</figure>
+
+Pentru a compila cod folosim combinația de taste `Ctrl+b`:
+
+<figure>
+![](_assets/res/sublime5.gif)
+</figure>
+
+#### Exerciții - editor grafic
+
+1.  - Folosind editorul de text <span className="title-ref">Sublime</span>, disponibil de VM, deschideți fișierul `Romanian Presidents` și completați fișierul cu cel puțin 3 președinți ai României.
+    - Salvați fișierul în directorul vostru `home`.
+    - Duplicați textul scris anterior (copiat/lipit) de 5 ori;
+    - Indentați fiecare linie o dată;
+2.  - Scrieti cod C (similar exemplului de mai sus) pentru a afișa textul `Make USO Great Again!`;
+    - Folosiți scurtăturile pentru indentare;
+    - Compilați folosind scurtătura `Ctrl+b`.
+    - Comentați liniile 2-8.
