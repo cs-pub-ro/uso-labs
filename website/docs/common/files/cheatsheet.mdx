@@ -14,19 +14,15 @@ student@uso:~$ pwd
 Cale relativă:
 
 ``` bash
-student@uso:~$ ls -l comenzi/mkdir/
-total 8
-drwxr-xr-x 2 student student 4096 Sep 29 18:20 Avengers
-drwxr-xr-x 2 student student 4096 Sep 29 19:21 GameOfThrones
+student@uso:~$ ls -l uso-lab/labs/
+(...)
 ```
 
 Cale absolută:
 
 ``` bash
-student@uso:~$ ls -l /home/student/comenzi/mkdir/
-total 8
-drwxr-xr-x 2 student student 4096 Sep 29 18:20 Avengers
-drwxr-xr-x 2 student student 4096 Sep 29 19:21 GameOfThrones
+student@uso:~$ ls -l /home/student/uso-lab/labs/
+(...)
 ```
 
 ### Schimbarea căii curente
@@ -111,16 +107,18 @@ student@uso:~/comenzi/mkdir$ tree -F -L 1 /
 ### Afișarea conținutului unui director
 
 ``` bash
-student@uso:~/comenzi/mkdir/Avengers$ ls
+student@uso:~/uso_lab02/Avengers$ ls
 Captain America  Iron Man  Thor
 ```
 
 ``` bash
-student@uso:~/comenzi/touch$ ls -l
-total 0
--rw-r--r-- 1 student student 0 Sep 29 17:32 cities
--rw-r--r-- 1 student student 0 Sep 29 17:25 cities in romania
--rw-r--r-- 1 student student 0 Sep 29 17:33 romania
+student@uso:~/uso_lab02$ ls -l
+(...)
+-rw-rw-r-- 1 student student    0 Oct 13 13:02  cities
+-rw-rw-r-- 1 student student    0 Oct 13 13:03 'cities in romania'
+-rw-r--r-- 1 student student 8980 Sep 24 09:00  examples.desktop
+-rw-rw-r-- 1 student student    0 Oct 13 13:02  romania
+drwxr-xr-x 4 student student 4096 Oct  2 03:11  snap
 ```
 
 ### Crearea fișierelor
@@ -136,12 +134,14 @@ cities
 ### Crearea directoarelor
 
 ``` bash
-student@uso:~/comenzi/mkdir$ mkdir GameOfThrones
-student@uso:~/comenzi/mkdir$ mkdir Avengers
-student@uso:~/comenzi/mkdir$ ls -l
-total 8
+student@uso:~/uso_lab02$ mkdir GameOfThrones
+student@uso:~/uso_lab02$ mkdir Avengers
+student@uso:~/uso_lab02$ ls -l
+(...)
 drwxr-xr-x 2 student student 4096 Sep 29 17:43 Avengers
+(...)
 drwxr-xr-x 2 student student 4096 Sep 29 17:43 GameOfThrones
+(...)
 ```
 
 ### Afișarea conținutului unui fișier
