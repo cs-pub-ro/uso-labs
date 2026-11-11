@@ -1,0 +1,222 @@
+## Sumar - Cheatsheet
+
+### Redirectări simple
+
+``` bash
+student@uso:~$ cd ~/redirection
+student@uso:~/redirection$ ls -lh
+total 6.1M
+-rw-r--r-- 1 student student 1.1M Aug 19 11:55 EGC
+-rw-r--r-- 1 student student 2.1M Aug 19 11:55 RL
+-rw-r--r-- 1 student student 3.1M Aug 19 11:55 USO
+student@uso:~/redirection$ ls -lh > lista_materii.txt
+```
+
+#### Redirectări prin anexare
+
+``` bash
+student@uso:~/redirection$ ls -l
+total 6.1M
+-rw-r--r-- 1 student student 1.1M Aug 19 11:55 EGC
+-rw-r--r-- 1 student student 209K Aug 19 12:00 lista_materii
+-rw-r--r-- 1 student student 2.1M Aug 19 11:55 RL
+-rw-r--r-- 1 student student 3.1M Aug 19 11:55 USO
+student@uso:~/redirection$ ls -l >> lista_materii
+student@uso:~/redirection$ ls
+EGC lista_materii RL USO
+student@uso:~/redirection$ ls >> lista_materii
+student@uso:~/redirection$ cat lista_materii
+total 6.1M
+-rw-r--r-- 1 student student 1.1M Aug 19 11:55 EGC
+-rw-r--r-- 1 student student 209K Aug 19 12:00 lista_materii
+-rw-r--r-- 1 student student 2.1M Aug 19 11:55 RL
+-rw-r--r-- 1 student student 3.1M Aug 19 11:55 USO
+EGC
+lista_materii
+RL
+USO
+```
+
+#### Redirectări de eroare
+
+``` bash
+student@uso:~/redirection$ ls
+EGC lista_materii RL USO
+student@uso:~/redirection$ cat lista_materie
+cat: lista_materie: No such file or directory
+student@uso:~/redirection$ cat SO2 2> materii
+student@uso:~/redirection$ cat materii
+cat: SO2: No such file or directory
+```
+
+### Crearea arhivelor - tar
+
+``` bash
+student@uso:~$ cd ~/archive
+student@uso:~/archive$ ls -lh
+total 15M
+-rw-r--r-- 1 student student 6.8M oct 11 02:23 inregistrare_lab01.mp4
+-rw-r--r-- 1 student student 2.5M oct 11 02:23 inregistrare_lab02.mp4
+-rw-r--r-- 1 student student 4.8M oct 11 02:23 inregistrare_lab03.mp4
+-rw-r--r-- 1 student student 391K oct 11 02:23 inregistrare_lab04.mp4
+student@uso:~/archive$ tar cvf inregistrari.tar inregistrare_lab01.mp4 inregistrare_lab02.mp4 inregistrare_lab03.mp4
+inregistrare_lab01.mp4
+inregistrare_lab02.mp4
+inregistrare_lab03.mp4
+student@uso:~/archive$ ls -lh
+total 19M
+-rw-r--r-- 1 student student 14M  oct 13 23:39 inregistrari.tar
+-rw-r--r-- 1 student student 6.8M oct 11 02:23 inregistrare_lab01.mp4
+-rw-r--r-- 1 student student 2.5M oct 11 02:23 inregistrare_lab02.mp4
+-rw-r--r-- 1 student student 4.8M oct 11 02:23 inregistrare_lab03.mp4
+-rw-r--r-- 1 student student 391K oct 11 02:23 inregistrare_lab04.mp4
+```
+
+#### Afișarea conținutului arhivelor - tar
+
+``` bash
+student@uso:~/archive$ tar tf inregistrari.tar
+inregistrare_lab01.mp4
+inregistrare_lab02.mp4
+inregistrare_lab03.mp4
+```
+
+#### Extragerea fișierelor din arhive - tar
+
+``` bash
+student@uso:~/archive$ tar xvf inregistrari.tar
+inregistrare_lab01.mp4
+inregistrare_lab02.mp4
+inregistrare_lab03.mp4
+student@uso:~/archive$ ls -lh
+total 29M
+-rw-rw-r-- 1 student student  14M oct 13 23:39 inregistrari.tar
+-rw-r--r-- 1 student student 6,8M oct 11 02:23 inregistrare_lab01.mp4
+-rw-r--r-- 1 student student 2,5M oct 11 02:23 inregistrare_lab02.mp4
+-rw-r--r-- 1 student student 4,8M oct 11 02:23 inregistrare_lab03.mp4
+-rw-r--r-- 1 student student 391K oct 11 02:23 inregistrare_lab04.mp4
+```
+
+#### Extragerea arhivelor la o cale specifică - tar
+
+``` bash
+student@uso:~/archive$ ls -l
+total 28808
+-rw-rw-r-- 1 student student 14551040 oct 13 23:39 inregistrari.tar
+-rw-r--r-- 1 student student  7032579 oct 11 02:23 inregistrare_lab01.mp4
+-rw-r--r-- 1 student student  2528132 oct 11 02:23 inregistrare_lab02.mp4
+-rw-r--r-- 1 student student  4979963 oct 11 02:23 inregistrare_lab03.mp4
+-rw-r--r-- 1 student student   399418 oct 11 02:23 inregistrare_lab04.mp4
+student@uso:~/archive$ mkdir -p dezarhivare/tar
+student@uso:~/archive$ tree
+.
+|-- dezarhivare
+|   ``-- tar
+|-- inregistrare_lab01.mp4
+|-- inregistrare_lab02.mp4
+|-- inregistrare_lab03.mp4
+|-- inregistrare_lab04.mp4
+``-- inregistrari.tar
+ 
+2 directories, 5 files
+student@uso:~/archive$ tar xvf inregistrari.tar --directory dezarhivare/tar/
+inregistrare_lab01.mp4
+inregistrare_lab02.mp4
+inregistrare_lab03.mp4
+```
+
+#### Adăugarea de noi fișiere la arhive
+
+``` bash
+student@uso:~/archive$ tar -tf inregistrari.tar
+inregistrare_lab01.mp4
+inregistrare_lab02.mp4
+inregistrare_lab03.mp4
+student@uso:~/archive$ tar rvf inregistrari.tar inregistrare_lab04.mp4
+inregistrare_lab04.mp4
+student@uso:~/archive$ tar tf inregistrari.tar
+inregistrare_lab01.mp4
+inregistrare_lab02.mp4
+inregistrare_lab03.mp4
+inregistrare_lab04.mp4
+```
+
+#### Comprimare tar.gz
+
+``` bash
+student@uso:~/archive$ tar -czvf inregistrari.tar.gz inregistrare_lab01.mp4 inregistrare_lab02.mp4 inregistrare_lab03.mp4
+inregistrare_lab01.mp4
+inregistrare_lab02.mp4
+inregistrare_lab03.mp4
+student@uso:~/archive$ ls -l
+-rw-rw-r-- 1 student student 14551040 oct 13 23:39 inregistrari.tar
+-rw-rw-r-- 1 student student 14516779 oct 14 00:00 inregistrari.tar.gz
+```
+
+### Crearea arhivelor - zip
+
+``` bash
+student@uso:~/archive$ zip inregistrari.zip inregistrare_lab01.mp4 inregistrare_lab02.mp4 inregistrare_lab03.mp4
+  adding: inregistrare_lab01.mp4 (deflated 0%)
+  adding: inregistrare_lab02.mp4 (deflated 0%)
+  adding: inregistrare_lab03.mp4 (deflated 0%)
+student@uso:~/archive$ ls -lh
+total 56M
+drwxr-xr-x 3 student student 4.0K oct 11 12:15 dezarhivare
+-rw-rw-r-- 1 student student  14M oct 13 23:39 inregistrari.tar
+-rw-r--r-- 1 student student 6,8M oct 11 02:23 inregistrare_lab01.mp4
+-rw-r--r-- 1 student student 2,5M oct 11 02:23 inregistrare_lab02.mp4
+-rw-r--r-- 1 student student 4,8M oct 11 02:23 inregistrare_lab03.mp4
+-rw-r--r-- 1 student student 391K oct 11 02:23 inregistrare_lab04.mp4
+-rw-rw-r-- 1 student student  14M oct 14 00:00 inregistrari.tar.gz
+-rw-rw-r-- 1 student student  14M oct 14 00:11 inregistrari.zip
+```
+
+#### Afișarea conținutului arhivelor - zip
+
+``` bash
+student@uso:~/archive$ zip -sf inregistrari.zip
+Archive contains:
+  inregistrare_lab01.mp4
+  inregistrare_lab02.mp4
+  inregistrare_lab03.mp4
+```
+
+#### Dezarhivarea arhivelor - zip
+
+``` bash
+student@uso:~/archive$ rm inregistrare_lab03.mp4
+student@uso:~/archive$ ls -lh
+total 48M
+drwxr-xr-x 4 student student 4.0K oct 11 18:05 dezarhivare
+-rw-rw-r-- 1 student student  14M oct 13 23:39 inregistrari.tar
+-rw-r--r-- 1 student student 6,8M oct 11 02:23 inregistrare_lab01.mp4
+-rw-r--r-- 1 student student 2,5M oct 11 02:23 inregistrare_lab02.mp4
+-rw-r--r-- 1 student student 391K oct 11 02:23 inregistrare_lab04.mp4
+-rw-rw-r-- 1 student student  14M oct 14 00:11 inregistrari.zip
+student@uso:~/archive$ unzip inregistrari.zip inregistrare_lab03.mp4
+Archive:  inregistrari.zip
+inflating: inregistrare_lab03.mp4
+student@uso:~/archive$ ls -lh
+drwxr-xr-x 4 student student 4.0K oct 11 18:05 dezarhivare
+-rw-rw-r-- 1 student student  14M oct 13 23:39 inregistrari.tar
+-rw-r--r-- 1 student student 6,8M oct 11 02:23 inregistrare_lab01.mp4
+-rw-r--r-- 1 student student 2,5M oct 11 02:23 inregistrare_lab02.mp4
+-rw-r--r-- 1 student student 4,8M oct 11 02:23 inregistrare_lab03.mp4
+-rw-r--r-- 1 student student 391K oct 11 02:23 inregistrare_lab04.mp4
+-rw-rw-r-- 1 student student  14M oct 14 00:11 inregistrari.zip
+```
+
+#### Adăugarea de noi fișiere la arhive - zip
+
+``` bash
+student@uso:~/archive$ zip -u inregistrari.zip inregistrare_lab04.mp4
+  adding: inregistrare_lab04.mp4 (deflated 0%)
+student@uso:~/archive$ zip -sf inregistrari.zip
+Archive contains:
+  inregistrare_lab01.mp4
+  inregistrare_lab02.mp4
+  inregistrare_lab03.mp4
+  inregistrare_lab04.mp4
+Total 4 entries (16777216 bytes)
+```
