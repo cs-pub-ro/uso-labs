@@ -3,3 +3,53 @@ sidebar_position: 3
 sidebar_label: "Laboratorul 3: Lucrul cu fișiere (partea a 2a)"
 title: "Laboratorul 3: Lucrul cu fișiere (partea a 2a)"
 ---
+
+import IoRedirection from '../common/files/io_redirection.mdx'
+import Archive from '../common/files/archive.mdx'
+import FileSystem from '../common/files/file_system.mdx'
+import Cheatsheet from '../common/files/cheatsheet_redirection_archive.mdx'
+
+## Pregătirea laboratorului
+
+Pentru pregătirea suportului de laborator, rulați următoarele comenzi în ordine:
+
+``` bash
+student@uso:~$ cd ~
+student@uso:~$ wget http://elf.cs.pub.ro/uso/res/labs/lab3/lab3.zip
+--2021-10-18 22:44:01--  http://elf.cs.pub.ro/uso/res/labs/lab3/lab3.zip
+Resolving elf.cs.pub.ro (elf.cs.pub.ro)... 141.85.227.116
+Connecting to elf.cs.pub.ro (elf.cs.pub.ro)|141.85.227.116|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 14908126 (14M) [application/zip]
+Saving to: ‘lab3.zip’
+ 
+lab3.zip                                           100%[===============================================================================================================>]  14,22M  7,61MB/s    in 1,9s    
+ 
+2021-10-18 22:44:03 (7,61 MB/s) - ‘lab3.zip’ saved [14908126/14908126]
+ 
+student@uso:~$ unzip lab3.zip
+Archive:  lab3.zip
+   creating: archive/
+  inflating: archive/inregistrare_lab03.mp4  
+  inflating: archive/inregistrare_lab01.mp4  
+  inflating: archive/inregistrare_lab04.mp4  
+  inflating: archive/inregistrare_lab02.mp4  
+   creating: redirection/
+  inflating: redirection/RL          
+  inflating: redirection/USO         
+  inflating: redirection/EGC   
+ 
+# Când vi se cere parola pentru student, scrieți: student și apăsați enter.
+# Nu va apărea pe ecran nimic în timp ce tastați.
+ 
+student@uso:~$ sudo apt update
+[sudo] password for student:
+```
+
+<IoRedirection/>
+
+<Archive/>
+
+<FileSystem/>
+
+<Cheatsheet/>

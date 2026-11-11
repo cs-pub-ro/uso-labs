@@ -1,4 +1,4 @@
-# Arhive
+## Arhive
 
 Sunt situații în care vrem să trimitem/stocăm o ierarhie de fișiere.
 Pentru a ușura acest lucru, folosim arhive.
@@ -16,9 +16,9 @@ Rezultatul este similar: agregarea într-un singur fișier.
 În acest capitol vom folosi arhive de tipul *zip* și *tar*.
 Vom folosi *tar* pentru arhivare și *zip* pentru arhivare comprimată.
 
-## Arhivare - **tar**
+### Arhivare - `tar`
 
-### Crearea arhivelor
+#### Crearea arhivelor
 
 Arhivele sunt utile atunci când vrem să trimitem pe mail sau să încărcăm pe un site o ierarhie de fișiere și directoare.
 Pe scurt, atunci când vrem să agregăm totul într-un singur fișier. Acesta poate fi transmis foarte ușor și ulterior dezarhivat.
@@ -73,12 +73,12 @@ Fișierul `înregistrări.tar` este o arhivă de tip *tar*.
     - Verificați corectitudinea operațiilor.
     - Afișați dimensiunea arhivei.
     - Verificați că fișierul nou creat este o arhivă *tar*.
-2.  - Creați o arhivă a fișierelor din interiorul directorului `/usr/include/net/` cu numele `net.tar`.
+2.  - Creați o arhivă a fișierelor din interiorul directorului `/usr/include/net/` cu numele `net.tar`. **HINT:** *Folosiți `sudo`!*
     - Verificați corectitudinea operației.
     - Afișați dimensiunea arhivei.
     - Verificați că fișierul nou creat este o arhivă *tar*.
 
-### Afișarea conținutului arhivelor
+#### Afișarea conținutului arhivelor
 
 Pentru ușurința de stocare și transmitere, un coleg ne-a transmis toate înregistrările laboratoarelor filmate de el, într-o arhivă.
 Noi vrem să vedem conținutul acestei arhive.
@@ -100,7 +100,7 @@ Folosim opțiunea `f` pentru a specifica arhiva pe care vrem să o afișăm.
 
 - Afișați conținutul arhivelor create la exercițiul anterior `personal_data.tar` și `net.tar` **fără** dezarhivare.
 
-### Extragerea arhivelor
+#### Extragerea fișierelor din arhive
 
 Dezarhivarea este procesul opus al arhivării.
 Avem deja o arhivă de tip *tar* și vrem să extragem ierarhia din ea.
@@ -132,13 +132,13 @@ total 19M
 -rw-r--r-- 1 student student 9.1M Aug 19 12:04 înregistrări.tar
 ```
 
-Pentru dezarhivare am folosit următorii parametrii ai utiliitarului `tar`:
+Pentru dezarhivare am folosit următorii parametri ai utilitarului `tar`:
 
 - `x`: extrage arhiva (*extract*);
-- `v:` afișează detalii despre operație (*verbose*);
+- `v`: afișează detalii despre operație (*verbose*);
 - `f`: folosește arhiva dată ca parametru (în cazul de față, numele ei).
 
-### Extragerea arhivelor la o cale specifică
+#### Extragerea arhivelor la o cale specifică
 
 Avem următorul scenariu: am descărcat scheletul de temă de la facultate, acesta se află în directorul `~/Downloads`, iar noi vrem să îl dezarhivăm în directorul `~/facultate/uso/teme/`.
 
@@ -206,7 +206,7 @@ drwxr-xr-x 3 student student    4096 Aug 19 12:15 dezarhivare
 Am extras doar fișierul `înregistrare_lab01.mov` din arhiva `înregistrări.tar`.
 
 :::note
-Obervăm cum după comenzile de ștergere și dezarhivare am verificat corectitudinea operațiilor.
+Observăm cum după comenzile de ștergere și dezarhivare am verificat corectitudinea operațiilor.
 Este extrem de util acest lucru.
 
 :::
@@ -222,7 +222,7 @@ Am pus ca ultim parametru numele fișierului (`înregistrare_lab01.mov`).
 2.  - Extrageți arhiva `net.tar` în directorul `/tmp/`.
     - Verificați corectitudinea operațiilor afișând conținutul arhivei și directorului după dezarhivare.
 
-### Adăugarea de noi fișiere la arhive
+#### Adăugarea de noi fișiere la arhive
 
 Adăugăm un nou fișier la arhivă folosind comanda `tar`, astfel:
 
@@ -241,7 +241,7 @@ student@uso:~$ tar tf înregistrări.tar
 ```
 
 În primă fază am verificat că `înregistrare_lab04.mov` nu există în arhivă.
-În continuare am adăugat `înregistrare_lab04.mov` la arhivă folosind optiunea `r`.
+În continuare am adăugat `înregistrare_lab04.mov` la arhivă folosind opțiunea `r`.
 
 :::note
 Observăm cum după comanda de adăugare de fișier la arhivă, am verificat corectitudinea operației.
@@ -254,7 +254,7 @@ Observăm cum după comanda de adăugare de fișier la arhivă, am verificat cor
 - Adăugați textul *Make UPB Great Again!* în interiorul fișierului; verificați operația afișând conținutul fișierului;
 - Adăugați-l la arhiva `personal_data.tar`, ca în exemplul de mai sus; verificați operația afișând conținutul arhivei.
 
-### Comprimare `tar.gz`
+#### Comprimare `tar.gz`
 
 Am văzut mai sus că pentru a pune o ierarhie de fișiere într-unul singur, folosim `tar`.
 Pentru a reduce dimensiunea arhivei folosim utilitarul `tar` astfel:
@@ -269,7 +269,7 @@ student@uso:~$ ls -l
 -rw-r--r-- 1 student student   9439133 Oct 12 18:55 inregistrari.tar.gz
 ```
 
-Am folosit următorii parametrii:
+Am folosit următorii parametri:
 
 - `c`: creează arhiva;
 - `z`: pentru arhivare gzip;
@@ -278,15 +278,15 @@ Am folosit următorii parametrii:
 
 Observăm că dimensiunea arhivei comprimate `inregistrari.tar.gz` a scăzut față de arhiva originală `inregistrari.tar`.
 
-## Comprimare - `zip`
+### Comprimare - `zip`
 
 Acțiunea de comprimare este compusă din doi pași: **arhivare** și **reducerea dimensiunii** (*comprimare*).
 Utilitarul `zip` face ambii pași simultan.
 
 În continuare folosim utilitarul `zip` pentru arhivare și comprimare.
-Arhivarea este similară cu cea prezentată în subsecțiunea `arhiva_tar`, unde am folosit utilitarul `tar`.
+Arhivarea este similară cu cea prezentată în subsecțiunea [Arhivare - tar](#arhivare---tar), unde am folosit utilitarul `tar`.
 
-### Crearea arhivelor
+#### Crearea arhivelor
 
 Putem crea o arhivă folosind utilitarul `zip`, astfel:
 
@@ -317,8 +317,8 @@ Exemplu de informații stocate: dimensiune, data creare, permisiuni, utilizatoru
 Observăm că dimensiunea arhivei `tar` este aceeași cu aceea a arhivei `zip`.
 De fapt, dacă ne uităm în detaliu, vom vedea că nu este așa.
 
-Mai sus vedeam afișarea dimensiuni în format *human-readable* adică în *MegaBytes* (MegaOcteți).
-Afișăm dimesniunea în octeți:
+Mai sus afișarea dimensiunii este în format *human-readable* adică în *MegaBytes* (MegaOcteți).
+Afișăm dimensiunea în octeți:
 
 ``` bash
 student@uso:~$ ls -l
@@ -354,9 +354,9 @@ Pentru o mai bună înțelegere a comenzii de creare a arhivelor, inspectați ma
     - Creați o arhivă de tipul `zip` care să conțină cele trei fișiere și care să aibă numele `personal_data.zip`; verificați conținutul arhivei.
     - Afișați dimensiunea arhivei.
 2.  - Creați o arhivă de tipul `zip` a fișierelor din interiorul directorului `/usr/include/net/` cu numele `net.zip`.
-    - Comparați dimensiunea arhivei `zip` cu cea `tar` de la exercițiul precendent.
+    - Comparați dimensiunea arhivei `zip` cu cea `tar` de la exercițiul precedent.
 
-### Afișarea conținutului arhivelor
+#### Afișarea conținutului arhivelor
 
 Putem vizualiza conținutul arhivei astfel:
 
@@ -372,10 +372,10 @@ Pentru a vizualiza arhiva **fără** dezarhivare folosim opțiunea `-sf` (prescu
 
 #### Exerciții - afișarea conținutului unei arhivei
 
-- Acest exercițiu folosește arhiva creată la exercițiu anterior.
+- Acest exercițiu folosește arhiva creată la exercițiul anterior.
 - Afișați conținutul arhivelor `personal_data.zip` și `net.zip` **fără** dezarhivare.
 
-### Dezarhivarea arhivelor
+#### Dezarhivarea arhivelor
 
 În momentul în care dezarhivăm un fișier de tip *zip*, fișierele din cadrul arhivei vor fi create în directorul curent (dacă nu se specifică altfel).
 Cu alte cuvinte, ierarhia de fișiere pe care am arhivat-o se păstrează, iar în momentul dezarhivării aceasta va arăta la fel ca înainte de arhivare.
@@ -502,7 +502,7 @@ drwxr-xr-x 4 student student 4.0K Aug 19 18:05 dezarhivare
 ```
 
 :::note
-Obervăm cum după comenzile de ștergere și dezarhivare s-a verificat corectitudinea operațiilor.
+Observăm cum după comenzile de ștergere și dezarhivare s-a verificat corectitudinea operațiilor.
 
 :::
 
@@ -510,13 +510,13 @@ Puteți observa că am extras un singur fișier punând ca ultim parametru numel
 
 #### Exerciții - dezarhivarea unei arhive
 
-1.  - Creați un director cu numele `zip` în directorului `dezarhivare` ca în ierarhia de mai sus; verificați crearea afișând conținutul directorului `dezarhivare`.
+1.  - Creați un director cu numele `zip` în directorul `dezarhivare` ca în ierarhia de mai sus; verificați crearea afișând conținutul directorului `dezarhivare`.
     - Dezarhivați arhiva `personal_data.zip` în directorul `dezarhivare/zip/`; verificați operația de dezarhivare afișând conținutul directorului.
     - Dezarhivați **doar** fișierul oraș natal în directorul curent; verificați operația afișând conținutul directorului curent.
 2.  - Creați directorul `my_net` în directorul `dezarhivare` ca în ierarhia de mai sus; verificați crearea afișând conținutul directorului `dezarhivare`.
     - Dezarhivați arhiva `net.zip` în directorul creat anterior `my_net`; verificați operația de dezarhivare afișând conținutul directorului.
 
-### Adăugarea de noi fișiere la arhive
+#### Adăugarea de noi fișiere la arhive
 
 Putem adăuga un nou fișier la arhivă folosind comanda `zip -u`:
 
@@ -546,5 +546,10 @@ Observăm cum după comanda de adăugare de fișier la arhivă, am verificat cor
 - Adăugați fișierul `UPB` în arhivă;
 - Verificați adăugarea fișierului la arhivă fără dezarhivare;
 - Dezarhivați arhiva în directorul `personal_data_zip`.
+
+:::note
+Este bine de știut că în urma realizării unei operații trebuie verificată executarea acesteia.
+
+:::
 
 [^1]: Metadatele sunt modalitatea sistemului de fișiere de a reține informații despre acesta: data creării, dimensiunea, utilizatorul ce deține fișierul, etc.
