@@ -29,11 +29,12 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: lts/*
-          cache: yarn
-          cache-dependency-path: website/yarn.lock
+
+      - name: Enable Corepack (yarn berry v2)
+        run: npm install --global corepack && corepack enable
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Build site
         run: yarn build
