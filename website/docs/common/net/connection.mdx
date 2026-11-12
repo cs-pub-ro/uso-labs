@@ -1,19 +1,22 @@
-# Conectarea la rețea și la Internet
+## Conectarea la rețea și la Internet
 
 :::note
-Pentru a parcurge această secțiune este recomandat să descărcați ultima
-versiune a respository-ului laboratorului. Pentru a descărca ultima versiune
-a repository-ului rulați comanda `git pull` în directorul
-`~/uso-lab/labs/03-user/lab-containers/`.
+Dacă nu aveți disponibil directorul `uso-labs.git` îl puteți descărca rulând comanda de mai jos:
 
-Infrastructura laboratorului este bazată pe containere docker ale căror
-imagini vor fi generate pe propriul calculator. Dacă nu aveți deja instalat
-Docker Engine pe sistem, scriptul
-`~/uso-lab/labs/03-user/lab-containers/lab_prepare.sh` vă va instala aplicația.
+```
+git clone https://github.com/systems-cs-pub-ro/uso-lab
+```
 
-După ce ați terminat de lucrat vă recomandăm să opriți containerele rulând
-comanda `./lab-prepare.sh delete` în directorul
-`~/uso-lab/labs/03-user/lab-containers/`.
+:::
+
+:::note
+Infrastructura laboratorului este bazată pe containere Docker ale căror imagini
+vor fi generate pe propriul calculator. Dacă nu aveți deja instalat Docker Engine
+pe sistem, mergeți în directorul `~/uso-lab.git/labs/03-user/lab-container/` și
+rulați comanda `./lab_prepare.sh install fizic`
+
+După ce ați terminat de lucrat, vă recomandăm să opriți containerele rulând comanda
+`./lab_prepare.sh delete` în directorul `~/uso-lab/labs/03-user/lab-container/`
 
 :::
 
@@ -22,10 +25,10 @@ conectivitate la rețea sau în alte cuvinte, problema "nu-mi merge
 Internetul". Pentru a face asta este necesar să parcurgem toate nivelurile de
 rețea prin care trec datele pentru a fi trimise în Internet.
 
-In continuare vom prezenta pașii pe care îi urmăm ca să verificăm funcționalitatea
+În continuare vom prezenta pașii pe care îi urmăm ca să verificăm funcționalitatea
 conexiunii la Internet și cum putem să facem niște configurații sumare.
 
-## Interacţiunea cu nivelul fizic
+### Interacţiunea cu nivelul fizic
 
 Primul nivel cu care interacționăm este nivelul fizic, care are rolul de a
 trimite date sub formă de semnale prin mediul de transmisie. De exemplu,
@@ -53,13 +56,12 @@ Dacă acestea nu sunt aprinse, atunci nu vom avea conectivitate la rețea.
 ![Conexiunea la o rețea](_assets/gifs/nic.gif)
 </figure>
 
-### Investigarea nivelului fizic al rețelei
+#### Investigarea nivelului fizic al rețelei
 
 :::note
-Pentru rularea acestui demo rulați în directorul
-`~/uso.git/labs/03-user/lab-containers/` comanda `./lab_prepare.sh install fizic`.
-Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
-comanda `./lab_prepare.sh connect fizic`
+Pentru rularea acestui demo, mergeți în directorul `~/uso-lab/labs/03-user/lab-container/`
+și rulați comanda `./lab_prepare.sh install fizic` dacă nu ați făcut-o deja. Pentru a ne
+conecta la infrastructura pentru această secțiune vom folosi comanda `./lab_prepare.sh connect fizic`
 
 :::
 
@@ -80,11 +82,11 @@ activă folosind comanda următoare:
 root@fizic:~# ip link show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-99: eth0@if100: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
+2: eth0@if8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
     link/ether 02:42:0a:0a:0a:01 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-113: eth1@if114: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default
+3: eth1@if9: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default
     link/ether 02:42:0b:0b:0b:01 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-115: eth2@if116: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default
+4: eth2@if10: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default
     link/ether 02:42:0c:0c:0c:01 brd ff:ff:ff:ff:ff:ff link-netnsid 0
 ```
 
@@ -98,8 +100,8 @@ fie `UP`, `DOWN` sau `UNKNOWN`.
 Formatul pentru numele interfețelor diferă de la o distribuție la alta. În
 cadrul infrastructurii de laborator folosim containere de tip Docker în
 cadrul cărora numele interfețelor este de forma `ethX`, unde X este un
-număr. În funcție de distribuția pe care rulăm numele interfețelor poate să
-se fie într-un format diferit.
+număr. În funcție de distribuția pe care rulăm, numele interfețelor pot să
+fie într-un format diferit.
 
 :::
 
@@ -121,21 +123,27 @@ folosind o metodă de verificare. În cazul de față vom folosi tot comanda `ip
 root@fizic:~# ip link show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-99: eth0@if100: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
+2: eth0@if8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
     link/ether 02:42:0a:0a:0a:01 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-113: eth1@if114: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
+3: eth1@if9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
     link/ether 02:42:0b:0b:0b:01 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-115: eth2@if116: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default
+4: eth2@if10: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default
     link/ether 02:42:0c:0c:0c:01 brd ff:ff:ff:ff:ff:ff link-netnsid 0
 ```
 
-#### Exercițiu - Pornirea unei interfețe
+##### Exercițiu - Pornirea unei interfețe
 
 Porniți interfața de rețea `eth2`.
 
-## Configurarea nivelului Internet
+### Configurarea nivelului Internet
 
-### Identificarea adresei de Internet
+#### Identificarea adresei de Internet
+
+ Pentru a ne deconecta de la infrastructura anterioară folosim comanda `exit`.
+ Observăm faptul că s-a schimbat și promptul din terminal, semnificând faptul
+ că ne-am întors exact unde eram înainte de a ne conecta la infrastructura primei secțiuni.
+
+În această secțiune vom descoperi configurările pe care le putem realiza la nivelul Internet. 
 
 :::note
 Pentru rularea acestui demo rulați în directorul
@@ -150,14 +158,14 @@ rețele, care se extinde pe toată Planeta. Datele trimise în Internet trebuie
 redirecționate de la un nod la altul, așa incât să ajungă rapid de la o
 stație la altă stație.
 
-![LAN](_assets/img/LAN.png)
+![LAN (Local Area Network)](_assets/img/LAN.png)
 
 Deci, pentru ca o stație să comunice cu o altă stație din Internet, trebuie
-ca cele doua stații să fie conectate la Internet.
+ca cele două stații să fie conectate la Internet.
 
 :::note
-Mai exact, stațiile trebuie sa aiba un punct de ieșire din rețeaua locală, conectat la
-restul rețelelor din Internet, care se numește *default gateway* și de care vom menționa
+Mai exact, stațiile trebuie să aibă un punct de ieșire din rețeaua locală, conectat la
+restul rețelelor din Internet, care se numește *default gateway* și de care vom aminti
 mai târziu.
 
 :::
@@ -179,25 +187,29 @@ root@internet:~# ip address show
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-195: eth0@if196: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
-    link/ether 02:42:0a:0a:0a:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0@if14: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 6e:13:48:1b:b5:9b brd ff:ff:ff:ff:ff:ff link-netnsid 0
     inet 10.10.10.2/24 brd 10.10.10.255 scope global eth0
        valid_lft forever preferred_lft forever
-199: eth1@if200: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN group default 
-    link/ether 02:42:0b:0b:0b:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-203: eth2@if204: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN group default 
-    link/ether 02:42:0c:0c:0c:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+3: eth1@if15: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether ca:81:5e:47:25:ba brd ff:ff:ff:ff:ff:ff link-netnsid 0
+4: eth2@if16: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether d2:cb:a4:e0:f2:2f brd ff:ff:ff:ff:ff:ff link-netnsid 0
 ```
 
 Există două tipuri de adrese IP (IPv4 și IPv6), dar în cadrul acestui laborator
 vom lucra numai cu adrese de tip IPv4. Adresele IP ale interfețelor sunt scrise
 pe liniile care conțin `inet`. Adresele IPv4 sunt de forma `A.B.C.D`, unde
-A, B, C și D sunt numere cu valori între 1 si 255.
+A, B, C și D sunt numere cu valori între 0 și 255.
 
-Pentru detalii despre adresele de tip IPv6 folosiți urmăriți această[^1]
-explicație.
+<details>
+Pentru mai multe detalii despre adresele de tip IPv6, urmăriți
+[această explicație](https://en.wikipedia.org/wiki/IP_address#IPv6_addresses).
+</details>
 
-### Configurarea unei adrese IP
+#### Configurarea unei adrese IP
 
 Există două metode pentru configurarea unei adrese IP pe o interfață:
 
@@ -212,30 +224,27 @@ Vom insista pe configurarea dinamică, deoarece este mai simplă. În plus, nu a
 cum să aflăm informațiile despre rețea înainte de a configura interfața de
 rețea.
 
-#### Recapitulare - Pornirea interfețelor de rețea
+##### Recapitulare - Pornirea interfețelor de rețea
 
 Faceți modificările necesare astfel încât interfața `eth1` să fie în starea
 `UP`.
 
-#### Configurarea IP-ului în mod dinamic
+##### Configurarea IP-ului în mod dinamic
 
 Pentru a obține o adresă IP în mod dinamic pe o interfață
 folosim comanda `dhclient`:
 
 ```
 root@internet:~# dhclient eth1
-mv: cannot move '/etc/resolv.conf.dhclient-new.35' to '/etc/resolv.conf': Device or resource busy
+mv: cannot move '/etc/resolv.conf.dhclient-new.28' to '/etc/resolv.conf': Device or resource busy
 ```
 
-<div className="admonition">
+:::note
+Linia `mv: cannot move '/etc/resolv.conf.dhclient-new.28' to '/etc/resolv.conf': Device or resource busy`
+apare mereu în containerele Docker atunci când încercăm să obținem o adresă IP
+folosind comanda `dhclient`. Nu este o problemă dacă aceasta apare.
 
-Observație:
-
-Linia `mv: cannot move '/etc/resolv.conf.dhclient-new.35' to '/etc/resolv.conf': Device or resource busy` apare mereu în containerele
-docker atunci când încercăm să obținem o adresă IP folosind comanda
-`dhclient`. Nu este o problemă dacă aceasta apare.
-
-</div>
+:::
 
 Mai sus am rulat comanda pentru a obține o adresă IP pentru interfața `eth1`.
 
@@ -245,49 +254,48 @@ sunt folosite pe rețea și care poate să ofere adrese IP calculatoarelor care 
 cereri pe rețea. `dhclient` face o cerere de rezervare a unei adrese IP către
 serverul DHCP de pe rețea.
 
-#### Recapitulare - Afișarea adreselor IP configurate pe interfețele de rețea
+##### Recapitulare - Afișarea adreselor IP configurate pe interfețele de rețea
 
 Afișați adresele IP de pe toate interfețele.
 
 Observați că am obținut o adresă IP pe interfața `eth1`.
 
-#### Exercițiu - Configurarea dinamică a unei adrese IP
+##### Exercițiu - Configurarea dinamică a unei adrese IP
 
 Configurați adresa IP pe interfața `eth2`.
 
-#### Ștergerea unei configurații de rețea de pe o interfață
+##### Ștergerea unei configurații de rețea de pe o interfață
 
 Pentru șterge o adresă IP de pe o interfața folosim comanda `ip address flush` în felul următor:
 
 ```
 root@internet:~# ip address flush eth1
 root@internet:~# ip address show eth1
-199: eth1@if200: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
-    link/ether 02:42:0b:0b:0b:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+3: eth1@if15: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether ca:81:5e:47:25:ba brd ff:ff:ff:ff:ff:ff link-netnsid 0
 ```
 
-<div className="admonition">
-
-Observație:
-
+:::note
 Putem să afișăm configurația unei singure interfețe de rețea
 folosind numele interfeței ca parametru pentru comanda `ip address show`
 
-</div>
+:::
 
-#### Exercițiu - Ștergerea configurației de rețea
+##### Exercițiu - Ștergerea configurației de rețea
 
 Ștergeți configurația de rețea de pe interfețele `eth1` și `eth2`.
 
-### Verificarea conectivității la o altă stație
+#### Verificarea conectivității la o altă stație
 
 :::note
 Pentru rularea acestui demo, comenzile vor fi rulate în cadrul mașinii
-virtuale USO. Pentru a verifica conexiunea dintre două stații folosim
-comanda ping. Această comandă trimite mesaje către o stație și așteaptă un
-răspuns de la ea.
+virtuale USO, nu în infrastructura cu care am interacționat mai sus.
+Asigurați-vă că ați dat comanda `exit` înainte de a continua. 
 
 :::
+
+Pentru a verifica conexiunea dintre două stații folosim comanda `ping`.
+Această comandă trimite mesaje către o stație și așteaptă un răspuns de la ea. 
 
 Atunci când testăm conexiunea la internet, vrem să verificăm câteva aspecte,
 odată ce am obținut o adresă IP de la serverul DHCP:
@@ -333,9 +341,8 @@ From 10.10.10.3 icmp_seq=4 Destination Host Unreachable
 Pentru verificarea conectivității în interiorul rețelei trebuie să verificăm că
 putem să trimitem mesaje folosind utilitarul `ping` unui calculator din rețea.
 
-În mod implicit comanda `ping` trimite mesaje de verificare a conexiunii la
-infinit. De data aceasta, în loc să rulăm comanda `ping` folosind opțiunea
-`-c 4`, am oprit rularea comenzii folosind combinația de taste `Ctrl+c`.
+De data aceasta, în loc să rulăm comanda `ping` folosind opțiunea
+`-c 4`, am oprit rularea comenzii folosind combinația de taste `Ctrl+C`.
 
 O țintă bună de testare pentru trimiterea mesajelor în rețea este (default)
 gateway-ul. Un gateway este un dispozitiv de rețea care se ocupă de
@@ -348,25 +355,23 @@ Pentru a identifica gateway-ul, folosim comanda `ip route show` în felul următ
 
 ```
 student@uso:~$ ip route show
-default via 192.168.40.2 dev eth0 proto dhcp src 192.168.40.128 metric 100 
+default via 10.0.2.2 dev enp0s3 proto dhcp src 10.0.2.15 metric 100 
+10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100 
 10.10.10.0/24 dev br1 proto kernel scope link src 10.10.10.253 
 11.11.11.0/24 dev br2 proto kernel scope link src 11.11.11.253 
 12.12.12.0/24 dev br3 proto kernel scope link src 12.12.12.253 
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown 
-192.168.40.0/24 dev eth0 proto kernel scope link src 192.168.40.128 metric 100 
-192.168.40.2 dev eth0 proto dhcp scope link src 192.168.40.128 metric 100 
-192.168.202.0/24 dev eth1 proto kernel scope link src 192.168.202.128 metric 100 
-192.168.202.1 dev eth1 proto dhcp scope link src 192.168.202.128 metric 100
+192.168.56.0/24 dev enp0s8 proto kernel scope link src 192.168.56.101 metric 101
 ```
 
-Observăm că adresa IP a default gateway-ului este `192.168.40.2`, deoarece
+Observăm că adresa IP a default gateway-ului este `10.0.2.2`, deoarece
 acesta se află pe linia care conține șirul de caractere `default`.
 
-#### Recapitulare - Afișarea adresei IP configurată pe o interfață
+##### Recapitulare - Afișarea adresei IP configurată pe o interfață
 
 Aflați adresa de rețea de pe interfața `eth1`.
 
-#### Exercițiu - Verificarea conectivității cu gateway-ul
+##### Exercițiu - Verificarea conectivității cu gateway-ul
 
 Verificați conexiunea cu gateway-ul folosind comanda `ping`.
 
@@ -374,12 +379,12 @@ Pentru verificarea conexiunii la Internet este bine să verificăm cu o adresă
 consacrată, în care avem încredere că nu va avea probleme tehnice. Un astfel de
 exemplu este serverul oferit de Cloudflare de la adresa IP 1.1.1.1.
 
-#### Exercițiu - Verificarea conectivității la Internet
+##### Exercițiu - Verificarea conectivității la Internet
 
 Verificați conexiunea la serverul `8.8.8.8` oferit de Google folosind comanda
 `ping`.
 
-### Investigarea serviciului DNS
+#### Investigarea serviciului DNS
 
 După cum ați observat, până acum am lucrat numai cu adrese IP, dar noi lucrăm
 în viața de zi cu zi cu numele site-urilor, deoarece ne este mai ușor să
@@ -394,7 +399,7 @@ Ne dorim să avem un serviciu DNS funcțional în permanență pe sistemul pe ca
 
 În mod implicit serviciul DNS este configurat prin DHCP.
 
-#### Identificarea serviciului DNS folosit implicit
+##### Identificarea serviciului DNS folosit implicit
 
 Serviciul DNS poate fi configurat în multe moduri care depind de platforma pe
 care o folosim. Pentru mașina virtuala folosită de noi ne putem folosi de
@@ -404,28 +409,31 @@ caractere `DNS`.
 
 ```
 student@uso:~$ nmcli dev show | grep DNS
-IP4.DNS[1]:                             10.0.2.3
+IP4.DNS[1]:                             100.100.1.1
+IP4.DNS[2]:                             100.100.0.1
+IP4.DNS[3]:                             0.100.0.1
+IP6.DNS[1]:                             fd17:625c:f037:2::3
 ```
 
-Exista o posibilitate ca pe noua masina virtuala de laborator sa se gaseasca
+Există o posibilitate ca pe noua mașină virtuală de laborator să se găsească
 serverul DNS curent cu comanda:
 
 ```
 student@uso:~$ resolvectl status | grep 'Current DNS'
-Current DNS Server: 1.1.1.1
+Current DNS Server: 100.100.1.1
 ```
 
 Conform cu outputul comenzii, serverul DNS către care sunt trimise comenzi este
-1.1.1.1.
+100.100.1.1, care este chiar primul din lista afișată folosind comanda `nmcli dev show`. 
 
-#### Efectuarea cererilor DNS
+##### Efectuarea cererilor DNS
 
 Pentru a verifica funcționalitatea serviciului DNS, putem să facem o cerere DNS
 folosind comanda `host` în felul următor:
 
 ```
 student@uso:~$ host elf.cs.pub.ro
-elf.cs.pub.ro has address 141.85.227.116
+elf.cs.pub.ro has address 141.85.224.110
 elf.cs.pub.ro mail is handled by 10 elf.cs.pub.ro.
 ```
 
@@ -435,7 +443,7 @@ caractere `address` se află adresa IPv4 asociată numelui. Observăm că server
 `elf.cs.pub.ro` găzduiește și un server de mail. Acest lucru este evidențiat
 de linia care conține parametrul `mail`.
 
-#### Exemplu - Efectuarea cererilor DNS în mod implicit
+##### Exemplu - Efectuarea cererilor DNS în mod implicit
 
 Cererile DNS nu trebuie să fie făcute direct de noi atunci când încercăm să
 accesăm o resursă din Internet folosind un nume, deoarece aplicațiile fac cereri
@@ -443,34 +451,33 @@ accesăm o resursă din Internet folosind un nume, deoarece aplicațiile fac cer
 
 ```
 student@uso:~$ ping google.com
-PING google.com (216.58.214.238) 56(84) bytes of data.
-64 bytes from bud02s24-in-f14.1e100.net (216.58.214.238): icmp_seq=1 ttl=63 time=19.5 ms
-64 bytes from bud02s24-in-f14.1e100.net (216.58.214.238): icmp_seq=2 ttl=63 time=21.6 ms
-64 bytes from bud02s24-in-f14.1e100.net (216.58.214.238): icmp_seq=3 ttl=63 time=21.3 ms
-64 bytes from bud02s24-in-f14.1e100.net (216.58.214.238): icmp_seq=4 ttl=63 time=19.4 ms
+PING google.com (142.251.20.102) 56(84) bytes of data.
+64 bytes from bx-in-f102.1e100.net (142.251.20.102): icmp_seq=1 ttl=113 time=32.2 ms
+64 bytes from bx-in-f102.1e100.net (142.251.20.102): icmp_seq=2 ttl=113 time=32.4 ms
+64 bytes from bx-in-f102.1e100.net (142.251.20.102): icmp_seq=3 ttl=113 time=32.6 ms
+64 bytes from bx-in-f102.1e100.net (142.251.20.102): icmp_seq=4 ttl=113 time=32.2 ms
 ^C
 --- google.com ping statistics ---
-4 packets transmitted, 4 received, 0% packet loss, time 3006ms
-rtt min/avg/max/mdev = 19.377/20.426/21.588/1.009 ms
+4 packets transmitted, 4 received, 0% packet loss, time 3022ms
+rtt min/avg/max/mdev = 32.186/32.352/32.598/0.159 ms
 ```
 
 Observați că utilitarul `ping` a aflat de unul singur care este adresa IP
 asociată numelui `google.com` și a făcut cererea în fundal și a verificat
-conexiunea cu serverul de la adresa IP `216.58.214.238`.
+conexiunea cu serverul de la adresa IP `142.251.20.102`.
 
-#### Reconfigurarea temporară a serviciului DNS
+##### Reconfigurarea temporară a serviciului DNS
 
 În caz că vrem să schimbăm temporar serverul DNS pe care îl folosim trebuie să
 modificăm fișierul `/etc/resolv.conf`. Acest fișier specifică DNS-ul care va
-fi folosit pentru cereri pe linia care conține cuvântul nameserver, după cum
+fi folosit pentru cereri pe linia care conține cuvântul `nameserver`, după cum
 puteți vedea mai jos.
 
 ```
 student@uso:~$ cat /etc/resolv.conf
-student@uso:~$ cat /etc/resolv.conf
 <...>
 nameserver 127.0.0.53
-options edns0
+options edns0 trust-ad
 ```
 
 Dacă schimbăm adresa serverului DNS cu altă adresă, cum ar fi cea a serverului DNS
@@ -479,34 +486,33 @@ pentru unele site-uri.
 
 ```
 student@uso:~$ host google.com
-google.com has address 172.217.20.14
-google.com has IPv6 address 2a00:1450:400d:803::200e
+google.com has address 142.251.110.138
 <...>
+google.com has IPv6 address 2a00:1450:4001:c15::65
+<...>
+student@uso:~$ echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
 student@uso:~$ cat /etc/resolv.conf
 nameserver 8.8.8.8
-options edns0
 student@uso:~$ host google.com
 google.com has address 172.217.18.78
+<...>
 google.com has IPv6 address 2a00:1450:400d:809::200e
 <...>
 ```
 
-<div className="admonition">
-
-Atenție:
-
+:::note
 Acestea sunt modificări temporare folosite pentru depanarea problemelor cu
 serviciul DNS.
 
-</div>
+:::
 
-#### Exercițiu - Schimbarea serverului DNS folosit
+##### Exercițiu - Schimbarea serverului DNS folosit
 
 - Realizați modificările necesare astfel încât cererile de tip DNS să fie trimise
   către serverul de DNS oferit de CloudFlare de la adresa `1.1.1.1`;
 - Afișați cu ce adresă răspunde noul server DNS pentru numele `google.com`.
 
-## Configurarea nivelului Transport
+### Configurarea nivelului Transport
 
 Atunci când folosim Internetul, ce facem de fapt este că ne conectăm la
 aplicații care rulează pe servere în Internet și noi pornim la rândul nostru
@@ -528,7 +534,7 @@ Există două tipuri de porturi care pot fi deschise, în funcție de protocolul
   trimită informație repede și care sunt rezistente la greșeli de trimitere ale
   pachetelor, cum ar fi aplicații de video streaming
 
-### Conectivitatea între aplicații de rețea folosind porturi
+#### Conectivitatea între aplicații de rețea folosind porturi
 
 Pentru afișarea porturilor deschise, pe care comunică o aplicație, folosim
 comanda `netstat`:
@@ -536,42 +542,43 @@ comanda `netstat`:
 ```
 student@uso:~$ sudo netstat -tlpn
 Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-tcp        0      0 127.0.0.1:5939          0.0.0.0:*               LISTEN      794/teamviewerd
-tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      530/systemd-resolve
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      693/sshd: /usr/sbin
-tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      572/cupsd
-tcp        0      0 127.0.0.1:6010          0.0.0.0:*               LISTEN      2630/sshd: student@
-tcp6       0      0 :::22                   :::*                    LISTEN      693/sshd: /usr/sbin
-tcp6       0      0 ::1:631                 :::*                    LISTEN      572/cupsd
-tcp6       0      0 ::1:6010                :::*                    LISTEN      2630/sshd: student@
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      527/systemd-resolve 
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1/systemd           
+tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      1810/master         
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      1598/mysqld         
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      1341/cupsd          
+tcp        0      0 127.0.0.1:33060         0.0.0.0:*               LISTEN      1598/mysqld         
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      527/systemd-resolve 
+tcp6       0      0 :::22                   :::*                    LISTEN      1/systemd           
+tcp6       0      0 :::25                   :::*                    LISTEN      1810/master         
+tcp6       0      0 ::1:631                 :::*                    LISTEN      1341/cupsd
 ```
 
 Pentru comanda de mai sus folosim următoarele opțiuni pentru filtrarea afișării:
 
 - `-t` afișează doar porturile TCP deschise
 - `-l` afișează doar porturile deschise care ascultă mesaje, nu și cele deschide pentru trimiterea mesajelor
-- `-p` afișează programul care a deschis portul[^2]
+- `-p` afișează programul care a deschis portul
 - `-n` afișează IP-ul pe care se ascultă după conexiuni
 
-#### Exercițiu - afișarea porturilor UDP deschise
+<details>
+Am folosit comanda `sudo` pentru a permite afișarea numelor programelor
+care ascultă pe portul deschis. Comanda `netstat` trebuie executată de un
+utilizatot privilegiat pentru această funcționalitate oferită de opțiunea `-p`.
+</details>
+
+##### Exercițiu - afișarea porturilor UDP deschise
 
 Afișați porturile UDP deschise pe stația pe care lucrați.
 
-<div className="hint">
-
-<div className="title">
-
-Hint
-
-</div>
-
+:::tip
 Având în vedere că opțiunea `-t` se referă la porturile TCP, care credeți
-ca va fi opțiunea necesară pentru identificarea porturilor UDP?
+că va fi opțiunea necesară pentru identificarea porturilor UDP?
 
-</div>
+:::
 
-### Conectarea TCP la o aplicație
+#### Conectarea TCP la o aplicație
 
 Vrem să observăm cum răspunde serverul HTTP la mesaje. De regulă un server HTTP răspunde printr-un mesaj în format HTML.
 
@@ -603,20 +610,9 @@ Am rulat comanda `nc` iar apoi am scris mesajul `test` și am apăsat tasta
 `Enter`. Mesajul primit este un răspuns de tipul `Bad Request`, deoarece
 am trimis un mesaj care nu este în formatul așteptat de serverul HTTP.
 
-#### Exercițiu - Testarea conexiunii la aplicații
+##### Exercițiu - Testarea conexiunii la aplicații
 
 - Trimiteți un mesaj către programul care ascultă pe portul 22 pe sistemul local
   (cu IP-ul `127.0.0.1`).
 - Trimiteți un mesaj către programul care ascultă pe portul 80 de la adresa
   identificată prin numele `elf.cs.pub.ro`.
-
-------------------------------------------------------------------------
-
-*Note de subsol*
-
-[^1]: [https://en.wikipedia.org/wiki/IP_address#IPv6_addresses](https://en.wikipedia.org/wiki/IP_address#IPv6_addresses)
-
-[^2]: Am folosit comanda `sudo` pentru a permite afișarea numelor programelor
-    care ascultă pe portul deschis. Comanda `netstat` trebuie executată de un
-    utilizatot privilegiat pentru această funcționalitate oferită de opțiunea
-    `-p`.

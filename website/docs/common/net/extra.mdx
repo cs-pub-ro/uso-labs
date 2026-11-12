@@ -1,11 +1,11 @@
-# Funcţionalităţi suplimentare de reţelistică
+## Funcţionalităţi suplimentare de reţelistică
 
 Aceste exerciții și tutoriale sunt menite să abordeze lucruri care nu sunt
 neapărat necesare pentru utilizarea și înțelegerea conceptelor din acest
 capitol, dar oferă bune practici și cunoștințe extra despre conectarea
 calculatorului la Internet și funcționarea serviciilor în Internet.
 
-## Folosirea proxy-urilor HTTP
+### Folosirea proxy-urilor HTTP
 
 Din unele motive, anumite site-uri nu permit accesul utilizatorilor din unele
 țări la ele. Acest lucru se întâmplă din motive logistice, legislative (cu
@@ -48,21 +48,18 @@ acestuia.
 
 ![Setările proxy-ului dorit](_assets/img/proxy_final.png)
 
-<div className="admonition">
-
-Atenție!
-
+:::note
 Selectăm opțiunea `Also use this proxy fot FTP and HTTPS` pentru a
 folosi proxy-ul pentru tot traficul.
 
-</div>
+:::
 
 Folosind site-ul [WhatsMyIP](https://whatsmyip.com/) vedem că adresa noastră nu
 mai apare ca cea inițială ci apare ca fiind dintr-o altă țară.
 
 ![WhatsMyIP în proxy](_assets/img/proxy_ip_us.png)
 
-## Evitarea paywall-urilor pe site-uri web
+### Evitarea paywall-urilor pe site-uri web
 
 Exista anumite site-uri, cum ar fi cele de știri, sau articole științifice care
 ne limitează accesul la un număr de articole pe zi. Funcționalitatea de blocare
@@ -86,9 +83,9 @@ descărcat și instalat în browser de [aici](https://github.com/iamadamdev/bypa
 Observăm cum după instalarea și activarea add-onului putem vedea conținutul
 paginii web nerestricționat.
 
-## Configurarea avansată pentru SSH
+### Configurarea avansată pentru SSH
 
-### Configurarea scurtăturilor SSH
+#### Configurarea scurtăturilor SSH
 
 :::note
 Pentru rularea acestui demo rulați în directorul
@@ -141,13 +138,13 @@ To restore this content, you can run the 'unminimize' command.
 root@ssh:~#
 ```
 
-#### Exercițiu - Configurarea scurtăturilor SSH
+##### Exercițiu - Configurarea scurtăturilor SSH
 
 Realizați configurările necesare astfel încât să va puteți conecta la stația
 `10.10.10.3` ca utilizatorul `student`, folosind opțiunea de X forwarding cu
 scurtătura `remote-stud`.
 
-### Configurarea accesului prin chei SSH
+#### Configurarea accesului prin chei SSH
 
 După cum am observat în secțiunea `network_services_remotecli_key`, ca să
 propagăm cheia publică pe o stație este necesar să cunoaștem parola utilizatorului
@@ -174,7 +171,7 @@ este suficient să scriem cheia SSH a utilizatorului pe o linie nouă a fișieru
 
 TODO infra
 
-## Gestiunea avansată a conexiunilor la rețea
+### Gestiunea avansată a conexiunilor la rețea
 
 Pentru a ușura configurarea conexiunii la Internet pentru utilizatorii Linux, a
 fost adoptat ca serviciu standard pentru gestionarea conexiunilor la Internet
@@ -190,7 +187,7 @@ gestionarea configurărilor.
 Din punctul de vedere al serviciului `NetworkManager`, există interfețe pe care
 acesta le configurează și există conexiuni care rețin configurările.
 
-### Configurarea conexiunilor folosind `nmcli`
+#### Configurarea conexiunilor folosind `nmcli`
 
 Pentru interfețe conectate prin cablu există doar o singură conexiune în mod
 normal.
@@ -226,7 +223,7 @@ nevoie să setăm parametrul `ignore-audo-dns` la valoarea `yes`. Atributul
 conexiunii. Pentru a schimba serverul DNS folosit am setat acest parametru la
 adresa IP `1.1.1.1`.
 
-#### Exercițiu - Setarea serverului DNS permanent folosind `nmcli`
+##### Exercițiu - Setarea serverului DNS permanent folosind `nmcli`
 
 Faceți modificările necesare folosind comanda `nmcli` astfel încât conexiunea
 `Wired Connection 1` să folosească serverul DNS `8.8.8.8`.
