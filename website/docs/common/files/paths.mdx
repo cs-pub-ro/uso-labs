@@ -20,7 +20,7 @@ De acolo cresc ramurile și frunzele sistemului de fișiere, formând ceea ce vo
 
 Putem vedea mai jos începutul ierarhiei din Linux:
 
-``` bash
+```bash
 student@uso:/$ tree -F -L 1 /
 /
 |-- bin/
@@ -45,93 +45,53 @@ student@uso:/$ tree -F -L 1 /
 |-- tmp/
 |-- usr/
 |-- var/
-``-- vmlinuz -> boot/vmlinuz-3.16.0-4-586
+`-- vmlinuz -> boot/vmlinuz-3.16.0-4-586
 ```
 
 Observăm `/` (directorul rădăcină) la începutul ierarhiei.
 Pe nivelul următor, adică ramuri / copii ai directorului rădăcină, sunt directoarele `bin`, `boot`, `dev` etc.
 
-Observăm conținutul directorul `home`:
+Observăm conținutul directorului `home`:
 
-``` bash
+```bash
 student@uso:/home$ tree -F -L 1 /home
 .
-|-- student/
-``-- test/
+`-- student/
 ```
 
-Există două directoare `student` și `test`.
+Există un singur director, numit `student`.
 
 :::note
 Observăm cum se schimbă promptul de terminal:
 
 - în primul exemplu `student@uso:/$ tree -F -L 1 /` eram în directorul `/`.
-- în al doilea exemplu `student@uso:/home$ tree -F -L 1` eram în directorul `/home`.
-
+- în al doilea exemplu `student@uso:/home$ tree -F -L 1 /home` eram în directorul `/home`.
 :::
 
-Avansăm în ierarhia de directoare către `student`, folosind comanda `cd`:
+Avansăm în ierarhia de directoare către `student`:
 
-``` bash
-student@uso:/home$ cd student
-student@uso:~$ pwd
-/home/student
-student@uso:~$ tree -F
+```bash
+student@uso:~$ tree -F -L 2
 .
-|-- comenzi/
-|   |-- executie/
-|   |-- ls/
-|   |   ``-- mkdir -> /home/student/comenzi/mkdir/
-|   |-- mkdir/
-|   |   |-- Avengers/
-|   |   |   |-- Captain\ America
-|   |   |   |-- Iron\ Man
-|   |   |   ``-- Thor
-|   |   ``-- GameOfThrones/
-|   |       |-- Arya\ Stark
-|   |       |-- Daenerys\ Targaryen
-|   |       |-- Jon\ Snow
-|   |       ``-- Tyrion\ Lannister
-|   |-- my_ls
-|   ``-- touch/
-|       |-- orase
-|       |-- orase\ romania
-|       ``-- romania
-|-- comenzi_redirectare
-|-- continut_materii
-|-- dezarhivare/
-|   |-- tar/
-|   ``-- zip/
-|       |-- fisier1
-|       |-- fisier2
-|       ``-- fisier3
-|-- ELTH/
-|-- erori_comenzi
-|-- fisier
-|-- fisier1
-|-- fisier2
-|-- fisier3
-|-- fisier4
-|-- fisiere.zip
-|-- inregistrari.tar
-|-- inregistrari.zip
-|-- materii
-|-- orase
-|-- scurtaturi.save
-|-- test.zip
-|-- USO/
-|-- usr_bin.tar
-``-- usr_bin.zip
+|-- Desktop/
+|-- Documents/
+|-- Downloads/
+|-- Music/
+|-- Pictures/
+|-- Public/
+|-- Templates/
+|-- Videos/
+|-- examples.desktop
+|-- uso-lab/
+|   |-- assignments/
+|   |-- labs/
+|   |-- lectures/
+|   |-- README.md
+`-- vm-actions-log.txt
 ```
 
-:::note
-Rezultatul comenzii `tree` de mai sus este specific fișierelor și directoarelor de pe sistemul meu.
-Voi veți avea alt rezultat, conform fișierelor și directoarelor de pe sistemul vostru.
-
-:::
-
 Directorul acesta este directorul *home* al utilizatorului *student*.
-În rezultatul comenzii `tree`, vedem întreaga ierarhie a directorului `/home/student`.
+În rezultatul comenzii `tree -F -L 2`, vedem primele două niveluri din ierarhia directorului `/home/student`.
 
 În continuare detaliem conceptul de cale.
 
@@ -143,13 +103,13 @@ Astfel, avem următoarele segmente: AB, BC, CD.
 
 Similar, pentru sistemul de fișiere, pornim de la directorul rădăcină (`/`) și coborâm pe arbore.
 
-Lista de directoare intermediare de la rădăcina ierarhiei de fișiere (`/`) până la un anumit fișier sau director se numeste **cale**.
+Lista de directoare intermediare de la rădăcina ierarhiei de fișiere (`/`) până la un anumit fișier sau director se numește **cale**.
 
-*Calea curentă* este pozitia noastră în sistemul de fișiere.
+*Calea curentă* este poziția noastră în sistemul de fișiere.
 
-În lina de comandă afișăm calea până la directorul în care ne aflăm (*calea curentă*) folosind comanda `pwd` (*print working directory*) :
+În linia de comandă afișăm calea până la directorul în care ne aflăm (*calea curentă*) folosind comanda `pwd` (*print working directory*):
 
-``` bash
+```bash
 student@uso:~$ pwd
 /home/student
 ```
@@ -158,7 +118,7 @@ Aceasta afișează poziția noastră în sistemul de fișiere.
 
 Ne mutăm la calea `/usr/bin` folosind comanda `cd` (*change directory*):
 
-``` bash
+```bash
 student@uso:~$ pwd
 /home/student
 student@uso:~$ cd /usr/bin/
@@ -168,6 +128,7 @@ student@uso:/usr/bin$ pwd
 
 Acum ne aflăm la poziția `/usr/bin` în sistemul de fișiere.
 Observăm cum calea curentă se schimbă atunci când schimbăm directorul în care ne aflăm.
+Vom vorbi despre comanda `cd` în laboratorul *Îmbunătățirea lucrului în linia de comandă*.
 
 ## Separator de cale
 
@@ -175,8 +136,8 @@ Observăm cum calea curentă se schimbă atunci când schimbăm directorul în c
 Atunci când compunem calea, după fiecare nod/director (nivel de arbore) prin care trecem, punem acest delimitator.
 Astfel, îi transmitem sistemului de operare că am înaintat în ierarhia de fișiere.
 
-Faptul că și directorul rădăcină (`/`) are același simbol, este doar o coincidență.
-În Windows, nodul rădăcină este `C:`, iar separatorul de cale este `\\`.
+Faptul că și directorul rădăcină (`/`) are același simbol este doar o coincidență.
+În Windows, nodul rădăcină este `C:`, iar separatorul de cale este `\`.
 
 ## Cale relativă și cale absolută
 
@@ -201,51 +162,73 @@ Similar, ne referim la un fișier:
 După cum am precizat mai sus, calea absolută începe întotdeauna cu caracterul `/` (slash), denumit și *director rădăcină*.
 Acesta indică începutul ierarhiei de fișiere.
 
-Afișam fișierele `/usr/bin/touch` și `/etc/passwd` prin cale absolută, folosind `ls`:
+Afișăm fișierele `/usr/bin/touch` și `/etc/passwd` prin cale absolută, folosind `ls`:
 
-``` bash
+```bash
 student@uso:~$ ls -l /usr/bin/touch
 lrwxrwxrwx 1 root root 10 Mar 14  2015 /usr/bin/touch -> /bin/touch
 student@uso:~$ ls -l /etc/passwd
 -rw-r--r-- 1 root root 1768 Sep  9 14:07 /etc/passwd
 ```
 
-Am folosit opțiunea **-l** a utilitarului `ls` pentru a afișa informații suplimentare ale fisierelor.
+Am folosit opțiunea `-l` a utilitarului `ls` pentru a afișa informații suplimentare ale fișierelor.
 
-Observăm că o cale absolută începe întotdeauna cu caracterul `/` (directorul rădăcină).
+Observăm că la începutul căilor este întotdeauna caracterul `/` (directorul rădăcină).
 
 ### Cale relativă
 
 Prin calea relativă ne referim la un fișier în funcție de calea curentă.
 
-``` bash
-student@uso:~$ ls -l comenzi/mkdir/
-total 8
-drwxr-xr-x 2 student student 4096 Sep 29 18:20 Avengers
-drwxr-xr-x 2 student student 4096 Sep 29 19:21 GameOfThrones
+```bash
+student@uso:~$ ls -l uso-lab.git/labs/
+total 52
+drwxrwxr-x 4 student student 4096 nov  9  2021 00-intro
+drwxrwxr-x 4 student student 4096 nov  9  2021 01-filesystem
+drwxrwxr-x 4 student student 4096 nov  9  2021 02-process
+drwxrwxr-x 5 student student 4096 nov  9  2021 03-user
+drwxrwxr-x 4 student student 4096 nov  9  2021 04-appdev
+drwxrwxr-x 4 student student 4096 nov  9  2021 05-cli
+drwxrwxr-x 4 student student 4096 nov  9  2021 06-scripting
+drwxrwxr-x 4 student student 4096 nov  9  2021 07-hardware-obsolete
+drwxrwxr-x 5 student student 4096 nov  9  2021 07-networking
+drwxrwxr-x 4 student student 4096 nov  9  2021 08-security
+drwxrwxr-x 4 student student 4096 nov  9  2021 08-storage-obsolete
+drwxrwxr-x 3 student student 4096 nov  9  2021 09-task-admin
+drwxrwxr-x 4 student student 4096 nov  9  2021 11-ctf
 ```
 
-În exemplul de mai sus, ne aflăm la calea `/home/student` și am coborât în ierarhia de fișiere către directorul `comenzi`, apoi directorul `mkdir`.
+În exemplul de mai sus, ne aflăm la calea `/home/student` și am coborât în ierarhia de fișiere către directorul `uso-lab.git`, apoi către directorul `labs`.
 
 Același rezultat îl obținem folosind calea absolută:
 
-``` bash
-student@uso:~$ ls -l /home/student/comenzi/mkdir/
-total 8
-drwxr-xr-x 2 student student 4096 Sep 29 18:20 Avengers
-drwxr-xr-x 2 student student 4096 Sep 29 19:21 GameOfThrones
+```bash
+student@uso:~$ ls -l /home/student/uso-lab.git/labs/
+total 52
+drwxrwxr-x 4 student student 4096 nov  9  2021 00-intro
+drwxrwxr-x 4 student student 4096 nov  9  2021 01-filesystem
+drwxrwxr-x 4 student student 4096 nov  9  2021 02-process
+drwxrwxr-x 5 student student 4096 nov  9  2021 03-user
+drwxrwxr-x 4 student student 4096 nov  9  2021 04-appdev
+drwxrwxr-x 4 student student 4096 nov  9  2021 05-cli
+drwxrwxr-x 4 student student 4096 nov  9  2021 06-scripting
+drwxrwxr-x 4 student student 4096 nov  9  2021 07-hardware-obsolete
+drwxrwxr-x 5 student student 4096 nov  9  2021 07-networking
+drwxrwxr-x 4 student student 4096 nov  9  2021 08-security
+drwxrwxr-x 4 student student 4096 nov  9  2021 08-storage-obsolete
+drwxrwxr-x 3 student student 4096 nov  9  2021 09-task-admin
+drwxrwxr-x 4 student student 4096 nov  9  2021 11-ctf
 ```
 
-Calea `/home/student/comenzi/mkdir/` este validă oricare ar fi calea curentă (oriunde ne-am afla în ierarhia de fișiere).
+Calea `/home/student/uso-lab.git/labs/` este validă oricare ar fi calea curentă (oriunde ne-am afla în ierarhia de fișiere).
 
 În acest caz, este mai eficient să folosim *calea relativă*.
-În cazul în care putem ajunge mai repede de la directorul rădăcina `/` la directorul țintă, este mai utilă *calea absolută*.
+În cazul în care putem ajunge mai repede de la directorul rădăcină `/` la directorul țintă, este mai utilă *calea absolută*.
 
-### Intrarea `..` în sistemul de fișiere
+### Intrarea `..` din sistemul de fișiere
 
 Referim aceleași fișiere (`/usr/bin/touch` și `/etc/passwd`) prin cale relativă, folosind `ls`:
 
-``` bash
+```bash
 student@uso:~$ pwd
 /home/student
 student@uso:~$ ls -l ../../usr/bin/touch
@@ -260,13 +243,12 @@ Odată ajunși la *directorul rădăcină* `/`, coborâm spre fișierul `touch`,
 
 :::note
 Este bine să ne referim la `..` ca *punct punct*, nu *două* puncte `:` pentru a elimina confuziile.
-
 :::
 
 ### Exerciții
 
 - Afișați calea curentă folosind utilitarul `pwd`.
-- Referiți fișirele/directoarele `/lib/`, `/home`, `/bin/cat` atât prin cale relativă cât și prin cale absolută.
+- Referiți fișierele/directoarele `/lib/`, `/home`, `/bin/cat` atât prin cale relativă, cât și prin cale absolută.
 - Referiți directorul părinte (un nivel mai sus față de cel curent).
 
 ## Schimbarea căii curente
@@ -274,7 +256,7 @@ Este bine să ne referim la `..` ca *punct punct*, nu *două* puncte `:` pentru 
 Plasarea noastră într-un alt director decât cel curent înseamnă schimbarea căii curente.
 Facem acest lucru folosind comanda `cd` (*change directory*):
 
-``` bash
+```bash
 student@uso:/etc$ pwd
 /etc
 student@uso:/etc$ cd /usr
@@ -283,26 +265,22 @@ student@uso:/usr$ pwd
 ```
 
 Am schimbat calea curentă de la `/etc` la `/usr`.
-Observăm că promptul s-a schimbat de la `student@uso:/etc` la `student@uso:/usr`.
-Astfel, putem să vedem în ce director ne aflăm uitându-ne la prompt.
-Această comandă poate fi folosită oriunde ne-am afla deoarece este o *cale absolută*.
+Această comandă poate fi folosită oriunde ne-am afla, deoarece este o *cale absolută*.
 
 :::info
 În general, comanda `cd` schimbă promptul terminalului; aceasta este o indicație a directorului curent în care ne aflăm:
 
 - în cazul `student@uso:/etc$ pwd` ne aflăm în `etc`
 - în cazul `student@uso:/usr$ pwd` ne aflăm în `usr`
-
 :::
 
 :::note
 La fel ca toate comenzile de lucru cu sistemul de fișiere, comanda `cd` primește ca parametru o cale. Aceasta poate fi atât *relativă*, cât și *absolută*.
-
 :::
 
 Schimbăm calea curentă în `/home/student`, folosind `cd`:
 
-``` bash
+```bash
 student@uso:/usr$ cd /home/student
 student@uso:~$ pwd
 /home/student
@@ -314,7 +292,7 @@ Cea de-a doua comandă, `pwd`, confirmă că am schimbat calea curentă.
 Acum ne aflăm la calea `/home/student`.
 O alternativă mai puțin eficientă este să facem schimbarea căii curente în doi pași, astfel:
 
-``` bash
+```bash
 student@uso:~$ cd /home
 student@uso:/home$ pwd
 /home
@@ -325,7 +303,7 @@ student@uso:~$ pwd
 
 Schimbăm calea curentă la `/usr/bin` folosind cale relativă:
 
-``` bash
+```bash
 student@uso:~$ pwd
 /home/student
 student@uso:~$ cd ../../usr/bin
@@ -334,24 +312,23 @@ student@uso:/usr/bin$ pwd
 ```
 
 :::info
-Una dintre cele mai importate informații când lucrăm în sistemul de operare (în special în linia de comandă) este unde ne aflăm.
+Una dintre cele mai importante informații când lucrăm în sistemul de operare (în special în linia de comandă) este unde ne aflăm.
 Dacă știm unde ne aflăm, ne putem orienta către destinație.
 Știm unde ne aflăm folosind comanda `pwd`; ne deplasăm în altă parte folosind comanda `cd`.
-
 :::
 
-Observăm cum am urcat în ierarhie folosind `..` până la `/` (*directorul rădăcină*), apoi am coborât spre `usr` și apoi `bin`.
+Observăm cum am urcat în ierarhie folosind `..` până la `/` (*directorul rădăcină*), iar apoi am coborât spre `usr` și apoi `bin`.
 
 În exemplul de mai jos, comanda de mai sus nu este valabilă:
 
-``` bash
-student@uso:~/comenzi$ pwd
-/home/student/comenzi
-student@uso:~/comenzi$ cd ../../usr/bin
--bash: cd: ../../usr/bin: No such file or directory
+```bash
+student@uso:~/Desktop$ pwd
+/home/student/Desktop
+student@uso:~/Desktop$ cd ../../usr/bin
+bash: cd: ../../usr/bin: No such file or directory
 ```
 
-Observăm că suntem la calea `/home/student/comenzi`.
+Observăm că suntem la calea `/home/student/Desktop`.
 Executând comanda `cd ../../usr/bin` de mai sus, am ajunge la calea `/home/usr/bin` care nu există.
 
 ### Exerciții - schimbarea directorului curent
@@ -369,18 +346,18 @@ Prin simpla apăsare a tastei `Tab` în timp ce scriem numele unei comenzi, al u
 ![](_assets/res/tab_completion.gif)
 </figure>
 
-Observăm că atunci când calea pe care o scriem se termină cu */* (slash), apăsând de 2 ori pe tasta `Tab` ne arată fișierele și directoarele din calea respectivă.
-Atunci vrem să ne auto-completeze numele, apăsăm o singură dată pe tasta `Tab`.
+Observăm că atunci când calea pe care o scriem se termină cu `/` (slash), apăsând de 2 ori pe tasta `Tab` ne arată fișierele și directoarele din calea respectivă.
+Atunci când vrem să ne auto-completeze numele, apăsăm o singură dată pe tasta `Tab`.
 
-Tasta `Tab` este descrisă în detaliu în capitolul *Îmbunătățirea lucrului în linia de comandă*.
+Tasta `Tab` este descrisă în detaliu în laboratorul *Îmbunătățirea lucrului în linia de comandă*.
 
 ## Scurtături de căi
 
 Pentru o eficiență mai bună, putem folosi simboluri pentru interacțiunea cu utilitarul `cd`:
 
-- Folosim caracterul `-` (*minus*) pentru a referi la *calea anterioară*.
+- Folosim caracterul `-` (*minus*) pentru a referi la *calea anterioară*:
 
-  ``` bash
+  ```bash
   student@uso:~$ pwd
   /home/student
   student@uso:~$ cd /usr/bin/
@@ -396,11 +373,11 @@ Pentru o eficiență mai bună, putem folosi simboluri pentru interacțiunea cu 
   /usr/bin
   ```
 
-Observăm că, dacă folosim repetat comanda `cd -` ,vom face un joc *du-te-vino* (*ping-pong*) între 2 directoare.
+  Observăm că, dacă folosim repetat comanda `cd -`, vom face un joc *du-te-vino* (*ping-pong*) între 2 directoare.
 
-- Folosim caracterul `~` (*tilda*) pentru a referi *directorul home* a utilizatorului.
+- Folosim caracterul `~` (*tilda*) pentru a referi *directorul home* al utilizatorului:
 
-  ``` bash
+  ```bash
   student@uso:/usr/bin$ cd /tmp/
   student@uso:/tmp$ pwd
   /tmp
@@ -417,5 +394,4 @@ Observăm că, dacă folosim repetat comanda `cd -` ,vom face un joc *du-te-vino
 
 :::note
 Atunci când suntem în directorul home, promptul conține caracterul `~` pentru a indica acest lucru.
-
 :::
