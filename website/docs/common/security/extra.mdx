@@ -1,0 +1,73 @@
+## Extra
+
+### 1. SUID
+
+1. Citiți despre **SUID** [aici](https://www.linux.com/blog/what-suid-and-how-set-suid-linuxunix).
+2. Compilați programul de mai jos.
+3. Setați bitul de SUID pe binarul creat.
+4. Este posibil să fie nevoie să setați utilizatorul **root** ca owner pe binar.
+5. Afișați /etc/shadow folosind binarul creat fără a folosi sudo. (./binar)
+
+``` c
+#include <stdio.h>
+#include <stdlib.h> // For exit()
+
+int main()
+{
+	FILE *fptr;
+
+	char filename[100], c;
+
+	printf("Enter the filename to open \n");
+	scanf("%s", filename);
+
+	// Open file
+	fptr = fopen(filename, "r");
+	if (fptr == NULL)
+	{
+		printf("Cannot open file \n");
+		exit(0);
+	}
+
+	// Read contents from file
+	c = fgetc(fptr);
+	while (c != EOF)
+	{
+		printf ("%c", c);
+		c = fgetc(fptr);
+	}
+
+	fclose(fptr);
+	return 0;
+}
+```
+
+### 2. Iptables
+
+Folosiți comanda **iptables** pentru a bloca traficul SSH către sistemul fizic.
+Puteți urmări exemplul de [aici](https://unix.stackexchange.com/questions/397481/use-iptables-to-block-ssh).
+
+Pentru a testa, porniți mașinile virtuale `tom` și `jeryy`.
+Mai întâi conectați-vă prin `ssh` pe mașina `tom`.
+
+1. Dacă acest lucru nu funcționează, reveniți la pasul anterior și depanați problema.
+2. Dacă funcționează, deconectați-vă și încercați acum să vă conectați de pe mașina virtuală pe mașina fizică prin `ssh`.
+3. Dacă nu funcționează, atunci totul este în regulă.
+
+### 3. XSS
+
+XSS sau **Cross-site scripting** este o vulnerabilitate web listată în `OWASP TOP 10`.
+Citiți mai multe despre XSS, precum și niște exemple, [aici](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)).
+
+Parcurgeți câte nivele puteți din [XSS GAME](https://xss-game.appspot.com/).
+
+### 4. Python encrypt
+
+Scrieți un program în `python` ce criptează și apoi decriptează un text folosind **AES** în modul **CBC**.
+Puteți citi mai multe despre AES [aici](https://thebestvpn.com/advanced-encryption-standard-aes/).
+Pentru program, puteți urmări indicațiile de [aici](https://docs.python-guide.org/scenarios/crypto/).
+
+### 5. Obținere certificat
+
+Alegeți un site care să folosească **HTTPS**.
+Obțineți certificatul site-ului din CLI folosind `openssl`.

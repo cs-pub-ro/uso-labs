@@ -1,0 +1,25 @@
+#### Encodare
+
+**Encodarea** este folosită când dorim să prezentăm o serie de date sub o altă formă.
+De exemplu, când există caractere neprintabile în datele noastre, nu le putem afișa sub forma unui string.
+**Base64** este un cunoscut exemplu de algoritm de encodare pentru că transformă orice vector de octeți într-un string de caractere printabile.
+
+Este important de precizat faptul că encodarea **nu ascunde/securizează** informații, ci doar le prezintă sub o altă formă.
+
+Folosind comanda **base64** fără niciun parametru putem să encodăm un text.
+
+``` bash
+student@uso:~$ echo -n "Base64 is not encryption!" | base64
+QmFzZTY0IGlzIG5vdCBlbmNyeXB0aW9uIQ==
+```
+
+Utilizând parametrul **-d** putem decoda un text encodat.
+
+``` bash
+student@uso:~$ echo -n "QmFzZTY0IGlzIG5vdCBlbmNyeXB0aW9uIQ==" | base64 -d
+Base64 is not encryption!
+```
+
+<figure>
+![Encodare Base64](_assets/image_base64.jpg)
+</figure>

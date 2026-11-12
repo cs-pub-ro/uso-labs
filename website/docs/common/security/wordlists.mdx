@@ -1,0 +1,48 @@
+### Liste de cuvinte
+
+**John the Ripper** este un utilitar de spargere al parolelor.
+În cadrul acestui demo dorim să aflăm parolele utilizatorilor din sistem.
+Pentru a reduce timpul de brute-force al utilitarului **John** vom crea o listă de cuvinte.
+
+Instalare **John The Ripper**
+
+``` bash
+student@uso:~$ sudo apt-get update
+student@uso:~$ sudo apt-get install john
+```
+
+Copiem hash-urile parolelor în fișierul mypasswd.txt.
+
+``` bash
+student@uso:~$ sudo unshadow /etc/passwd /etc/shadow > mypasswd.txt
+```
+
+Creăm o listă de cuvinte care ne-ar putea ajuta să ghicim parola unui calculator dintr-o universitate.
+
+``` bash
+student@uso:~$ echo -ne "school\nuniversity\nstudent" > wordlist.txt
+```
+
+Rulăm utilitarul **John the Ripper**.
+
+``` bash
+student@uso:~$ john --wordlist=wordlist.txt mypasswd.txt
+Loaded 3 password hashes with 3 different salts (crypt, generic crypt(3) [?/64])
+Remaining 2 password hashes with 2 different salts
+Press 'q' or Ctrl-C to abort, almost any other key for status
+0g 0:00:00:00 100% 0g/s 50.00p/s 100.0c/s 100.0C/s school..student
+Session completed
+```
+
+Pentru a vizualiza rezultatele rulăm următoarea comandă
+
+``` bash
+student@uso:~$ john --format=crypt mypasswd.txt
+[...]
+student@uso:~$ john --show mypasswd.txt
+student:student:1000:1000:Student User,,,:/home/student:/bin/bash
+
+1 password hash cracked, 1 left
+```
+
+Utilitarul ne indică faptul că parola **student** este parola utilizatorului `student`.
