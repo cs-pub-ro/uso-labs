@@ -1,9 +1,11 @@
-# Utilizatori și procese
+## Utilizatori și procese
+
+---
 
 Acțiunile unui cont de utilizator în cadrul sistemului de operare sunt realizate de procesele deținute de acel utilizator.
 Un cont de utilizator nu există ca entitate de sine stătătoare, ci este un atribut al unui proces.
 
-Așa cum am indicat și în secțiunea `users_perms_privileged_id`, un cont utilizator este identificat de un număr (**UID**);
+Așa cum am indicat și în secțiunea [Identificarea utilizatorului](#identificarea-utilizatorului), un cont utilizator este identificat de un număr (**UID**);
 numele este folosit doar de oameni pentru identificarea facilă;
 sistemul de operare este preocupat doar de număr / UID.
 Un proces aparține unui cont utilizator dacă acel proces are atributul UID corespunzător acelui cont de utilizator.
@@ -16,25 +18,25 @@ Cel mai adesea, shellul este primul proces care aparține unui utilizator.
 Apoi shellul creează alte procese aparținând acelui utilizator.
 Shellul este cel mai adesea creat la autentificarea utilizatorului.
 
-## Autentificarea utilizatorilor
+### Autentificarea utilizatorilor
 
-Autentificarea unui utilizator (*login*, *authentication*) în sistem presupune următoarea secvență de pași:
+Autentificarea unui utilizator (_login_, _authentication_) în sistem presupune următoarea secvență de pași:
 
-1.  Furnizarea unor elemente de autentificare (numite și credențiale - *login credentials*), în mod tipic un **nume de utilizator** (*username*) și o **parolă** (*password*)
+1.  Furnizarea unor elemente de autentificare (numite și credențiale - _login credentials_), în mod tipic un **nume de utilizator** (_username_) și o **parolă** (_password_)
 2.  Verificarea credențialelor de sistemul de operare
 3.  În cazul verificării cu succes, crearea unui proces cu UID-ul utilizatorului astfel autentific, cel mai adesea un proces shell
 
-### Furnizarea credențialelor
+##### Furnizarea credențialelor
 
 Primul pas se realizează într-o interfața de autentificare (grafică sau în linia de comandă).
 Se furnizează un prompt unde utilizatorul transmite credențialele.
 
 Un mod de a simula acest prompt în linia de comandă este cu ajutorul comenzii `login`, comandă care este apelată în momentul autentificării CLI:
 
-``` bash
+```bash
 student@uso:~$ sudo login
 uso login: student
-Password: 
+Password:
 student@uso:~$
 ```
 
@@ -43,7 +45,7 @@ E o abordare strict didactică, având acum un shell creat dintr-un shell existe
 
 Comanda `login` poate fi folosită și transmițând ca argument numele de utilizator:
 
-``` bash
+```bash
 student@uso:~$ sudo login student
 Password:
 student@uso:~$
@@ -53,10 +55,10 @@ Pentru a închide shellul nou creat folosim comanda `exit` sau comanda `logout` 
 
 Este nevoie de folosirea `sudo` în fața comenzii `login` pentru că această comandă este privilegiată: are acces la baza de date autentificare, folosită în pasul de verificare a credențialelor.
 
-### Verificarea credențialelor
+#### Verificarea credențialelor
 
 Verificarea credențialelor este realizată de interfața de autentificare, în general printr-un proces de autentificare, precum `login`.
-Acest proces citește credențialele și apoi le validează cu o bază de date de autentificare (*authentication database*) disponibilă în sistem.
+Acest proces citește credențialele și apoi le validează cu o bază de date de autentificare (_authentication database_) disponibilă în sistem.
 Această baza de date de autentificare este o resursă critică a sistemului; accesul la această bază de date, chiar și de citire, este considerat o acțiune critică ce poate fi realizată doar privilegiat.
 De aceea, comanda `login` trebuie rulată în mod privilegiat și trebuie prefixată de `sudo`.
 
@@ -67,7 +69,7 @@ ceea ce ar fi o problemă de securitate în sistem.
 
 În Linux, baza de date de autentificare este în mod tipic fișierul `/etc/shadow`:
 
-``` bash
+```bash
 razvan@uso:~$ ls -l /etc/shadow
 -rw-r----- 1 root shadow 1334 Jul  2  2020 /etc/shadow
 ```
@@ -75,23 +77,18 @@ razvan@uso:~$ ls -l /etc/shadow
 Observăm că acest fișier poate fi accesat doar de utilizatorul `root` și de grupul `shadow`.
 Vom discuta despre permisiuni de acces și grupuri în secțiunile următoare.
 
-:::note
-Conturi de utilizator fără parolă
+#### Conturi de utilizator fără parolă
 
-Anumite conturi de utilizator pot să nu aibă parolă.
-Ceea ce înseamnă că acele conturi nu pot fi accesate în acest mod: autentificare cu parolă.
-Pot fi însă autentificate în alte moduri, cum ar fi schimbarea utilizatorului.
+Anumite conturi de utilizator pot să nu aibă parolă, ceea ce înseamnă că acele conturi pot fi accesate prin simpla utilizare a comenzii `su <username>`, fără a vă fi solicitată o parolă ulterior.
 
-:::
-
-### Crearea unui proces
+#### Crearea unui proces
 
 Ulterior autentificării, se creează un prim proces care are UID-ul utilizatorului autentificat.
 Acest prim proces este configurabil, cel mai adesea este shellul (grafic sau CLI - depinzând de modul de autentificare).
 
 În cazul autentificării în linia de comandă, procesul creat este descris în fișierul `/etc/passwd`:
 
-``` bash
+```bash
 student@uso:~$ grep student /etc/passwd
 student:x:1000:1000:Student User,,,:/home/student:/bin/bash
 ```
@@ -110,7 +107,7 @@ Nu intrăm în detalii aici despre aceste moduri.
 
 :::
 
-## Vizualizarea șî gestiunea informațiilor despre utilizatori
+### Vizualizarea și gestiunea informațiilor despre utilizatori
 
 În Linux, fișierul `/etc/passwd` reține informațiile despre conturile de utilizatori.
 Fișierul `/etc/shadow` reține credențialele (parolele) despre conturile de utilizatori.
@@ -125,23 +122,23 @@ Fișierul `/etc/shadow` este critic și poate fi citit doar de utilizatorul priv
 - Un utilizator neprivilegiat (obișnuit) poate să modifice informațiile proprii, inclusiv parola.
 - Un utilizator neprivilegiat (obișnuit) poate să vizualizeze informațiile altor utilizatori, mai puțin parola.
 - Un utilizator neprivilegiat (obișnuit) **NU** poate să modifice informațiile altor utilizatori.
-- Un utilizator (de orice tip) **NU** poate vizualiza parolele *plain-text* ale utilizatorilor.
+- Un utilizator (de orice tip) **NU** poate vizualiza parolele _plain-text_ ale utilizatorilor.
   Parolele sunt ținute criptat.
 - Un utilizator privilegiat poate să modifice orice informație a altor utilizatori, inclusiv parola.
 
-### Vizualizare
+#### Vizualizare
 
-Așa cum am precizat în secțiunea `users_perm_privileged_id`, un utilizator poate folosi comenzile `whoami` și `id` pentru a afișa informații despre sine sau alți utilizatori.
+Așa cum am precizat în secțiunea [Identificarea utilizatorului](#identificarea-utilizatorului), un utilizator poate folosi comenzile `whoami` și `id` pentru a afișa informații despre sine sau alți utilizatori.
 Un alt mod este de a parcurge direct conținutul fișierului `/etc/passwd`, fișier care este consultat și de aceste comenzi.
 Un mod mai simplu este folosirea comenzii `finger` care afișează informații detaliate:
 
-``` bash
+```bash
 student@uso:~$ finger student
 Login: student                  Name: Student User
 Directory: /home/student                Shell: /bin/bash
 ```
 
-### Gestiune
+#### Gestiune
 
 Un utilizator își poate modifica 3 informații:
 
@@ -152,7 +149,7 @@ Un utilizator își poate modifica 3 informații:
 Nu insistăm pe primele două, doar pe modificarea parolei.
 Un utilizator își poate schimba parola prin simpla invocare a comenzii `passwd`:
 
-``` bash
+```bash
 student@uso:~$ passwd
 Changing password for student.
 (current) UNIX password:
@@ -165,7 +162,7 @@ Acum utilizator are o nouă parolă.
 
 Evident, utilizatorul privilegiat poate schimba parolele tuturor utilizatorilor.
 
-### Exerciții: Gestiunea utilizatorului curent
+#### Exerciții: Gestiunea utilizatorului curent
 
 1.  Din contul utilizatorului curent (`student`), folosiți comanda `passwd` pentru a schimba parola utilizatorului.
     **GRIJĂ MARE** să nu uitați parola schimbată.
@@ -174,13 +171,13 @@ Evident, utilizatorul privilegiat poate schimba parolele tuturor utilizatorilor.
     **GRIJĂ MARE** să nu uitați parola schimbată.
     Folosiți într-un nou shell comanda `sudo login student` pentru a testa noua parolă.
 
-## Vizualizarea proceselor
+### Vizualizarea proceselor
 
 Putem vizualiza evoluția proceselor (privilegiate, neprivilegiate) folosind comanda `ps` pentru a înțelege funcționarea comenzilor și apartenența acestora la un anumit utilizator.
 
 Comanda simplă `ps` afișează procesele din terminalul curent, în vreme ce comanda `ps -f` afișează inclusiv numele de utilizator:
 
-``` bash
+```bash
 student@uso:~$ ps
   PID TTY          TIME CMD
 18900 pts/2    00:00:00 ps
@@ -195,7 +192,7 @@ Se afișează procesul shell (`bash`) și procesul `ps` însuși, ambele aparți
 
 Putem personaliza afișarea pentru a prezenta și UID-ul:
 
-``` bash
+```bash
 student@uso:~$ ps -o uid,user,pid,ppid,cmd
   UID USER       PID  PPID CMD
  1000 student   19083 28892 ps -o uid,user,pid,ppid,cmd
@@ -206,7 +203,7 @@ Folosirea comenzii `ps` ajută la înțelegerea comenzilor `sudo` sau `su`.
 
 Atunci când creăm un shell privilegiat folosind `sudo bash`, avem următoarea situație:
 
-``` bash
+```bash
 student@uso:~$ ps -f
 UID        PID  PPID  C STIME TTY          TIME CMD
 student   19153 28892  0 22:46 pts/2    00:00:00 ps -f
@@ -246,7 +243,7 @@ Comanda `pstree` afișează ierarhia de procese și schimbările de conturi de u
 
 O situație similară avem în cazul `sudo su`:
 
-``` bash
+```bash
 student@uso:~$ sudo su
 
 root@uso:/home/student# ps -H
@@ -271,7 +268,7 @@ root@uso:/home/student# exit
 student@uso:~$
 ```
 
-### Exerciții: Vizualizarea proceselor
+#### Exerciții: Vizualizarea proceselor
 
 Realizați un scenariu în care accesați contul `root` apoi contul `student` și apoi iar contul de `root`.
 Afișați procesele create la fiecare pas.

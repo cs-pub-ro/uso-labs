@@ -1,4 +1,6 @@
-# Permisiuni în sistemul de fișiere
+## Permisiuni în sistemul de fișiere (non-OCW)
+
+---
 
 Un proces aparținând unui utilizator (adică având un anumit câmp UID) are anumite permisiuni în sistem.
 Permisiunile (sau drepturile sau privilegiile) se referă la acțiuni pe care utilizatorul le poate efectua în cadrul sistemului;
@@ -9,7 +11,7 @@ acțiunile considerate critice sau sensibile nu pot fi executate de un utilizato
 spunem că utilizatorul nu are permisiunile necesare;
 acest lucru îl putem observa în linia de comandă prin primirea unui mesaj de tipul `Permission denied`, ca atunci când utilizatorul `student` dorește vizualizarea conținutului fișierului `/etc/shadow`:
 
-``` bash
+```bash
 student@uso:~$ cat /etc/shadow
 cat: /etc/shadow: Permission denied
 ```
@@ -24,11 +26,11 @@ De exemplu, putem configura ca un utilizator să nu aibă deloc acces la un fiș
 În restul acestei secțiuni vom discuta despre permisiuni în sistemul de fișiere.
 Alte tipuri de permisiuni (și configurarea acestora) vor fi descrise în secțiunea `users_perms_advanced`.
 
-## Vizualizarea permisiunilor
+### Vizualizarea permisiunilor
 
-Cel mai direct mod de a vizualiza permisiunile în sistemul de fișiere este cu opțiunea `-l` (*long listing*) a comenzii `ls`, ca în cazul comenzii de mai jos:
+Cel mai direct mod de a vizualiza permisiunile în sistemul de fișiere este cu opțiunea `-l` (_long listing_) a comenzii `ls`, ca în cazul comenzii de mai jos:
 
-``` bash
+```bash
 student@uso:~/.../users-permissions/support/permissions$ ls -l
 total 8
 -rw-rw-r-- 1 student student 34 Dec 26 18:34 hello.sh
@@ -52,16 +54,16 @@ Cum este de așteptat din numele fișierelor:
 
 Cele 3 caractere corespund celor 3 tipuri de permisiuni:
 
-- `r` (*read*): permisiune de citire
-- `w` (*write*): permisiune de scriere
-- `x` (*execute*): permisiune de execuție
+- `r` (_read_): permisiune de citire
+- `w` (_write_): permisiune de scriere
+- `x` (_execute_): permisiune de execuție
 
-### Verificarea permisiunilor
+#### Verificarea permisiunilor
 
 Aceste permisiuni sunt aplicate în momentul în care executăm acțiuni concrete pe fișiere.
 Astfel, pentru a verifica în mod concret permisiunile pe fișiere, folosim comenzi precum cele de mai jos:
 
-``` bash
+```bash
 student@uso:~/.../users-permissions/support/permissions$ cat readonly
 seeing is believing
 student@uso:~/.../users-permissions/support/permissions$ echo test > readonly
@@ -87,13 +89,13 @@ Am folosit, în comenzile de mai sus:
   Fișierul `hello.sh` nu are permisiune de execuție, astfel câ încercarea de a îl executa va eșua.
   La fel ar fi cazul și celorlalte fișiere, nici unul dintre care nu are permisiune de execuție.
 
-Observăm că în cazul unor comenzi eșuate din cauza lipsei de permisiuni, mesajul afîșat este mereu același: *Permission denied*\*.
+Observăm că în cazul unor comenzi eșuate din cauza lipsei de permisiuni, mesajul afîșat este mereu același: _Permission denied_\*.
 
-### Alte moduri de vizualizare a permisiunilor
+#### Alte moduri de vizualizare a permisiunilor
 
 Pe lângă comanda `ls -l` un alt mod de a verifica permisiunile unui fișier este folosind comanda `stat`:
 
-``` bash
+```bash
 student@uso:~/.../users-permissions/support/permissions$ stat writeonly
   File: writeonly
   Size: 5           Blocks: 8          IO Block: 4096   regular file
@@ -118,10 +120,10 @@ Linia `Access:` afișează permisiunile.
 Observăm că permisiunile sunt precedate de o valoare numerică (`0200` și `0400`).
 Vom discuta despre această valoare numerică, numită forma numerică (în octal) a permisiunilor în Secțiunea `user_perm_permissions_numeric`.
 
-### Exerciții
+#### Exerciții
 
 - Creați fișierul `myfile` folosind comanda `touch`.
-  Vizualizați permisiunile implicite (*default*) ale fișierului.
+  Vizualizați permisiunile implicite (_default_) ale fișierului.
   Verificați permisiunile.
 - Vizualizați permisiunile fișierului `bye.sh` din directorul de suport.
   Verificați permisiunile.
@@ -129,7 +131,7 @@ Vom discuta despre această valoare numerică, numită forma numerică (în octa
   Verificați permisiunile.
   Observați că, și dacă are permisiune de execuție, fișierul nu poate fi executat dacă nu are și permisiune de citire.
 
-## Permisiuni pe directoare
+### Permisiuni pe directoare
 
 Am discutat până acum permisiunile pe fișiere.
 Cele trei permisiuni (citire, scriere și execuție se pot aplica și pe directoare):
@@ -150,7 +152,7 @@ Cele trei permisiuni pe directoare au următorul rol:
 - permisiunea de scriere: conținutul directorului poate fi modificat (pot fi create și șterse intrări din director)
 - permisiunea de execuție: directorul poate fi parcurs, poate fi parte a unei căi
 
-### Verificarea permisiunilor pe directoare
+#### Verificarea permisiunilor pe directoare
 
 Verificăm permisiunile pe directoare folosind comenzile de mai jos:
 
@@ -170,7 +172,7 @@ Verificăm permisiunile pe directoare folosind comenzile de mai jos:
 
 Astfel, verificăm permisiunile pe directoarele `read-exec-dir` și `read-write-dir` folosind comenzile de mai jos:
 
-``` bash
+```bash
 student@uso:~/.../support/permissions/demo-dir$ ls exec-dir/
 ls: cannot open directory 'exec-dir/': Permission denied
 student@uso:~/.../support/permissions/demo-dir$ cat exec-dir/a.txt
@@ -194,12 +196,12 @@ student@uso:~/.../support/permissions/demo-dir$ rm read-exec-dir/a.txt
 rm: cannot remove 'read-exec-dir/a.txt': Permission denied
 ```
 
-### Exerciții
+#### Exerciții
 
-## Modificarea permisiunilor
+### Modificarea permisiunilor
 
-## Gruparea utilizatorilor
+### Gruparea utilizatorilor
 
-## Formatul numeric al permisiunilor
+### Formatul numeric al permisiunilor
 
-## Căutarea fișierelor după permisiuni
+### Căutarea fișierelor după permisiuni
