@@ -1,0 +1,133 @@
+## Permisiuni de acces (OCW)
+
+---
+
+Atât utilizatorii cât și grupurile de utilizatori sunt folosiți în Linux pentru controlul accesului. Controlul accesului presupune restricționarea operațiilor pe care utilizatorii le pot executa asupra resurselor sistemului (crearea de fișiere și directoare, modificarea și ștergerea acestora, execuția de programe, etc.).
+
+Astfel, niciun utilizator nu poate să modifice/folosească un fișier dacă el, grupul din care face parte sau grupul `others` nu au acest drept (vom detalia imediat).
+
+În Linux, exista două concepte ce sunt folosite pentru a oferi securitate la nivelul sistemului de fișiere: - file ownership - permisiuni
+
+Fiecare fișier este deținut de un singur utilizator și de un singur grup, și are anumite permisiuni. Fiecare utilizator sau grup poate să dețină mai multe fișiere.
+
+Fiecare resursă din sistemul de fișiere are permisiuni pentru trei categorii de utilizatori:
+
+    - utilizator (owner): utilizatorul care este deținătorul fișierului/directorului
+    - grup (group): grupul de utilizatori care deține fișierul/directorul
+    - ceilalți (others): utilizatorii care nu intră în niciuna dintre categoriile anterioare
+
+Pentru fiecare dintre cele trei categorii există trei permisiuni, care oferă următoarele drepturi:
+
+    - de citire: utilizatorul/grupul poate citi conținutul fișierului, respectiv poate lista conținutul directorului
+    - de scriere: utilizatorul/grupul poate modifica/șterge conținutul fișierului, respectiv poate crea/șterge/redenumi fișiere din director
+    - de execuție: utilizatorul/grupul poate lansa fișierul în execuție, respectiv poate parcurge directorul
+
+Ordinea în care se aplică aceste permisiuni este următoarea:
+
+    1. dacă utilizatorul este deținătorul fișierului, atunci se aplică permisiunile pentru owner
+    2. dacă face parte din grupul deținător, atunci se aplică permisiunile pentru grup
+    3. dacă niciuna dintre condițiile precedente nu este adevărată, atunci se aplică permisiunile pentru others
+
+### Ownership și permisiuni
+
+Pentru a inspecta permisiunile și deținătorii unui anumit director sau fișier folosim comanda ls, împreună cu argumentul `-l`.
+
+```bash
+student@uso:~$ ls -l /home/student
+total 56
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Desktop
+drwxr-xr-x  3 student student 4096 aug 20 21:00 Documents
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Downloads
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Music
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Pictures
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Public
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Templates
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Videos
+-rw-r--r--  1 student student 8980 aug  6 17:37 examples.desktop
+drwxr-xr-x 14 student student 4096 aug 20 20:57 uso.git
+-rw-r--r--  1 student student 4827 aug 21 14:37 vm-actions-log.txt
+```
+
+Dacă rulăm comanda pe un director, implicit se vor lista fișierele din director și nu vom vedea permisiunile acestuia. Pentru a vedea permisiunile directorului, putem folosi argumentul `-d` pentru comanda ls, împreună cu calea către director.
+
+```bash
+student@uso:~$ ls -ld uso-lab/
+drwxr-xr-x 14 student student 4096 aug 20 20:57 uso-lab/
+```
+
+Semnificația fiecărui câmp din outuput-ul anterior este prezentată în tabelul de mai jos, folosind ca exemplu informațiile afișate pentru directorul `Desktop`.
+
+| Tip | Permisiuni | Număr de referințe | Owner   | Grup    | Dimensiunea (în octeți) | Data și ora ultimei modificări | Nume    |
+| --- | ---------- | ------------------ | ------- | ------- | ----------------------- | ------------------------------ | ------- |
+| d   | rwxr-xr-x  | 2                  | student | student | 4096                    | aug 6 17:41                    | Desktop |
+
+Coloanele din tabel au următoarea semnificație:
+
+    - Tip: indică dacă intrarea este un fișier (```-```) sau director (```d```)
+    - Permisiuni: specifică ce drepturi au asupra fișierului cele trei categorii de utilizatori (owner, grup și others). Fiecărui grup îi corespund 3 caractere (r – read; w – write, x – execute). În acest caz, owner-ul fișierului (utilizatorul ```student```) are toate cele trei permisiuni (```rwx```), iar utilizatorii din grupul ce deține fișierul (grupul ```student```) și toți ceilalți utilizatori din sistem (```others```) au permisiuni de citire și execuție (```r-x```).
+    - Owner/Grup - utilizatorul/grupul care dețin fișierul
+
+Permisiunile se pot specifica și folosind cifre (notație în baza 8 – octal):
+
+    - ```r``` = 4
+    - ```w``` = 2
+    - ```x``` = 1
+
+Pentru a determina permisiunile unei anumite categorii, adunăm cele 3 valori. Astfel, pentru exemplul de mai sus, permisiunile sunt `755` (7 pentru owner, 5 pentru grup și 5 pentru others).
+
+### Modificarea permisiunilor
+
+La crearea unui fișier sau director se atribuie valori implicite pentru permisiuni. Acestea se pot modifica ulterior.
+
+Pentru a demonstra modul de lucru cu permisiunile, vom crea un fișier nou, după care îi vom modifica permisiunile. Permisiunile noi se pot specifica folosind comanda chmod, folosind oricare din cele doua notații:
+
+    - În octal: 777 (drepturi depline: rwx), 740 (drepturi depline pentru owner, de citire pentru utilizatorii din grup și nicio permisiune pentru alți utilizatori).
+    - Alfabetică: +/-[rwx] – o folosim de obicei atunci când dorim să modificăm o singură permisiune. De exemplu, ```+r``` permite accesul de citire, iar ```-w``` șterge accesul de scriere
+
+```bash
+student@uso:~$ touch testfile.sh
+student@uso:~$ ls -l testfile.sh
+-rw-r--r-- 1 student student 0 sep 16 16:47 testfile.sh
+```
+
+După cum observăm, nu vom putea executa scriptul nou creat, deoarece utilizatorul student nu are drepturi de execuție asupra lui. Ne propunem să permitem execuția, folosind ambele metode.
+
+**#1**
+
+```bash
+student@uso:~$ chmod +x testfile.sh
+student@uso:~$ ls -l testfile.sh
+-rwxr-xr-x 1 student student 0 sep 16 16:47 testfile.sh
+
+student@uso:~$ chmod -x testfile.sh
+student@uso:~$ ls -l testfile.sh
+-rw-r--r-- 1 student student 0 sep 16 16:47 testfile.sh
+```
+
+**#2**
+
+```bash
+student@uso:~$ ls -l testfile.sh
+-rw-r--r-- 1 student student 0 sep 16 16:47 testfile.sh
+student@uso:~$ chmod 755 testfile.sh
+student@uso:~$ ls -l testfile.sh
+-rwxr-xr-x 1 student student 0 sep 16 16:47 testfile.sh
+```
+
+**Exercițiu:** Adăugați utilizatorul `andrei` folosind comanda `sudo adduser andrei`. Folosiți o parolă la alegere și țineți-o minte.
+
+**Exercițiu:** Adăugați utilizatorul `maria` în sistem folosind comanda `sudo adduser maria`. Folosiți o parolă la alegere și țineți-o minte. Autentificați-vă ca `maria` folosind `su` sau `login`.
+
+**Exercițiu:** Din contul utilizatorului `maria`, creați fișierul `/home/maria/todo_list` și scrieți în el `Maria's TODO list`.
+
+**Exercițiu:** Configurați permisiunile acestui fișier astfel încât doar utilizatorul `maria` să aibă drepturi de citire, scriere și execuție pe el. Verificați că ați configurat permisiunile corect, folosind contul utilizatorului `andrei`.
+
+**Exercițiu:** Modificați configurările făcute anterior astfel încât toți utilizatorii din grupul `maria` să poată vizualiza conținutul fișierului `/home/maria/todo_list`. În continuare, utilizatorii al căror nume nu este `maria` și care nu se află în grupul `maria` nu trebuie să aibă niciun drept pe acest fișier.
+
+**Exercițiu:** Verificați configurarea făcută la exercițiul anterior. Pentru aceasta, adăugați utilizatorul `student` în grupul `maria` folosind comanda `sudo adduser student maria`, autentificați-vă ca utilizatorul `student` și încercați să vizualizați conținutul fișierului. Autentificați-vă apoi și ca utilizatorul `andrei` și încercați să vizualizați conținutul fișierului. `andrei` nu ar trebui să aibă drept să citească fișierul `/home/maria/todo_list`.
+
+::: note
+
+Comanda `sudo adduser student maria` are efectul dorit doar dupa ce utilizatorul student se va loga din nou. Pentru a face acest lucru puteți executa comanda `sudo login student`.
+
+:::
