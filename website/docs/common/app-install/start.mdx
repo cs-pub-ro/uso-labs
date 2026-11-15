@@ -1,50 +1,50 @@
-# Pornirea și oprirea aplicațiilor
+## Pornirea și oprirea aplicațiilor
 
 Pe un sistem se găsesc mai multe aplicații.
 Utilizatorul pornește aplicația potrivită pentru o nevoie pe care o are.
 De exemplu, pornește un browser web pentru a accesa Wikipedia sau pornește aplicația Spotify pentru a asculta muzică.
 
 Utilizatorul poate porni aplicațiile folosind interfața grafică (*Graphical User Interface*, GUI) sau interfața în linia de comandă (*Command Line Interface*, CLI).
-În cazul interfeței grafice pornirea se face folosind elementele grafice (mouse, meniuri, iconuri de desktop).
-În cazul interfeței în linia de comandă pornirea se face introducând și rulând comenzi.
+În cazul interfeței grafice, pornirea se face folosind elementele grafice (mouse, meniuri, iconuri de desktop).
+În cazul interfeței în linia de comandă, pornirea se face introducând și rulând comenzi.
 
-## Pornirea și oprirea aplicațiilor grafice
+### Pornirea și oprirea aplicațiilor grafice
 
-### Reminder: Pornirea aplicațiilor din interfața grafică
+#### Reminder: Pornirea aplicațiilor din interfața grafică
 
 Am prezentat informații despre pornirea și oprirea aplicațiilor grafice în `basic_start_stop_apps`.
 Am văzut că o aplicație grafică poate fi pornită în două moduri:
 
 1.  Folosind iconuri în interfața grafică.
-    Iconurile se găsesc direct pe desktop sau în barele de desktop sau în meniurile și ferestrele mediului grafic.
+    Iconurile se găsesc direct pe desktop, în barele de desktop sau în meniurile și ferestrele mediului grafic.
     Plasarea iconurilor depinde de distribuția folosită.
 2.  Folosind un prompt de tip *application launcher*.
     Acest prompt este lansat, în Linux, de combinația de taste `Alt+F2`.
-    În Windows se folosește combinația de taste `Windows+r`.
-    În macOS se folosește combinația de taste `Command+Space`.
+    În Windows, se folosește combinația de taste `Windows+r`.
+    În macOS, se folosește combinația de taste `Command+Space`.
     La acest prompt se introduce șirul (comanda) care identifică aplicația.
 
 #### Exerciții
 
 1.  Porniți o aplicație browser de fișiere (*file browser*) folosind `Alt+F2`.
-    În Ubuntu 18.04 GNOME browserul de sistem de fișiere este **Nautilus**, identificat de șirul (comanda) `nautilus`.
+    În Ubuntu 18.04 GNOME, browserul de sistem de fișiere este **Nautilus**, identificat de șirul (comanda) `nautilus`.
 2.  Porniți aplicația **LibreOffice**, identificată de șirul (comanda) `libreoffice`, folosind `Alt+F2`.
 3.  Porniți aplicația `ls` (de listare a conținutului unui director în linia de comandă (CLI)) folosind `Alt+F2`.
     Observați că nu este afișat nimic.
-    Acest lucru se întâmplă pentru că aplicația `ls` nu are interfața grafică; are sens să fie rulată doar din linia de comandă.
+    Acest lucru se întâmplă pentru că aplicația `ls` nu are interfață grafică; are sens să fie rulată doar din linia de comandă.
 
-### Pornirea unei aplicații grafice folosind linia de comandă
+#### Pornirea unei aplicații grafice folosind linia de comandă
 
 Pe lângă cele două moduri de mai sus, pornirea unei aplicații grafice poate fi realizată din linia de comandă (CLI), folosind șirul care identifică aplicația, la fel ca în cazul folosirii `Alt+F2`.
 Pentru a porni o aplicație grafică din linia de comandă, avem nevoie de un terminal.
 Terminalul este un dispozitiv în care rulează o aplicație numită **shell**, care este interpretorul comenzilor introduse.
-Pe parcursul acestui capitol și a întregii cărți vom folosi interschimbabil shell și terminal.
+Pe parcursul acestui capitol și al întregii cărți vom folosi interschimbabil shell și terminal.
 
 Pornim o aplicație de terminal folosind fie iconul corespunzător, fie `Alt+F2` urmat de șirul (comanda) `gnome-terminal`.
 În aplicația de terminal, pornim aplicația Firefox scriind șirul (comanda) `firefox`, urmat de apăsarea tastei `Enter`, ca în imaginea de mai jos.
 Aplicația Firefox va porni.
 
-![Ponirea Firefox din linia de comandă:](_assets/img/firefox-cli.png)
+![Pornirea Firefox din linia de comandă:](_assets/img/firefox-cli.png)
 
 În acest moment, în aplicația de terminal nu mai putem introduce noi comenzi pentru a porni alte aplicații.
 Va trebui să oprim aplicația Firefox.
@@ -59,7 +59,7 @@ Oprim aplicația Firefox:
     În Ubuntu 18.04 GNOME, browserul de sistem de fișiere este `nautilus`.
 2.  Porniți aplicația LibreOffice folosind linia de comandă.
 
-### Menținerea accesului la terminal
+#### Menținerea accesului la terminal
 
 Atunci când pornim o aplicație grafică din linia de comandă, aplicația "acaparează" terminalul; nu mai putem introduce noi comenzi pentru a porni alte aplicații.
 Putem rezolva acest lucru prin trecerea aplicației grafice în **backgroundul** shellului.
@@ -90,14 +90,14 @@ Adică urmăm pașii:
 
 În acest mod, avem aplicația **Firefox** în rulare și avem acces la terminal să introducem noi comenzi.
 
-**Exercițiu**: Folosiți pașii de mai sus pentru a porni și aplicația **LibreOffice** din linie de comandă și să mențineți accesul la terminal.
+**Exercițiu**: Folosiți pașii de mai sus pentru a porni și aplicația **LibreOffice** din linie de comandă și a menține accesul la terminal.
 
 :::note
 Vom afla mai multe despre background și suspendarea proceselor în `app_install_run_signal`.
 
 :::
 
-### Exerciții de aprofundare
+#### Exerciții de aprofundare
 
 Porniți aplicațiile grafice:
 
@@ -110,9 +110,9 @@ Porniți fiecare aplicație în două moduri:
 1.  folosind `Alt+F2`
 2.  folosind interfața în linia de comandă (CLI)
 
-## Pornirea aplicațiilor în linia de comandă
+### Pornirea aplicațiilor în linia de comandă
 
-### Pornirea de aplicații CLI folosind linia de comandă
+#### Pornirea de aplicații CLI folosind linia de comandă
 
 Aplicațiile CLI, numite și utilitare, sunt proiectate pentru a fi pornite și folosite în linia de comandă.
 Cel mai adesea numim aplicațiile în linie de comandă **utilitare** sau, pur și simplu, **comenzi**.
@@ -139,9 +139,9 @@ Swap:        777300       37056      740244
 1.  Porniți utilitarul `ls` (de listare a conținutului unui director în linia de comandă (CLI)) folosind linia de comandă.
 2.  Porniți utilitarul `df` (de afișare a spațiului ocupat pe disc) folosind linia de comandă.
 
-### Argumente în linia de comandă
+#### Argumente în linia de comandă
 
-Pentru a porni aplicații / utilitare în linia de comandă, folosim comenzi care conțin numele utilitarului urmate, eventual, de argumente.
+Pentru a porni aplicații / utilitare în linia de comandă, folosim comenzi care conțin nume de utilitare urmate, eventual, de argumente.
 Astfel, pentru a porni utilitarele `ls` sau `ps`, folosim comenzi precum cele de mai jos, simple sau cu argumente:
 
 ``` bash
@@ -171,7 +171,7 @@ student   3370  3369  0 08:55 pts/4    00:00:00 -bash
 student   7982  3370  0 13:17 pts/4    00:00:00 ps -f
 ```
 
-### Aplicații interactive în linia de comandă
+#### Aplicații interactive în linia de comandă
 
 Utilitarele `ls` și `ps`, pe care le-am folosit mai sus, pornesc, rulează, afișează informații utilizatorului în terminal și apoi se opresc.
 Alte utilitare în linia de comandă sunt interactive.
@@ -184,22 +184,21 @@ De exemplu, utilitarul `less`, folosit pentru afișarea paginată a conținutulu
 student@uso:~$ less /etc/services
 ```
 
-O dată pornit utilitarul, putem controla afișarea sa folosind tastele săgeți sau alte combinații de taste precum `Ctrl+b` (pagină sus) sau `Ctrl+f` (pagină jos).
+Odată pornit utilitarul, putem controla afișarea sa folosind tastele săgeți sau alte combinații de taste precum `Ctrl+b` (pagină sus) sau `Ctrl+f` (pagină jos).
 Pentru a opri utilitarul folosim tasta `q` (*quit*) și obținem controlul terminalului pentru a introduce noi comenzi.
 
 **Exercițiu**: Porniți în linia de comandă aplicația interactivă `vim` pentru a edita fișierul `~/.bashrc`.
 Opriți aplicația folosind combinația de taste `<Esc>:q!` urmată de `Enter`.
 
-### Oprirea forțată a aplicațiilor în linia de comandă
+#### Oprirea forțată a aplicațiilor în linia de comandă
 
-Se poate întâmpla ca o aplicație în linia de comandă să ruleze pentru prea mult timp sau să se blocheze.
-Caz în care dorim să o oprim.
+Se poate întâmpla ca o aplicație în linia de comandă să ruleze pentru prea mult timp sau să se blocheze, caz în care dorim să o oprim.
 Soluția de avarie este să închidem fereastra de terminal, lucru care, de obicei, închide și aplicația.
 Soluția mai bună este să închidem doar aplicația.
-Acest lucru îl facem folosind combinația de taste `Ctrl+c` care oprește aplicația care rulează în terminal[^2].
+Acest lucru îl facem folosind combinația de taste `Ctrl+c`, care oprește aplicația care rulează în terminal[^2].
 Acest lucru poate fi realizat și pentru aplicații grafice, așa cum am văzut mai sus.
 
-De exemplu, dacă folosim comanda `sleep 100` care se va bloca pentru 100 de secunde, o vom opri folosind `Ctrl+c` ca mai jos:
+De exemplu, dacă folosim comanda `sleep 100`, care se va bloca pentru 100 de secunde, o vom opri folosind `Ctrl+c` ca mai jos:
 
 ``` bash
 student@uso:~$ sleep 100
@@ -212,9 +211,9 @@ student@uso:~$
 - `ls -R /usr`: pentru a afișa recursiv conținutul directorului `/usr`
 - `watch ps`: pentru a monitoriza procesele din terminalul curent
 
-## Scenarii avansate
+### Scenarii avansate
 
-### Studiu de caz: Emacs: Aplicație hibridă
+#### Studiu de caz: Emacs: Aplicație hibridă
 
 Aplicația Emacs (un editor) poate rula cu interfață grafică și cu interfață în linia de comandă.
 Dacă pornim aplicația Emacs în linia de comandă, folosind comanda `emacs`, se va crea un proces cu interfața grafică, așa cum apare în imaginea de mai jos:
@@ -230,17 +229,16 @@ Aplicația este interactivă.
 În interfața grafică poate fi oprită folosind butonul de închidere a ferestrei sau combinația de taste `Alt+F4`.
 În linia de comandă (și în interfața grafică) poate fi oprită folosind combinația de taste specifică pentru oprirea aplicației: `Ctrl+x` urmat de `Ctrl+c`.
 
-### Pornirea aplicațiilor grafice în modul headless
+#### Pornirea aplicațiilor grafice în modul headless
 
 Atunci când lucrăm la distanță (*remote connection*)[^3], e posibil să nu avem acces facil la interfață grafică.
-Sau, chiar când lucrăm pe sistemul local, nu vrem să complicăm mediul de lucru cu o încă o aplicație grafică.
+Sau, chiar când lucrăm pe sistemul local, nu vrem să complicăm mediul de lucru cu încă o aplicație grafică.
 Dorim să rulăm o aplicație în background fără interfață grafică.
 Nu interacționăm cu aplicația direct, cu butoane, meniuri, clickuri, ci indirect, prin comenzi specializate.
 Anumite aplicații grafice au acest mod, numit mod *headless*, de rulare fără interfață grafică.
 
 De exemplu, Firefox are modul headless.
-Acest mod nu este util pentru navigarea web, nefiind interactiv.
-Dar este folosit pentru testarea sa automată folosind, de exemplu, [Selenium](https://www.selenium.dev/).
+Acest mod nu este util pentru navigarea web, nefiind interactiv, dar este folosit pentru testarea sa automată folosind, de exemplu, [Selenium](https://www.selenium.dev/).
 
 Pentru pornirea Firefox în modul headless folosim, într-un terminal, comanda:
 
@@ -262,8 +260,8 @@ Pentru a opri procesul Firefox pornit în modul headless, folosim, în primul te
 
 #### Folosirea Inkscape fără interfață grafică
 
-Aplicația Inkscape este folosită pentru crearea și editarea de imagini format SVG (*Scalable Vector Graphics*).
-Inkscape nu are propriu zis un mod headless, dar poate fi folosită în mod neinteractiv pentru exportarea fișierelor într-un anumit format și chiar editarea acestora[^4].
+Aplicația Inkscape este folosită pentru crearea și editarea de imagini în format SVG (*Scalable Vector Graphics*).
+Inkscape nu are propriu-zis un mod headless, dar poate fi folosită în mod neinteractiv pentru exportarea fișierelor într-un anumit format și chiar editarea acestora[^4].
 
 :::note
 Aplicația trebuie instalată dacă nu există deja.
@@ -286,7 +284,7 @@ student@uso:~/uso-lab-book$ file Tux.pdf
 Tux.pdf: PDF document, version 1.4
 ```
 
-În mod similar, pentru a converti o imagine SVG în format PNG, folosim o comanda precum cea de mai jos:
+În mod similar, pentru a converti o imagine SVG în format PNG, folosim o comandă precum cea de mai jos:
 
 ``` bash
 student@uso:~/uso-lab-book$ inkscape chapters/app-install/support/Tux.svg --export-png Tux.png
@@ -310,7 +308,7 @@ Acest exercițiu are dificultate sporită.
 Emacs este o aplicație consumatoare de resurse.
 Pentru a reduce timpul de pornire, este ideal să fie pornită o singură dată și apoi să fie folosită acea instanță.
 Pentru a nu încărca interfața grafică, Emacs are o formă de server, numită Emacs Daemon.
-În forma de server, procesul Emacs este pornit dar fără interfață grafică.
+În forma de server, procesul Emacs este pornit, dar fără interfață grafică.
 Pentru a folosi Emacs, se folosește o aplicație minimală (*lightweight*) numită `emacsclient`.
 
 Realizați următoarele:
@@ -330,12 +328,12 @@ Realizați următoarele:
 [^1]: Spre deosebire de scenariul folosirii `Alt+F2`, când folosim aplicații CLI în linia de comandă, mesajele vor fi vizibile.
     Acest lucru se întâmplă pentru că linia de comandă înseamnă existența unui terminal unde putem vizualiza mesajele.
 
-[^2]: Pentru anumite aplicații combinația de taste `Ctrl+c` poate să nu funcționeze.
-    În acest caz putem folosi combinația de taste `Ctrl+\`, mai puternică.
+[^2]: Pentru anumite aplicații, combinația de taste `Ctrl+c` poate să nu funcționeze.
+    În acest caz, putem folosi combinația de taste `Ctrl+\`, mai puternică.
     Dacă nici `Ctrl+\` nu funcționează, va trebui să trimitem aplicației un semnal mai puternic care să o oprească.
     Vom discuta despre semnale în `app_install_run_signal`.
 
-[^3]: De exemplu folosind o conexiune SSH.
+[^3]: De exemplu, folosind o conexiune SSH.
     Vom prezenta SSH în secțiunea TODO.
 
 [^4]: [https://wiki.inkscape.org/wiki/index.php/Using_the_Command_Line](https://wiki.inkscape.org/wiki/index.php/Using_the_Command_Line)
